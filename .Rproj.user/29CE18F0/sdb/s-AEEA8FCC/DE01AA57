@@ -1,0 +1,16 @@
+{
+    "contents" : "^.*\\.Rproj$\n^\\.Rproj\\.user$\n",
+    "created" : 1395560464123.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2708567950",
+    "id" : "DE01AA57",
+    "lastKnownWriteTime" : 1395560457,
+    "path" : "~/Documents/Rscript/itercombin/.Rbuildignore",
+    "project_path" : ".Rbuildignore",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "text"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "\\name{rcpp_hello_world}\n\\alias{rcpp_hello_world}\n\\docType{package}\n\\title{\nSimple function using Rcpp\n}\n\\description{\nSimple function using Rcpp\n}\n\\usage{\nrcpp_hello_world()\t\n}\n\\examples{\n\\dontrun{\nrcpp_hello_world()\n}\n}\n",
+    "created" : 1395560476797.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2068375474",
+    "id" : "5D81568E",
+    "lastKnownWriteTime" : 1395560456,
+    "path" : "~/Documents/Rscript/itercombin/man/rcpp_hello_world.Rd",
+    "project_path" : "man/rcpp_hello_world.Rd",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_doc"
+}
