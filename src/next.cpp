@@ -8,6 +8,12 @@ extern "C" {
 
 using namespace Rcpp;
 
+//' Permutation generation
+//' 
+//' Generate next permutation
+//' @param x an integer-valued permutation vector
+//' @return next permutation vector
+//' @export
 // [[Rcpp::export]]
 SEXP next_permutation(SEXP x){
     IntegerVector y(clone(x));

@@ -1,0 +1,1 @@
+A R package to generate permutations and combinations efficiently.

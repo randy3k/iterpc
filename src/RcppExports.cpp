@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // next_permutation
 SEXP next_permutation(SEXP x);
-RcppExport SEXP next_next_permutation(SEXP xSEXP) {
+RcppExport SEXP itercombin_next_permutation(SEXP xSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
