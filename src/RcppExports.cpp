@@ -6,14 +6,14 @@
 using namespace Rcpp;
 
 // next_permutation
-SEXP next_permutation(SEXP x);
+unsigned int next_permutation(IntegerVector x);
 RcppExport SEXP itercombin_next_permutation(SEXP xSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< SEXP >::type x(xSEXP );
-        SEXP __result = next_permutation(x);
+        Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP );
+        unsigned int __result = next_permutation(x);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);

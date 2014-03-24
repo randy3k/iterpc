@@ -1,3 +1,5 @@
-export(next_permutation)
+S3method("next",cObj)
+S3method("next",pObj)
+export(setgen)
 import(Rcpp)
 useDynLib(itercombin)

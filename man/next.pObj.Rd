@@ -1,8 +1,9 @@
-\name{next_permutation}
-\alias{next_permutation}
+\name{next.pObj}
+\alias{next}
+\alias{next.pObj}
 \title{Permutation generation}
 \usage{
-next_permutation(x)
+\method{next}{pObj}(pObj)
 }
 \arguments{
   \item{x}{an integer-valued permutation vector}
