@@ -2,8 +2,8 @@
 \name{itercombin}
 \alias{itercombin}
 \alias{itercombin-package}
-\title{Permuations and Combinations}
+\title{Iterator for Permuations and Combinations}
 \description{
-Permuations and Combinations
+Iterator for Permuations and Combinations
 }
 
