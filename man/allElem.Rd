@@ -2,9 +2,7 @@
 \alias{allElem}
 \title{Get all permutation/combination for a permutation iterator}
 \usage{
-allElem(obj, ...)
-
-\method{allElem}{piterator}(I)
+allElem(I)
 }
 \arguments{
   \item{I}{a permutation/combination iterator}

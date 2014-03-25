@@ -1,8 +1,8 @@
-\name{curElem}
-\alias{curElem}
+\name{currElem}
+\alias{currElem}
 \title{Get the current element of the iterator}
 \usage{
-curElem(I)
+currElem(I)
 }
 \arguments{
   \item{I}{iterator object}

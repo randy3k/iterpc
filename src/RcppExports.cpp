@@ -21,15 +21,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // next_combination
-unsigned int next_combination(IntegerVector x, unsigned int r);
-RcppExport SEXP itercombin_next_combination(SEXP xSEXP, SEXP rSEXP) {
+unsigned int next_combination(IntegerVector x, unsigned int n);
+RcppExport SEXP itercombin_next_combination(SEXP xSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP );
-        Rcpp::traits::input_parameter< unsigned int >::type r(rSEXP );
-        unsigned int __result = next_combination(x, r);
+        Rcpp::traits::input_parameter< unsigned int >::type n(nSEXP );
+        unsigned int __result = next_combination(x, n);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);

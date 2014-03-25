@@ -2,8 +2,8 @@
 \alias{iterator}
 \title{Initialize a iterator for permuations or combinations}
 \usage{
-iterator(n = NULL, r = NULL, x = NULL, type = "permuation",
-  replace = FALSE, multiset = anyDuplicated(x))
+iterator(n = NULL, r = NULL, x = NULL, type = "permutation",
+  replace = FALSE, is.multiset = anyDuplicated(x) > 0)
 }
 \arguments{
   \item{n}{the length of the input sequence. If \code{x} is
@@ -20,7 +20,7 @@ iterator(n = NULL, r = NULL, x = NULL, type = "permuation",
   \item{replace}{with/without replacement. Default is
   \code{FALSE}.}
 
-  \item{multiset}{the source sequence is a multiset?
+  \item{is.multiset}{the source sequence is a multiset?
   Default: \code{TRUE} if \code{x} contains replicates,
   otherwise \code{FALSE}.}
 }
