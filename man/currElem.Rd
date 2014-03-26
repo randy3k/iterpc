@@ -1,6 +1,6 @@
 \name{currElem}
 \alias{currElem}
-\title{Get the current element of the iterator}
+\title{Get the current element of a iterator}
 \usage{
 currElem(I)
 }
@@ -8,9 +8,9 @@ currElem(I)
   \item{I}{iterator object}
 }
 \value{
-current element of the iterator
+current element of a iterator
 }
 \description{
-Get the current element of the iterator
+Get the current element of a iterator
 }
 

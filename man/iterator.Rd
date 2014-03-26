@@ -2,17 +2,15 @@
 \alias{iterator}
 \title{Initialize a iterator for permuations or combinations}
 \usage{
-iterator(n = NULL, r = NULL, x = NULL, type = "permutation",
-  replace = FALSE, is.multiset = anyDuplicated(x) > 0)
+iterator(n, r = NULL, type = "permutation", replace = FALSE,
+  is.multiset = length(n) > 1 && anyDuplicated(n) > 0)
 }
 \arguments{
-  \item{n}{the length of the input sequence. If \code{x} is
-  given, \code{n} can be missing.}
+  \item{n}{the length of the input sequence or the input
+  sequence.}
 
   \item{r}{the length of the output sequence. If missing,
   equals to \code{n}.}
-
-  \item{x}{(optional) the source sequence.}
 
   \item{type}{either \code{permutation} or
   \code{combination}. Default is \code{permutation}.}
@@ -21,8 +19,8 @@ iterator(n = NULL, r = NULL, x = NULL, type = "permutation",
   \code{FALSE}.}
 
   \item{is.multiset}{the source sequence is a multiset?
-  Default: \code{TRUE} if \code{x} contains replicates,
-  otherwise \code{FALSE}.}
+  \code{TRUE} if \code{n} is a vector of size >1 and
+  contains duplicates.}
 }
 \value{
 a permutation/combination iterator

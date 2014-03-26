@@ -1,7 +1,8 @@
 PKG_LIBS = -Lmbcomb -lmbcomb
 
-SOURCES = $(wildcard *.cpp)
-OBJECTS = $(SOURCES:.cpp=.o)
+SOURCES = $(wildcard *.cpp) 
+UTIL = $(wildcard util/*.c)
+OBJECTS = $(UTIL:.c=.o) $(SOURCES:.cpp=.o)
 
 all: subclean $(SHLIB)
 
@@ -13,6 +14,7 @@ sublibs: subclean
 clean: subclean
 	rm -f .libs _libs
 	rm -f *.o $(SHLIB)
+	rm -f util/*.o 
 
 subclean:
 	@(cd mbcomb && $(MAKE) clean)

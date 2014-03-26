@@ -1,6 +1,6 @@
 \name{allElem}
 \alias{allElem}
-\title{Get all permutation/combination for a permutation iterator}
+\title{Get all permutation/combination for a iterator}
 \usage{
 allElem(I)
 }
@@ -12,6 +12,6 @@ next permutation/combination sequence for the iterator
 \code{I}
 }
 \description{
-Get all permutation/combination for a permutation iterator
+Get all permutation/combination for a iterator
 }
 

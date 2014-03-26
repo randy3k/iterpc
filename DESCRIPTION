@@ -8,6 +8,6 @@ Maintainer: Randy Lai <randy.cs.lai@gmail.com>
 Description: More about what it does (maybe more than one
       line)
 License: GPL-2
-Imports: Rcpp (>= 0.11.0)
+Imports: Rcpp (>= 0.11.0), polynom
 Suggests: testthat
 LinkingTo: Rcpp
