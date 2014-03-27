@@ -35,7 +35,9 @@ unsigned int AInext_k_permutation(unsigned int *ar, size_t n, int k)
     if(k<n && j<n){
         swap(ar, edge, j);
     }else{
-        reverse(ar+k, n-k);
+        if (k<n){
+            reverse(ar+k, n-k);
+        }
 
         // find rightmost ascent to left of edge
         i = edge -1;
