@@ -18,16 +18,16 @@ nc.multiset <- function(f, r){
 }
 
 #' @export
-nextElem.citerator <- function(I){
+getNext.comb <- function(I){
     if (I$replace){
 
     }else{
         if (I$is.multiset){
             if (is.null(I$currInd)) {
                 I$currInd = sort(I$multiset)[1:I$r]
-                return(currElem(I))
+                return(getCurrent(I))
             }else if(next_multiset_combination(I$multiset, I$currInd)){
-                return(currElem(I))
+                return(getCurrent(I))
             }else{
                 I$currInd = NULL
                 return(NULL)
@@ -35,9 +35,9 @@ nextElem.citerator <- function(I){
         }else{
             if (is.null(I$currInd)) {
                 I$currInd = (1:I$r)-1L
-                return(currElem(I))
+                return(getCurrent(I))
             }else if(next_combination(I$currInd, I$n)){
-                return(currElem(I))
+                return(getCurrent(I))
             }else{
                 I$currInd = NULL
                 return(NULL)
@@ -47,7 +47,7 @@ nextElem.citerator <- function(I){
 }
 
 #' @export
-allElem.citerator <- function(I){
+getAll.comb <- function(I){
     if (I$replace){
 
     }else{
@@ -70,8 +70,8 @@ allElem.citerator <- function(I){
 }
 
 #' @export
-#' @method length citerator
-length.citerator <- function(x){
+#' @method length comb
+length.comb <- function(x){
     if (x$replace){
 
     }else{

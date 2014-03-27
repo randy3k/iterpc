@@ -29,7 +29,11 @@ np.multiset <- function(f, r){
 # }
 
 #' @export
-allElem.piterator <- function(I){
+getAll.perm <- function(I){
+    if (I$r*length(I)>.Machine$integer.max){
+        stop("Output matrix larger than maximum dimensions.")
+    }
+    
     if (I$replace){
 
     }else{
@@ -60,7 +64,7 @@ allElem.piterator <- function(I){
 }
 
 #' @export
-nextElem.piterator <- function(I){
+getNext.perm <- function(I){
     if (I$replace){
 
     }else{
@@ -72,9 +76,9 @@ nextElem.piterator <- function(I){
                 }else{
                     I$currInd = (1:I$n)-1L
                 }
-                return(currElem(I))
+                return(getCurrent(I))
             }else if(next_permutation(I$currInd)){
-                return(currElem(I))
+                return(getCurrent(I))
             }else{
                 I$currInd = NULL
                 return(NULL)
@@ -87,9 +91,9 @@ nextElem.piterator <- function(I){
                 }else{
                     I$currInd = (1:I$n)-1L
                 }
-                return(currElem(I))
+                return(getCurrent(I))
             }else if(next_permutation(I$currInd)){
-                return(currElem(I))
+                return(getCurrent(I))
             }else{
                 I$currInd = NULL
                 return(NULL)
@@ -99,8 +103,8 @@ nextElem.piterator <- function(I){
 }
 
 #' @export
-#' @method length piterator
-length.piterator <- function(x){
+#' @method length perm
+length.perm <- function(x){
     if (x$replace){
 
     }else{

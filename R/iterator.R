@@ -15,7 +15,7 @@ NULL
 #'        \code{TRUE} if \code{n} is a vector of size >1 and contains duplicates.
 #' @return a permutation/combination iterator
 #' @export
-iterator <- function(n, r=NULL, type="permutation", replace=FALSE, 
+Iter <- function(n, r=NULL, type="permutation", replace=FALSE, 
                         is.multiset = length(n)>1 && anyDuplicated(n)>0){
     # to immitate object behaviour
     out = new.env(parent=globalenv())
@@ -42,9 +42,9 @@ iterator <- function(n, r=NULL, type="permutation", replace=FALSE,
 
     }
     if (type == "permutation"){
-        class(out) = "piterator"
+        class(out) = "perm"
     }else if(type=="combination"){
-        class(out) = "citerator"
+        class(out) = "comb"
     }else{
         stop("Invalid type.")
     }
@@ -55,15 +55,15 @@ iterator <- function(n, r=NULL, type="permutation", replace=FALSE,
 #' @param I a permutation/combination iterator
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
-allElem <- function(I) UseMethod("allElem") 
+getAll <- function(I) UseMethod("getAll") 
 
 
 #' Get the current element of a iterator 
 #' @param I iterator object
 #' @return current element of a iterator
 #' @export
-currElem <- function(I){
-    if (is.null(I$currInd)) nextElem(I)
+getCurrent <- function(I){
+    if (is.null(I$currInd)) getNext(I)
     if(is.null(I$x)){
         return(I$currInd[1:I$r]+1L)
     }else{
@@ -71,9 +71,10 @@ currElem <- function(I){
     }
 }
 
-#' Get the next permutation/combination for a iterator
-#' @param I a permutation/combination iterator
-#' @return next permutation/combination sequence for the iterator \code{I}
+#' Get the next permutation(s)/combination(s) for a iterator
+#' @param I a permutation(s)/combination(s) iterator
+#' @param d number of permutation(s)/combination(s) wanted, default to 1
+#' @return next \code{d} permutation(s)/combination(s) sequence for the iterator \code{I}
 #' @export
-nextElem <- function(I) UseMethod("nextElem") 
+getNext <- function(I) UseMethod("getNext") 
 
