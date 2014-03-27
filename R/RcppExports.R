@@ -9,12 +9,17 @@ next_multiset_combinations <- function(multiset, x, d, index) {
     .Call('itercombin_next_multiset_combinations', PACKAGE = 'itercombin', multiset, x, d, index)
 }
 
+next_combinations_replace <- function(x, n, d, index) {
+    .Call('itercombin_next_combinations_replace', PACKAGE = 'itercombin', x, n, d, index)
+}
+
 #' Calculate mulinomial coefficient
 #' @param n a vector of group sizes
 #' @return multinomial coefficient
 #' @details This function calculate the multinomial coefficient \deqn{\frac{(\sum n_j)!}{\prod n_j!}.}{(\sum n_j)! / \prod n_j!.}
 #' 
-#' Overflow error will be thrown if the return value is larger than the maximum limit of an unsigned long long variable.
+#' It will throw overflow error if the return value is too large. 
+#' And the result is not exactly precise if the retunred value is larger than 2^53 due to limition of integers.
 #' @examples
 #' # (3+1+1)!/ (3! 1! 1!) = 20
 #' multichoose(c(3,1,1))
@@ -29,5 +34,9 @@ next_permutations <- function(x, d, index) {
 
 next_k_permutations <- function(x, r, d, index) {
     .Call('itercombin_next_k_permutations', PACKAGE = 'itercombin', x, r, d, index)
+}
+
+next_permutations_replace <- function(x, n, d, index) {
+    .Call('itercombin_next_permutations_replace', PACKAGE = 'itercombin', x, n, d, index)
 }
 

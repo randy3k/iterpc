@@ -41,6 +41,24 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
+// next_combinations_replace
+SEXP next_combinations_replace(IntegerVector x, unsigned int n, unsigned long long d, unsigned long long index);
+RcppExport SEXP itercombin_next_combinations_replace(SEXP xSEXP, SEXP nSEXP, SEXP dSEXP, SEXP indexSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP );
+        Rcpp::traits::input_parameter< unsigned int >::type n(nSEXP );
+        Rcpp::traits::input_parameter< unsigned long long >::type d(dSEXP );
+        Rcpp::traits::input_parameter< unsigned long long >::type index(indexSEXP );
+        SEXP __result = next_combinations_replace(x, n, d, index);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
 // multichoose
 unsigned long long multichoose(SEXP n);
 RcppExport SEXP itercombin_multichoose(SEXP nSEXP) {
@@ -85,6 +103,24 @@ BEGIN_RCPP
         Rcpp::traits::input_parameter< unsigned long long >::type d(dSEXP );
         Rcpp::traits::input_parameter< unsigned long long >::type index(indexSEXP );
         SEXP __result = next_k_permutations(x, r, d, index);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+// next_permutations_replace
+SEXP next_permutations_replace(IntegerVector x, unsigned int n, unsigned long long d, unsigned long long index);
+RcppExport SEXP itercombin_next_permutations_replace(SEXP xSEXP, SEXP nSEXP, SEXP dSEXP, SEXP indexSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP );
+        Rcpp::traits::input_parameter< unsigned int >::type n(nSEXP );
+        Rcpp::traits::input_parameter< unsigned long long >::type d(dSEXP );
+        Rcpp::traits::input_parameter< unsigned long long >::type index(indexSEXP );
+        SEXP __result = next_permutations_replace(x, n, d, index);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);

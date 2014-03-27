@@ -29,24 +29,23 @@ Iter <- function(n, r=NULL, type="permutation", replace=FALSE,
     out$replace = replace
     out$is.multiset = is.multiset
     out$index = 0L
-    if(replace){
-        stop("with replacement is not yet implemented.")
-    }else{
-        if (length(n)>1){
-            out$n = length(n)
-            if (is.multiset){
-                f = table(n)
-                out$x = type.convert(names(f), as.is=TRUE)
-                out$f = as.integer(f)
-                out$multiset = sort(as.integer(as.factor(n)))-1L
-            }else{
-                out$x = n
-            }
-            out$r = ifelse(is.null(r), out$n, as.integer(r))
+    if (length(n)>1){
+        out$n = length(n)
+        if (is.multiset){
+            f = table(n)
+            out$x = type.convert(names(f), as.is=TRUE)
+            out$f = as.integer(f)
+            out$multiset = sort(as.integer(as.factor(n)))-1L
         }else{
-            out$n = n
-            out$r = ifelse(is.null(r), out$n, as.integer(r))
+            out$x = n
         }
+        out$r = ifelse(is.null(r), out$n, as.integer(r))
+    }else{
+        out$n = n
+        out$r = ifelse(is.null(r), out$n, as.integer(r))
+    }
+    if (replace){
+        out$unique_n = ifelse(is.null(out$x), out$n, length(out$x))
     }
     out$len = len(out)
     out
@@ -69,20 +68,29 @@ getAll <- function(I){
 #' @return current element of a iterator
 #' @export
 getCurrent <- function(I){
-    if (is.null(I$currInd)) getNext(I)
+    if (is.null(I$currInd)) return(NULL)
     if(is.null(I$x)){
-        return(I$currInd[1:I$r]+1L)
+        out = I$currInd[1:I$r]+1L
     }else{
-        return(I$x[I$currInd[1:I$r]+1L])
+        out = I$x[I$currInd[1:I$r]+1L]
     }
+}
+
+#' Get the current index of a iterator 
+#' @param I iterator object
+#' @return current index of a iterator
+#' @export
+getIndex <- function(I){
+    I$index
 }
 
 #' Get the next permutation(s)/combination(s) for a iterator
 #' @param I a permutation(s)/combination(s) iterator
 #' @param d number of permutation(s)/combination(s) wanted, default to 1
+#' @param drop simplify to vector if possible, default to \code{TRUE}.
 #' @return next \code{d} permutation(s)/combination(s) sequence for the iterator \code{I}
 #' @export
-getNext <- function(I, d=1) UseMethod("getNext") 
+getNext <- function(I, d=1, drop=TRUE) UseMethod("getNext") 
 
 #' Get the length for a iterator
 #' @param I a permutation(s)/combination(s) iterator

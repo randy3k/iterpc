@@ -2,13 +2,16 @@
 \alias{getNext}
 \title{Get the next permutation(s)/combination(s) for a iterator}
 \usage{
-getNext(I, d = 1)
+getNext(I, d = 1, drop = TRUE)
 }
 \arguments{
   \item{I}{a permutation(s)/combination(s) iterator}
 
   \item{d}{number of permutation(s)/combination(s) wanted,
   default to 1}
+
+  \item{drop}{simplify to vector if possible, default to
+  \code{TRUE}.}
 }
 \value{
 next \code{d} permutation(s)/combination(s) sequence for

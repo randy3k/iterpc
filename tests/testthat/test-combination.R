@@ -14,3 +14,8 @@ I = Iter(c("a","a","c","c"), 2, type="combination")
 getNext(I)
 expect_that(getNext(I)[2], equals("c"))
 expect_that(nrow(getAll(I)), equals(3))
+
+I = Iter(5, 3, 2, type="combination",replace=TRUE)
+getNext(I)
+expect_that(getNext(I), equals(c(1,1,2)))
+expect_that(nrow(getAll(I)), equals(35))

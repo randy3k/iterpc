@@ -1,7 +1,14 @@
 #' @export
-getNext.comb <- function(I, d=1){
+getNext.comb <- function(I, d=1, drop=TRUE){
+    if(I$index==I$len){
+        I$index = 0
+        return(NULL)
+    }
     if (I$replace){
-
+        if (I$index==0L) {
+            I$currInd = rep(0L,I$r)
+        }
+        C = next_combinations_replace(I$currInd, I$unique_n, d, I$index)
     }else{
         if (I$index==0L) {
             if(I$is.multiset){
@@ -10,9 +17,6 @@ getNext.comb <- function(I, d=1){
             }else{
                 I$currInd = (1:I$r)-1L
             }
-        }else if(I$index==I$len){
-            I$index = 0
-            return(NULL)
         }
         if (I$index + d > I$len) d = I$len - I$index
         if (I$is.multiset){
@@ -20,15 +24,21 @@ getNext.comb <- function(I, d=1){
         }else{
             C = next_combinations(I$currInd, I$n, d, I$index)
         }
-        I$index = I$index + d
-        if (is.null(I$x)){
-            return(C+1)
+    }
+    I$index = I$index + d
+    if (is.null(I$x)){
+        if (drop){
+            return(C)
         }else{
-            if(d==1){
-                return(I$x[C+1])
-            }else{
-                t(apply(C,1,function(z) I$x[z+1]))
-            }
+            return(matrix(C,nrow=1))
+        }
+    }else{
+        if(drop && d==1){
+            return(I$x[C])
+        }else if(d==1){
+            return(matrix(I$x[C],nrow=1))
+        }else{
+            t(apply(C,1,function(z) I$x[z]))
         }
     }
 }
@@ -37,7 +47,7 @@ getNext.comb <- function(I, d=1){
 #' @method len comb
 len.comb <- function(I){
     if (I$replace){
-
+        return(choose(I$unique_n+I$r-1,I$r))
     }else{
         if (I$is.multiset){
             return(nc.multiset(I$f, I$r))

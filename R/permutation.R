@@ -1,7 +1,14 @@
 #' @export
-getNext.perm <- function(I, d=1){
+getNext.perm <- function(I, d=1, drop=TRUE){
+    if(I$index==I$len){
+        I$index = 0
+        return(NULL)
+    }
     if (I$replace){
-
+        if (I$index==0L) {
+            I$currInd = rep(0L,I$r)
+        }
+        P = next_permutations_replace(I$currInd, I$unique_n, d, I$index)
     }else{
         if (I$index==0L) {
             if(I$is.multiset){
@@ -10,9 +17,6 @@ getNext.perm <- function(I, d=1){
             }else{
                 I$currInd = (1:I$n)-1L
             }
-        }else if(I$index==I$len){
-            I$index = 0
-            return(NULL)
         }
         if (I$index + d > I$len) d = I$len - I$index
         if (I$n == I$r){
@@ -20,15 +24,21 @@ getNext.perm <- function(I, d=1){
         }else{
             P = next_k_permutations(I$currInd, I$r, d, I$index)
         }
-        I$index = I$index + d
-        if (is.null(I$x)){
-            return(P+1)
+    }
+    I$index = I$index + d
+    if (is.null(I$x)){
+        if (drop){
+            return(P)
         }else{
-            if(d==1){
-                return(I$x[P+1])
-            }else{
-                t(apply(P,1,function(z) I$x[z+1]))
-            }
+            return(matrix(P,nrow=1))
+        }
+    }else{
+        if(drop && d==1){
+            return(I$x[P])
+        }else if(d==1){
+            return(matrix(I$x[P],nrow=1))
+        }else{
+            t(apply(P,1,function(z) I$x[z]))
         }
     }
 }
@@ -38,7 +48,7 @@ getNext.perm <- function(I, d=1){
 #' @method len perm
 len.perm <- function(I){
     if (I$replace){
-
+        return(I$unique_n^I$r)
     }else{
         if (I$n == I$r){
             if (I$is.multiset){
