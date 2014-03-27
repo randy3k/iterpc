@@ -7,35 +7,40 @@ extern "C" {
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-unsigned int next_permutation(IntegerVector x){
-    return MBnext_permutation((unsigned int *) x.begin(), x.size());;
-}
-
-// [[Rcpp::export]]
-SEXP all_permutations(SEXP x_, unsigned long long d){
-    IntegerVector x(clone(x_));
+SEXP next_permutations(IntegerVector x, long long d, unsigned long long index){
     unsigned int n = x.size();
-    IntegerMatrix P(d,n);
-    for(int i=0;i<d;i++){
-        P(i,_) = x;
-        MBnext_permutation((unsigned int *) x.begin(), n);
+
+    if (index>0) MBnext_permutation((unsigned int *) x.begin(), n); 
+
+    if (d>1){
+        IntegerMatrix P(d,n);
+        P(0,_) = x;
+        for(int i=1;i<d;i++){
+            MBnext_permutation((unsigned int *) x.begin(), n);
+            P(i,_) = x;
+        }
+        return P;
+    }else{
+        return x;
     }
-    return P;
 }
 
 // [[Rcpp::export]]
-unsigned int next_k_permutation(IntegerVector x, unsigned int r){
-    return AInext_k_permutation((unsigned int *) x.begin(), x.size(), r);;
-}
-
-// [[Rcpp::export]]
-SEXP all_k_permutations(SEXP x_, unsigned int r, unsigned long long d){
-    IntegerVector x(clone(x_));
+SEXP next_k_permutations(IntegerVector x, unsigned int r, unsigned long long d, unsigned long long index){
     unsigned int n = x.size();
-    IntegerMatrix P(d,r);
-    for(int i=0;i<d;i++){
-        P(i,_) = NumericVector(x.begin(), x.begin()+r);
-        AInext_k_permutation((unsigned int *) x.begin(), n, r);
+    int i,j;
+
+    if (index>0) AInext_k_permutation((unsigned int *) x.begin(), n, r); 
+
+    if (d>1){
+        IntegerMatrix P(d,r);
+        for(j=0;j<r;j++) P(0,j) = x[j];
+        for(i=1;i<d;i++){
+            AInext_k_permutation((unsigned int *) x.begin(), n, r);
+            for(j=0;j<r;j++) P(i,j) = x[j];
+        }
+        return P;
+    }else{
+        return IntegerVector(x.begin(), x.begin()+r);;
     }
-    return P;
 }

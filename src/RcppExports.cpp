@@ -5,66 +5,36 @@
 
 using namespace Rcpp;
 
-// next_combination
-unsigned int next_combination(IntegerVector x, unsigned int n);
-RcppExport SEXP itercombin_next_combination(SEXP xSEXP, SEXP nSEXP) {
+// next_combinations
+SEXP next_combinations(IntegerVector x, unsigned int n, unsigned long long d, unsigned long long index);
+RcppExport SEXP itercombin_next_combinations(SEXP xSEXP, SEXP nSEXP, SEXP dSEXP, SEXP indexSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP );
         Rcpp::traits::input_parameter< unsigned int >::type n(nSEXP );
-        unsigned int __result = next_combination(x, n);
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
-END_RCPP
-}
-// all_combinations
-SEXP all_combinations(SEXP x_, unsigned int n, unsigned long long d);
-RcppExport SEXP itercombin_all_combinations(SEXP x_SEXP, SEXP nSEXP, SEXP dSEXP) {
-BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< SEXP >::type x_(x_SEXP );
-        Rcpp::traits::input_parameter< unsigned int >::type n(nSEXP );
         Rcpp::traits::input_parameter< unsigned long long >::type d(dSEXP );
-        SEXP __result = all_combinations(x_, n, d);
+        Rcpp::traits::input_parameter< unsigned long long >::type index(indexSEXP );
+        SEXP __result = next_combinations(x, n, d, index);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
     return __sexp_result;
 END_RCPP
 }
-// next_multiset_combination
-unsigned int next_multiset_combination(IntegerVector multiset, IntegerVector x);
-RcppExport SEXP itercombin_next_multiset_combination(SEXP multisetSEXP, SEXP xSEXP) {
+// next_multiset_combinations
+SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x, unsigned long long d, unsigned long long index);
+RcppExport SEXP itercombin_next_multiset_combinations(SEXP multisetSEXP, SEXP xSEXP, SEXP dSEXP, SEXP indexSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< IntegerVector >::type multiset(multisetSEXP );
         Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP );
-        unsigned int __result = next_multiset_combination(multiset, x);
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
-END_RCPP
-}
-// all_multiset_combinations
-SEXP all_multiset_combinations(IntegerVector multiset, SEXP x_, unsigned long long d);
-RcppExport SEXP itercombin_all_multiset_combinations(SEXP multisetSEXP, SEXP x_SEXP, SEXP dSEXP) {
-BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< IntegerVector >::type multiset(multisetSEXP );
-        Rcpp::traits::input_parameter< SEXP >::type x_(x_SEXP );
         Rcpp::traits::input_parameter< unsigned long long >::type d(dSEXP );
-        SEXP __result = all_multiset_combinations(multiset, x_, d);
+        Rcpp::traits::input_parameter< unsigned long long >::type index(indexSEXP );
+        SEXP __result = next_multiset_combinations(multiset, x, d, index);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
@@ -86,64 +56,35 @@ BEGIN_RCPP
     return __sexp_result;
 END_RCPP
 }
-// next_permutation
-unsigned int next_permutation(IntegerVector x);
-RcppExport SEXP itercombin_next_permutation(SEXP xSEXP) {
+// next_permutations
+SEXP next_permutations(IntegerVector x, long long d, unsigned long long index);
+RcppExport SEXP itercombin_next_permutations(SEXP xSEXP, SEXP dSEXP, SEXP indexSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP );
-        unsigned int __result = next_permutation(x);
+        Rcpp::traits::input_parameter< long long >::type d(dSEXP );
+        Rcpp::traits::input_parameter< unsigned long long >::type index(indexSEXP );
+        SEXP __result = next_permutations(x, d, index);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
     return __sexp_result;
 END_RCPP
 }
-// all_permutations
-SEXP all_permutations(SEXP x_, unsigned long long d);
-RcppExport SEXP itercombin_all_permutations(SEXP x_SEXP, SEXP dSEXP) {
-BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< SEXP >::type x_(x_SEXP );
-        Rcpp::traits::input_parameter< unsigned long long >::type d(dSEXP );
-        SEXP __result = all_permutations(x_, d);
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
-END_RCPP
-}
-// next_k_permutation
-unsigned int next_k_permutation(IntegerVector x, unsigned int r);
-RcppExport SEXP itercombin_next_k_permutation(SEXP xSEXP, SEXP rSEXP) {
+// next_k_permutations
+SEXP next_k_permutations(IntegerVector x, unsigned int r, unsigned long long d, unsigned long long index);
+RcppExport SEXP itercombin_next_k_permutations(SEXP xSEXP, SEXP rSEXP, SEXP dSEXP, SEXP indexSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
         Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP );
         Rcpp::traits::input_parameter< unsigned int >::type r(rSEXP );
-        unsigned int __result = next_k_permutation(x, r);
-        PROTECT(__sexp_result = Rcpp::wrap(__result));
-    }
-    UNPROTECT(1);
-    return __sexp_result;
-END_RCPP
-}
-// all_k_permutations
-SEXP all_k_permutations(SEXP x_, unsigned int r, unsigned long long d);
-RcppExport SEXP itercombin_all_k_permutations(SEXP x_SEXP, SEXP rSEXP, SEXP dSEXP) {
-BEGIN_RCPP
-    SEXP __sexp_result;
-    {
-        Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< SEXP >::type x_(x_SEXP );
-        Rcpp::traits::input_parameter< unsigned int >::type r(rSEXP );
         Rcpp::traits::input_parameter< unsigned long long >::type d(dSEXP );
-        SEXP __result = all_k_permutations(x_, r, d);
+        Rcpp::traits::input_parameter< unsigned long long >::type index(indexSEXP );
+        SEXP __result = next_k_permutations(x, r, d, index);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
