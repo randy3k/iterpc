@@ -1,5 +1,5 @@
 #' @export
-getNext.perm <- function(I, d=1, drop=TRUE){
+getnext.perm <- function(I, d=1, drop=TRUE){
     if(I$index==I$len){
         I$index = 0
         return(NULL)
@@ -45,8 +45,8 @@ getNext.perm <- function(I, d=1, drop=TRUE){
 
 
 #' @export
-#' @method len perm
-len.perm <- function(I){
+#' @method getlength perm
+getlength.perm <- function(I){
     if (I$replace){
         return(I$unique_n^I$r)
     }else{

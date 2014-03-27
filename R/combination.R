@@ -1,5 +1,5 @@
 #' @export
-getNext.comb <- function(I, d=1, drop=TRUE){
+getnext.comb <- function(I, d=1, drop=TRUE){
     if(I$index==I$len){
         I$index = 0
         return(NULL)
@@ -44,8 +44,8 @@ getNext.comb <- function(I, d=1, drop=TRUE){
 }
 
 #' @export
-#' @method len comb
-len.comb <- function(I){
+#' @method getlength comb
+getlength.comb <- function(I){
     if (I$replace){
         return(choose(I$unique_n+I$r-1,I$r))
     }else{

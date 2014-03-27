@@ -1,2 +1,2 @@
 library(testthat)
-test_check("itercombin")
+test_check("iterpc")

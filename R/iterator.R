@@ -1,30 +1,30 @@
-#' @name itercombin
-#' @title Iterator for Permuations and Combinations
+#' @name iterpc
+#' @title Iterator for Permutations and Combinations
 #' @docType package
-#' @useDynLib itercombin
+#' @useDynLib iterpc
 #' @import Rcpp
 NULL
 
 
-#' Initialize a iterator for permuations or combinations
+#' Initialize a iterator for permutations or combinations
 #' @param n the length of the input sequence or the input sequence.
 #' @param r the length of the output sequence. If missing, equals to \code{n}.
-#' @param type either \code{permutation} or \code{combination}. Default is \code{permutation}.
+#' @param ordered \code{TRUE} corresponses to permutation and \code{FALSE} corresponses to combinations.
 #' @param replace with/without replacement. Default is \code{FALSE}.
 #' @param is.multiset the source sequence is a multiset? 
 #'        \code{TRUE} if \code{n} is a vector of size >1 and contains duplicates.
 #' @return a permutation/combination iterator
+#' @name iterpc
+#' @aliases iterpc
 #' @export
-Iter <- function(n, r=NULL, type="permutation", replace=FALSE, 
+iterpc <- function(n, r=NULL, ordered=TRUE, replace=FALSE, 
                         is.multiset = length(n)>1 && anyDuplicated(n)>0){
     # to immitate object behaviour
     out = new.env(parent=globalenv())
-    if (type == "permutation"){
+    if (ordered){
         class(out) = "perm"
-    }else if(type=="combination"){
-        class(out) = "comb"
     }else{
-        stop("Invalid type.")
+        class(out) = "comb"
     }
     out$replace = replace
     out$is.multiset = is.multiset
@@ -47,7 +47,7 @@ Iter <- function(n, r=NULL, type="permutation", replace=FALSE,
     if (replace){
         out$unique_n = ifelse(is.null(out$x), out$n, length(out$x))
     }
-    out$len = len(out)
+    out$len = getlength(out)
     out
 }
 
@@ -55,9 +55,9 @@ Iter <- function(n, r=NULL, type="permutation", replace=FALSE,
 #' @param I a permutation/combination iterator
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
-getAll <- function(I){
+getall <- function(I){
     I$index = 0L
-    out = getNext(I,I$len)
+    out = getnext(I,I$len)
     I$index = 0L
     out
 }
@@ -67,7 +67,7 @@ getAll <- function(I){
 #' @param I iterator object
 #' @return current element of a iterator
 #' @export
-getCurrent <- function(I){
+getcurrent <- function(I){
     if (is.null(I$currInd)) return(NULL)
     if(is.null(I$x)){
         out = I$currInd[1:I$r]+1L
@@ -80,7 +80,7 @@ getCurrent <- function(I){
 #' @param I iterator object
 #' @return current index of a iterator
 #' @export
-getIndex <- function(I){
+getindex <- function(I){
     I$index
 }
 
@@ -90,10 +90,10 @@ getIndex <- function(I){
 #' @param drop simplify to vector if possible, default to \code{TRUE}.
 #' @return next \code{d} permutation(s)/combination(s) sequence for the iterator \code{I}
 #' @export
-getNext <- function(I, d=1, drop=TRUE) UseMethod("getNext") 
+getnext <- function(I, d=1, drop=TRUE) UseMethod("getnext") 
 
 #' Get the length for a iterator
 #' @param I a permutation(s)/combination(s) iterator
 #' an integer
 #' @export
-len <- function(I) UseMethod("len") 
+getlength <- function(I) UseMethod("getlength") 

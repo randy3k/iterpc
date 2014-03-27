@@ -1,8 +1,10 @@
-\name{Iter}
-\alias{Iter}
-\title{Initialize a iterator for permuations or combinations}
+\docType{package}
+\name{iterpc}
+\alias{iterpc}
+\alias{iterpc-package}
+\title{Iterator for Permutations and Combinations}
 \usage{
-Iter(n, r = NULL, type = "permutation", replace = FALSE,
+iterpc(n, r = NULL, ordered = TRUE, replace = FALSE,
   is.multiset = length(n) > 1 && anyDuplicated(n) > 0)
 }
 \arguments{
@@ -12,8 +14,8 @@ Iter(n, r = NULL, type = "permutation", replace = FALSE,
   \item{r}{the length of the output sequence. If missing,
   equals to \code{n}.}
 
-  \item{type}{either \code{permutation} or
-  \code{combination}. Default is \code{permutation}.}
+  \item{ordered}{\code{TRUE} corresponses to permutation
+  and \code{FALSE} corresponses to combinations.}
 
   \item{replace}{with/without replacement. Default is
   \code{FALSE}.}
@@ -26,6 +28,8 @@ Iter(n, r = NULL, type = "permutation", replace = FALSE,
 a permutation/combination iterator
 }
 \description{
-Initialize a iterator for permuations or combinations
+Iterator for Permutations and Combinations
+
+Initialize a iterator for permutations or combinations
 }
 

@@ -1,8 +1,8 @@
-\name{len}
-\alias{len}
+\name{getlength}
+\alias{getlength}
 \title{Get the length for a iterator}
 \usage{
-len(I)
+getlength(I)
 }
 \arguments{
   \item{I}{a permutation(s)/combination(s) iterator an

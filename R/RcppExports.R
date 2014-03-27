@@ -2,15 +2,15 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 next_combinations <- function(x, n, d, index) {
-    .Call('itercombin_next_combinations', PACKAGE = 'itercombin', x, n, d, index)
+    .Call('iterpc_next_combinations', PACKAGE = 'iterpc', x, n, d, index)
 }
 
 next_multiset_combinations <- function(multiset, x, d, index) {
-    .Call('itercombin_next_multiset_combinations', PACKAGE = 'itercombin', multiset, x, d, index)
+    .Call('iterpc_next_multiset_combinations', PACKAGE = 'iterpc', multiset, x, d, index)
 }
 
 next_combinations_replace <- function(x, n, d, index) {
-    .Call('itercombin_next_combinations_replace', PACKAGE = 'itercombin', x, n, d, index)
+    .Call('iterpc_next_combinations_replace', PACKAGE = 'iterpc', x, n, d, index)
 }
 
 #' Calculate mulinomial coefficient
@@ -25,18 +25,18 @@ next_combinations_replace <- function(x, n, d, index) {
 #' multichoose(c(3,1,1))
 #' @export
 multichoose <- function(n) {
-    .Call('itercombin_multichoose', PACKAGE = 'itercombin', n)
+    .Call('iterpc_multichoose', PACKAGE = 'iterpc', n)
 }
 
 next_permutations <- function(x, d, index) {
-    .Call('itercombin_next_permutations', PACKAGE = 'itercombin', x, d, index)
+    .Call('iterpc_next_permutations', PACKAGE = 'iterpc', x, d, index)
 }
 
 next_k_permutations <- function(x, r, d, index) {
-    .Call('itercombin_next_k_permutations', PACKAGE = 'itercombin', x, r, d, index)
+    .Call('iterpc_next_k_permutations', PACKAGE = 'iterpc', x, r, d, index)
 }
 
 next_permutations_replace <- function(x, n, d, index) {
-    .Call('itercombin_next_permutations_replace', PACKAGE = 'itercombin', x, n, d, index)
+    .Call('iterpc_next_permutations_replace', PACKAGE = 'iterpc', x, n, d, index)
 }
 

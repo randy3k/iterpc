@@ -1,8 +1,8 @@
-\name{getCurrent}
-\alias{getCurrent}
+\name{getcurrent}
+\alias{getcurrent}
 \title{Get the current element of a iterator}
 \usage{
-getCurrent(I)
+getcurrent(I)
 }
 \arguments{
   \item{I}{iterator object}

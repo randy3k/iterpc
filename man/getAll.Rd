@@ -1,8 +1,8 @@
-\name{getAll}
-\alias{getAll}
+\name{getall}
+\alias{getall}
 \title{Get all permutation/combination for a iterator}
 \usage{
-getAll(I)
+getall(I)
 }
 \arguments{
   \item{I}{a permutation/combination iterator}

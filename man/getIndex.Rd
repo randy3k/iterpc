@@ -1,8 +1,8 @@
-\name{getIndex}
-\alias{getIndex}
+\name{getindex}
+\alias{getindex}
 \title{Get the current index of a iterator}
 \usage{
-getIndex(I)
+getindex(I)
 }
 \arguments{
   \item{I}{iterator object}

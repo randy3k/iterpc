@@ -1,8 +1,8 @@
-\name{getNext}
-\alias{getNext}
+\name{getnext}
+\alias{getnext}
 \title{Get the next permutation(s)/combination(s) for a iterator}
 \usage{
-getNext(I, d = 1, drop = TRUE)
+getnext(I, d = 1, drop = TRUE)
 }
 \arguments{
   \item{I}{a permutation(s)/combination(s) iterator}
