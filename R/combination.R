@@ -1,3 +1,52 @@
+#' @export
+getNext.comb <- function(I, d=1){
+    if (I$replace){
+
+    }else{
+        if (I$index==0L) {
+            if(I$is.multiset){
+                # add 0L to blame lazy evaluation
+                I$currInd = I$multiset[1:I$r] + 0L
+            }else{
+                I$currInd = (1:I$r)-1L
+            }
+        }else if(I$index==I$len){
+            I$index = 0
+            return(NULL)
+        }
+        if (I$index + d > I$len) d = I$len - I$index
+        if (I$is.multiset){
+            C = next_multiset_combinations(I$multiset, I$currInd, d, I$index)
+        }else{
+            C = next_combinations(I$currInd, I$n, d, I$index)
+        }
+        I$index = I$index + d
+        if (is.null(I$x)){
+            return(C+1)
+        }else{
+            if(d==1){
+                return(I$x[C+1])
+            }else{
+                t(apply(C,1,function(z) I$x[z+1]))
+            }
+        }
+    }
+}
+
+#' @export
+#' @method len comb
+len.comb <- function(I){
+    if (I$replace){
+
+    }else{
+        if (I$is.multiset){
+            return(nc.multiset(I$f, I$r))
+        }else{
+            return(choose(I$n,I$r))
+        }
+    }
+}
+
 #' Calcuate the number of combinations of a multiset
 #' @param f the frequencies of the mutliset
 #' @param r the number of object drawn from the multiset
@@ -15,70 +64,4 @@ nc.multiset <- function(f, r){
         p <- polynomial(p[1:min(length(p),r+1)])
     }
     return(p[r+1])
-}
-
-#' @export
-getNext.comb <- function(I){
-    if (I$replace){
-
-    }else{
-        if (I$is.multiset){
-            if (is.null(I$currInd)) {
-                I$currInd = sort(I$multiset)[1:I$r]
-                return(getCurrent(I))
-            }else if(next_multiset_combination(I$multiset, I$currInd)){
-                return(getCurrent(I))
-            }else{
-                I$currInd = NULL
-                return(NULL)
-            }
-        }else{
-            if (is.null(I$currInd)) {
-                I$currInd = (1:I$r)-1L
-                return(getCurrent(I))
-            }else if(next_combination(I$currInd, I$n)){
-                return(getCurrent(I))
-            }else{
-                I$currInd = NULL
-                return(NULL)
-            }
-        }
-    }
-}
-
-#' @export
-getAll.comb <- function(I){
-    if (I$replace){
-
-    }else{
-        if (I$is.multiset){
-            C = all_multiset_combinations(I$multiset, sort(I$multiset)[1:I$r], length(I))
-            if (is.null(I$x)){
-                return(C+1)
-            }else{
-                return(t(apply(C,1,function(z) I$x[z+1])))
-            }
-        }else{
-            C = all_combinations((1:I$r)-1L, I$n, length(I))
-            if (is.null(I$x)){
-                return(C+1)
-            }else{
-                return(t(apply(C,1,function(z) I$x[z+1])))
-            }
-        }
-    }
-}
-
-#' @export
-#' @method length comb
-length.comb <- function(x){
-    if (x$replace){
-
-    }else{
-        if (x$is.multiset){
-            return(nc.multiset(x$f, x$r))
-        }else{
-            return(choose(x$n,x$r))
-        }
-    }
 }

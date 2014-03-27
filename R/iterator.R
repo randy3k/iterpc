@@ -19,8 +19,16 @@ Iter <- function(n, r=NULL, type="permutation", replace=FALSE,
                         is.multiset = length(n)>1 && anyDuplicated(n)>0){
     # to immitate object behaviour
     out = new.env(parent=globalenv())
+    if (type == "permutation"){
+        class(out) = "perm"
+    }else if(type=="combination"){
+        class(out) = "comb"
+    }else{
+        stop("Invalid type.")
+    }
     out$replace = replace
     out$is.multiset = is.multiset
+    out$index = 0L
     if(replace){
         stop("with replacement is not yet implemented.")
     }else{
@@ -39,15 +47,8 @@ Iter <- function(n, r=NULL, type="permutation", replace=FALSE,
             out$n = n
             out$r = ifelse(is.null(r), out$n, as.integer(r))
         }
-
     }
-    if (type == "permutation"){
-        class(out) = "perm"
-    }else if(type=="combination"){
-        class(out) = "comb"
-    }else{
-        stop("Invalid type.")
-    }
+    out$len = len(out)
     out
 }
 
@@ -55,7 +56,12 @@ Iter <- function(n, r=NULL, type="permutation", replace=FALSE,
 #' @param I a permutation/combination iterator
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
-getAll <- function(I) UseMethod("getAll") 
+getAll <- function(I){
+    I$index = 0L
+    out = getNext(I,I$len)
+    I$index = 0L
+    out
+}
 
 
 #' Get the current element of a iterator 
@@ -76,5 +82,10 @@ getCurrent <- function(I){
 #' @param d number of permutation(s)/combination(s) wanted, default to 1
 #' @return next \code{d} permutation(s)/combination(s) sequence for the iterator \code{I}
 #' @export
-getNext <- function(I) UseMethod("getNext") 
+getNext <- function(I, d=1) UseMethod("getNext") 
 
+#' Get the length for a iterator
+#' @param I a permutation(s)/combination(s) iterator
+#' an integer
+#' @export
+len <- function(I) UseMethod("len") 
