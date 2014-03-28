@@ -12,10 +12,11 @@ using namespace Rcpp;
 SEXP next_combinations(IntegerVector x, unsigned int n, 
                         unsigned long d, IntegerVector status){
     unsigned int r = x.size();
-    unsigned int i;
+    unsigned int i,j;
+    unsigned int* xptr = (unsigned int *) x.begin();
 
     if (status[0] == 0) {
-        if (!MBnext_combination((unsigned int *) x.begin(), n, r)){
+        if (!MBnext_combination(xptr, n, r)){
             return R_NilValue;
         }
     }else{
@@ -26,7 +27,7 @@ SEXP next_combinations(IntegerVector x, unsigned int n,
         IntegerMatrix P(d,r);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            if(!MBnext_combination((unsigned int *) x.begin(), n, r)) {
+            if(!MBnext_combination(xptr, n, r)) {
                 status[0] = i;
                 break;
             }
@@ -34,8 +35,8 @@ SEXP next_combinations(IntegerVector x, unsigned int n,
         }
         return P;
     }else{
-        IntegerVector y(clone(x));
-        y = y + 1;
+        IntegerVector y(r);
+        for(j=0;j<r;j++) y[j] = xptr[j]+1;
         return y;
     }    
 }
@@ -46,11 +47,12 @@ SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x,
                                 unsigned long d, IntegerVector status){
     unsigned int n = multiset.size();
     unsigned int r = x.size();
-    unsigned int i;
+    unsigned int i,j;
+    unsigned int* xptr = (unsigned int *) x.begin();
+    unsigned int* mptr = (unsigned int *) multiset.begin();
 
     if (status[0] == 0) {
-        if (!MBnext_multiset_combination((unsigned int *) multiset.begin(), 
-                    (unsigned int *) x.begin(), n, r)){
+        if (!MBnext_multiset_combination(mptr, xptr, n, r)){
             return R_NilValue;
         }
     }else{
@@ -61,8 +63,7 @@ SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x,
         IntegerMatrix P(d,r);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            if(!MBnext_multiset_combination((unsigned int *) multiset.begin(), 
-                    (unsigned int *) x.begin(), n, r)) {
+            if(!MBnext_multiset_combination(mptr, xptr, n, r)) {
                 status[0] = i;
                 break;
             }
@@ -71,8 +72,8 @@ SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x,
         }
         return P;
     }else{
-        IntegerVector y(clone(x));
-        y = y + 1;
+        IntegerVector y(r);
+        for(j=0;j<r;j++) y[j] = xptr[j]+1;
         return y;
     } 
 }
@@ -81,10 +82,11 @@ SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x,
 SEXP next_combinations_replace(IntegerVector x, unsigned int n, 
                         unsigned long d, IntegerVector status){
     unsigned int r = x.size();
-    unsigned int i;
+    unsigned int i,j;
+    unsigned int* xptr = (unsigned int *) x.begin();
 
     if (status[0] == 0) {
-        if (!MBnext_multicombination((unsigned int *) x.begin(), n, r)){
+        if (!MBnext_multicombination(xptr, n, r)){
             return R_NilValue;
         }
     }else{
@@ -95,7 +97,7 @@ SEXP next_combinations_replace(IntegerVector x, unsigned int n,
         IntegerMatrix P(d,r);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            if(!MBnext_multicombination((unsigned int *) x.begin(), n, r)) {
+            if(!MBnext_multicombination(xptr, n, r)) {
                 status[0] = i;
                 break;
             }
@@ -103,8 +105,8 @@ SEXP next_combinations_replace(IntegerVector x, unsigned int n,
         }
         return P;
     }else{
-        IntegerVector y(clone(x));
-        y = y + 1;
+        IntegerVector y(r);
+        for(j=0;j<r;j++) y[j] = xptr[j]+1;
         return y;
     }    
 }
