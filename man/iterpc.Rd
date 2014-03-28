@@ -32,4 +32,27 @@ Iterator for Permutations and Combinations
 
 Initialize a iterator for permutations or combinations
 }
+\examples{
+#1) all combinations of drawing 2 items from {1, 2, 3}
+I = iterpc(5, 2)
+getall(I)
+
+#2) continuing 1), get combination by combination
+I = iterpc(5, 2)
+getnext(I) # return 1,2
+getnext(I) # return 1,3
+getnext(I,2) # return next 2 results
+
+#3) all permutations of {1, 2, 3}
+I = iterpc(3, ordered = TRUE)
+getall(I)
+
+#4) permutations of multiset
+I = iterpc(c("a","a","b","c"), ordered = TRUE)
+getall(I)
+
+#5) combinations with replacement
+I = iterpc(c("a","a","b","c"), 3, replace=TRUE)
+getall(I)
+}
 
