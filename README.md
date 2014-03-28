@@ -5,15 +5,15 @@ Efficient Iterator for Permutations and Combinations
 
 Description: This package helps in 
 
-  1. generating permutations and combinations with or without replacement; 
+  1. generating (iteratively) permutations and combinations with or without replacement; 
   2. with distinct items or non-distinct items (multiset); 
   3. calculating number of combinations or permutations in various situations. 
 
-For the generation part, all generated sequences are in lexicographical order (AKA, dictionary order). The algorithms to generate permutations and combinations are memory efficient, only previous sequence is required to generate next sequence. These iteratively algorithms enable users to process all sequences without putting all results in the memory at the same time.  The algorithms are written in C and hence are very computational efficient. 
+All generated sequences are in lexicographical order (AKA, dictionary order). The algorithms to generate permutations and combinations are memory efficient, only previous sequence is required to generate next sequence. These iteratively algorithms enable users to process all sequences without putting all results in the memory at the same time.  The algorithms are written in C/C++ and hence very computational efficient. 
 
 Credit
 ===
-I have to thanks [Martin Broadhurst](http://www.martinbroadhurst.com) and [Alistair Israel](http://alistairisrael.wordpress.com) for their algorithms. In my own opinion, [this](http://alistairisrael.wordpress.com/2009/09/22/simple-efficient-pnk-algorithm/) may be the best algorithm to generate k-permutation.
+I have to thanks [Martin Broadhurst](http://www.martinbroadhurst.com) and [Alistair Israel](http://alistairisrael.wordpress.com) for their algorithms. Alistair Israel has a very nice article on an algorithm to generate [k-permutation](http://alistairisrael.wordpress.com/2009/09/22/simple-efficient-pnk-algorithm/).
 
 Installation
 ===
@@ -47,7 +47,7 @@ Examples
 
 ```
 
-#### 2) continuing 1), get combination by combination
+#### 2) continuing 1), get next combinations
 ```
 > I = iterpc(5, 2)
 > getnext(I)
@@ -75,7 +75,7 @@ Examples
 
 
 #### 4) permutations of multiset
-Most package avaible with give 4!=24 permutations for the below example. `iterpc` also works well with labels.
+Most packages available with give 4!=24 permutations for the below example. `iterpc` also works well with labels.
 
 ```
 > I = iterpc(c("a","a","b","c"), ordered = TRUE)
