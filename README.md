@@ -1,6 +1,8 @@
 Efficient Iterator for Permutations and Combinations
 ===
 
+[![Build Status](https://travis-ci.org/randy3k/iterpc.svg?branch=master)](https://travis-ci.org/randy3k/iterpc)
+
 Description: This package helps in 
 
   1. generating permutations and combinations with or without replacement; 
