@@ -17,9 +17,9 @@ using namespace Rcpp;
 //' multichoose(c(3,1,1))
 //' @export
 // [[Rcpp::export]]
-unsigned long long multichoose(SEXP n){
+unsigned long multichoose(SEXP n){
     IntegerVector x(clone(n));
-    unsigned long long C;
+    unsigned long C;
     C = multinomial((unsigned int *) x.begin(), (unsigned int) x.size());
     if (C==0) stop("Overflow Error!");
     return C;

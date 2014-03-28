@@ -1,11 +1,10 @@
 #ifndef _COUNT_H
 #define _COUNT_H 1
 
+unsigned long nCr(unsigned int n, unsigned int r);
 
-unsigned long long nCr(unsigned long n, unsigned long r);
-
-unsigned long long nPr(unsigned long n, unsigned long r);
+unsigned long nPr(unsigned int n, unsigned int r);
  
-unsigned long long multinomial(unsigned int* n, unsigned int k);
+unsigned long multinomial(unsigned int* n, unsigned int k);
 
 #endif

@@ -1,7 +1,8 @@
 #include <limits.h>
+#include "count.h"
 
-unsigned long long nCr(unsigned long n, unsigned long r){
-        unsigned long long result = 1, d = n - r;
+unsigned long nCr(unsigned int n, unsigned int r){
+        unsigned long result = 1, d = n - r;
  
         /* choose the smaller of r and n - r */
         if (d > r) { r = d; d = n - r; }
@@ -17,8 +18,8 @@ unsigned long long nCr(unsigned long n, unsigned long r){
 }
 
  
-unsigned long long nPr(unsigned long n, unsigned long r){
-     unsigned long long result = 1;
+unsigned long nPr(unsigned int n, unsigned int r){
+     unsigned long result = 1;
 
      while (n > r)
      {
@@ -28,8 +29,8 @@ unsigned long long nPr(unsigned long n, unsigned long r){
      return result;
 }
  
-unsigned long long multinomial(unsigned int* n, unsigned int k){
-     unsigned long long result = 1;
+unsigned long multinomial(unsigned int* n, unsigned int k){
+     unsigned long result = 1;
      unsigned long N=0;
      int i;
      for(i=0;i<k;i++) N+=n[i];

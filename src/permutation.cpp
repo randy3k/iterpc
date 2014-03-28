@@ -8,15 +8,16 @@ extern "C" {
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-SEXP next_permutations(IntegerVector x, long long d, unsigned long long index){
+SEXP next_permutations(IntegerVector x, unsigned long d, unsigned long index){
     unsigned int n = x.size();
+    unsigned int i;
 
     if (index>0) MBnext_permutation((unsigned int *) x.begin(), n); 
 
     if (d>1){
         IntegerMatrix P(d,n);
         P(0,_) = x+1;
-        for(int i=1;i<d;i++){
+        for(i=1;i<d;i++){
             MBnext_permutation((unsigned int *) x.begin(), n);
             P(i,_) = x+1;
         }
@@ -29,9 +30,9 @@ SEXP next_permutations(IntegerVector x, long long d, unsigned long long index){
 }
 
 // [[Rcpp::export]]
-SEXP next_k_permutations(IntegerVector x, unsigned int r, unsigned long long d, unsigned long long index){
+SEXP next_k_permutations(IntegerVector x, unsigned int r, unsigned long d, unsigned long index){
     unsigned int n = x.size();
-    int i,j;
+    unsigned int i,j;
 
     if (index>0) AInext_k_permutation((unsigned int *) x.begin(), n, r); 
 
@@ -51,9 +52,9 @@ SEXP next_k_permutations(IntegerVector x, unsigned int r, unsigned long long d, 
 }
 
 // [[Rcpp::export]]
-SEXP next_permutations_replace(IntegerVector x, unsigned int n, unsigned long long d, unsigned long long index){
+SEXP next_permutations_replace(IntegerVector x, unsigned int n, unsigned long d, unsigned long index){
     unsigned int r = x.size();
-    int i,j;
+    unsigned int i;
     size_t *sizes;
     sizes = (size_t*) malloc(r*sizeof(*sizes));
     for(i=0;i<r;i++) sizes[i] = n;
