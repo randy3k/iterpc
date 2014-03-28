@@ -9,7 +9,7 @@ Description: This package helps in
   2. with distinct items or non-distinct items (multiset); 
   3. calculating number of combinations or permutations in various situations. 
 
-For the generation part, all generated sequences are in lexicographical order (AKA, dictionary order). The algorithms to generate permutations and combinations are memory efficient, only previous sequence is required to generate next sequence. These iteratively algorithms enable users to process all sequences without put all results in the memory at the same time.  The algorithms are written in C and hence are very computational efficient. 
+For the generation part, all generated sequences are in lexicographical order (AKA, dictionary order). The algorithms to generate permutations and combinations are memory efficient, only previous sequence is required to generate next sequence. These iteratively algorithms enable users to process all sequences without putting all results in the memory at the same time.  The algorithms are written in C and hence are very computational efficient. 
 
 Credit
 ===
