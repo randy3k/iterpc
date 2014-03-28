@@ -7,12 +7,12 @@ NULL
 
 
 #' Initialize a iterator for permutations or combinations
-#' @param n the length of the input sequence or the input sequence.
-#' @param r the length of the output sequence. If missing, equals to \code{n}.
+#' @param x the length of the input sequence or the input sequence.
+#' @param r the length of the output sequence. If missing, equals to length of \code{x}.
 #' @param ordered \code{TRUE} corresponses to permutation and \code{FALSE} corresponses to combinations.
 #' @param replace with/without replacement. Default is \code{FALSE}.
 #' @param is.multiset the source sequence is a multiset? 
-#'        \code{TRUE} if \code{n} is a vector of size >1 and contains duplicates.
+#'        \code{TRUE} if \code{x} contains duplicates.
 #' @return a permutation/combination iterator
 #' @name iterpc
 #' @aliases iterpc
@@ -39,8 +39,8 @@ NULL
 #' #5) combinations with replacement
 #' I = iterpc(c("a","a","b","c"), 3, replace=TRUE)
 #' getall(I)
-iterpc <- function(n, r=NULL, ordered=FALSE, replace=FALSE, 
-                        is.multiset = length(n)>1 && anyDuplicated(n)>0){
+iterpc <- function(x, r=NULL, ordered=FALSE, replace=FALSE, 
+                        is.multiset = length(x)>1 && anyDuplicated(x)>0){
     # to immitate object behaviour
     I = new.env(parent=globalenv())
     if (ordered){
@@ -54,19 +54,19 @@ iterpc <- function(n, r=NULL, ordered=FALSE, replace=FALSE,
     #         0, running
     #         i, number of rows of the last return incomplete result
     I$status = -1L
-    if (length(n)>1){
-        I$n = length(n)
+    if (length(x)>1){
+        I$n = length(x)
         if (is.multiset){
-            f = table(n)
+            f = table(x)
             I$x = type.convert(names(f), as.is=TRUE)
             I$f = as.integer(f)
-            I$multiset = sort(as.integer(as.factor(n)))-1L
+            I$multiset = sort(as.integer(as.factor(x)))-1L
         }else{
-            I$x = n
+            I$x = x
         }
         I$r = ifelse(is.null(r), I$n, as.integer(r))
     }else{
-        I$n = n
+        I$n = x
         I$r = ifelse(is.null(r), I$n, as.integer(r))
     }
     if (replace){
