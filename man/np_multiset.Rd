@@ -1,8 +1,8 @@
-\name{np.multiset}
-\alias{np.multiset}
+\name{np_multiset}
+\alias{np_multiset}
 \title{Calcuate the number of r-permutations of a multiset}
 \usage{
-np.multiset(f, r)
+np_multiset(f, r)
 }
 \arguments{
   \item{f}{the frequencies of the mutliset}
@@ -18,6 +18,6 @@ Calcuate the number of r-permutations of a multiset
 \examples{
 x = c("a","a","b")
 # possible permutations of size 2 are "aa", "ab" and "ba".
-np.multiset(table(x), 2) # = 3
+np_multiset(table(x), 2) # = 3
 }
 

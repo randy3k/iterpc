@@ -17,38 +17,43 @@ NULL
 #' @name iterpc
 #' @aliases iterpc
 #' @export
-iterpc <- function(n, r=NULL, ordered=TRUE, replace=FALSE, 
+iterpc <- function(n, r=NULL, ordered=FALSE, replace=FALSE, 
                         is.multiset = length(n)>1 && anyDuplicated(n)>0){
     # to immitate object behaviour
-    out = new.env(parent=globalenv())
+    I = new.env(parent=globalenv())
     if (ordered){
-        class(out) = "perm"
+        class(I) = "perm"
     }else{
-        class(out) = "comb"
+        class(I) = "comb"
     }
-    out$replace = replace
-    out$is.multiset = is.multiset
-    out$index = 0L
+    I$replace = replace
+    I$is.multiset = is.multiset
+    # status: -1, not yet initialize
+    #         0, running
+    #         i, number of rows of the last return incomplete result
+    I$status = -1L
     if (length(n)>1){
-        out$n = length(n)
+        I$n = length(n)
         if (is.multiset){
             f = table(n)
-            out$x = type.convert(names(f), as.is=TRUE)
-            out$f = as.integer(f)
-            out$multiset = sort(as.integer(as.factor(n)))-1L
+            I$x = type.convert(names(f), as.is=TRUE)
+            I$f = as.integer(f)
+            I$multiset = sort(as.integer(as.factor(n)))-1L
         }else{
-            out$x = n
+            I$x = n
         }
-        out$r = ifelse(is.null(r), out$n, as.integer(r))
+        I$r = ifelse(is.null(r), I$n, as.integer(r))
     }else{
-        out$n = n
-        out$r = ifelse(is.null(r), out$n, as.integer(r))
+        I$n = n
+        I$r = ifelse(is.null(r), I$n, as.integer(r))
     }
     if (replace){
-        out$unique_n = ifelse(is.null(out$x), out$n, length(out$x))
+        I$unique_n = ifelse(is.null(I$x), I$n, length(I$x))
+    }else{
+        if (I$n<I$r) stop("n should be larger than or equal to r.")
     }
-    out$len = getlength(out)
-    out
+    I$length = getlength(I)
+    I
 }
 
 #' Get all permutation/combination for a iterator
@@ -56,9 +61,12 @@ iterpc <- function(n, r=NULL, ordered=TRUE, replace=FALSE,
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
 getall <- function(I){
-    I$index = 0L
-    out = getnext(I,I$len)
-    I$index = 0L
+    if (I$length*I$r>.Machine$integer.max) {
+        stop("The length of the iterator is too large, try using getnext(I, d).")
+    }
+    I$status = -1L
+    out = getnext(I,I$length)
+    I$status = -1L
     out
 }
 
@@ -76,18 +84,10 @@ getcurrent <- function(I){
     }
 }
 
-#' Get the current index of a iterator 
-#' @param I iterator object
-#' @return current index of a iterator
-#' @export
-getindex <- function(I){
-    I$index
-}
-
 #' Get the next permutation(s)/combination(s) for a iterator
 #' @param I a permutation(s)/combination(s) iterator
 #' @param d number of permutation(s)/combination(s) wanted, default to 1
-#' @param drop simplify to vector if possible, default to \code{TRUE}.
+#' @param drop if \code{d} is 1, drop simplify to vector if possible, default to \code{TRUE}.
 #' @return next \code{d} permutation(s)/combination(s) sequence for the iterator \code{I}
 #' @export
 getnext <- function(I, d=1, drop=TRUE) UseMethod("getnext") 

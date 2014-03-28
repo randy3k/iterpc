@@ -18,10 +18,8 @@ This function calculate the multinomial coefficient
 \deqn{\frac{(\sum n_j)!}{\prod n_j!}.}{(\sum n_j)! / \prod
 n_j!.}
 
-It will throw overflow error if the return value is too
-large. And the result is not exactly precise if the
-retunred value is larger than 2^53 due to limition of
-integers.
+The result is not reliable if the retunred value is too
+large (around 2^53) due to limition of integers.
 }
 \examples{
 # (3+1+1)!/ (3! 1! 1!) = 20

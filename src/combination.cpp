@@ -10,16 +10,26 @@ using namespace Rcpp;
 
 // [[Rcpp::export]]
 SEXP next_combinations(IntegerVector x, unsigned int n, 
-                        unsigned long d, unsigned long index){
+                        unsigned long d, IntegerVector status){
     unsigned int r = x.size();
     unsigned int i;
-    if (index>0) MBnext_combination((unsigned int *) x.begin(), n, r);
+
+    if (status[0] == 0) {
+        if (!MBnext_combination((unsigned int *) x.begin(), n, r)){
+            return R_NilValue;
+        }
+    }else{
+        status[0] = 0;
+    }
 
     if (d>1){
         IntegerMatrix P(d,r);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            MBnext_combination((unsigned int *) x.begin(), n, r);
+            if(!MBnext_combination((unsigned int *) x.begin(), n, r)) {
+                status[0] = i;
+                break;
+            }
             P(i,_) = x+1;
         }
         return P;
@@ -33,18 +43,30 @@ SEXP next_combinations(IntegerVector x, unsigned int n,
 
 // [[Rcpp::export]]
 SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x, 
-                                unsigned long d, unsigned long index){
+                                unsigned long d, IntegerVector status){
     unsigned int n = multiset.size();
     unsigned int r = x.size();
     unsigned int i;
-    if (index>0) MBnext_combination((unsigned int *) x.begin(), n, r);
+
+    if (status[0] == 0) {
+        if (!MBnext_multiset_combination((unsigned int *) multiset.begin(), 
+                    (unsigned int *) x.begin(), n, r)){
+            return R_NilValue;
+        }
+    }else{
+        status[0] = 0;
+    }
 
     if (d>1){
         IntegerMatrix P(d,r);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            MBnext_multiset_combination((unsigned int *) multiset.begin(), 
-                                           (unsigned int *) x.begin(), n, r);;
+            if(!MBnext_multiset_combination((unsigned int *) multiset.begin(), 
+                    (unsigned int *) x.begin(), n, r)) {
+                status[0] = i;
+                break;
+            }
+
             P(i,_) = x+1;
         }
         return P;
@@ -57,16 +79,26 @@ SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x,
 
 // [[Rcpp::export]]
 SEXP next_combinations_replace(IntegerVector x, unsigned int n, 
-                        unsigned long d, unsigned long index){
+                        unsigned long d, IntegerVector status){
     unsigned int r = x.size();
     unsigned int i;
-    if (index>0) MBnext_multicombination((unsigned int *) x.begin(), n, r);
+
+    if (status[0] == 0) {
+        if (!MBnext_multicombination((unsigned int *) x.begin(), n, r)){
+            return R_NilValue;
+        }
+    }else{
+        status[0] = 0;
+    }
 
     if (d>1){
         IntegerMatrix P(d,r);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            MBnext_multicombination((unsigned int *) x.begin(), n, r);
+            if(!MBnext_multicombination((unsigned int *) x.begin(), n, r)) {
+                status[0] = i;
+                break;
+            }
             P(i,_) = x+1;
         }
         return P;

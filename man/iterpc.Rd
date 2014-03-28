@@ -4,7 +4,7 @@
 \alias{iterpc-package}
 \title{Iterator for Permutations and Combinations}
 \usage{
-iterpc(n, r = NULL, ordered = TRUE, replace = FALSE,
+iterpc(n, r = NULL, ordered = FALSE, replace = FALSE,
   is.multiset = length(n) > 1 && anyDuplicated(n) > 0)
 }
 \arguments{

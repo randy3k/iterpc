@@ -1,8 +1,8 @@
-\name{nc.multiset}
-\alias{nc.multiset}
+\name{nc_multiset}
+\alias{nc_multiset}
 \title{Calcuate the number of combinations of a multiset}
 \usage{
-nc.multiset(f, r)
+nc_multiset(f, r)
 }
 \arguments{
   \item{f}{the frequencies of the mutliset}
@@ -18,6 +18,6 @@ Calcuate the number of combinations of a multiset
 \examples{
 x = c("a","a","b")
 # possible combinations of size 2 are "aa" and "ab".
-np.multiset(table(x), 2) # = 2
+np_multiset(table(x), 2) # = 2
 }
 

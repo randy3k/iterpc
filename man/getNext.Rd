@@ -10,8 +10,8 @@ getnext(I, d = 1, drop = TRUE)
   \item{d}{number of permutation(s)/combination(s) wanted,
   default to 1}
 
-  \item{drop}{simplify to vector if possible, default to
-  \code{TRUE}.}
+  \item{drop}{if \code{d} is 1, drop simplify to vector if
+  possible, default to \code{TRUE}.}
 }
 \value{
 next \code{d} permutation(s)/combination(s) sequence for
