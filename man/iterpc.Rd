@@ -4,24 +4,23 @@
 \alias{iterpc-package}
 \title{Iterator for Permutations and Combinations}
 \usage{
-iterpc(x, r = NULL, ordered = FALSE, replace = FALSE,
-  is.multiset = length(x) > 1 && anyDuplicated(x) > 0)
+iterpc(n, r = NULL, labels = NULL, ordered = FALSE, replace = FALSE)
 }
 \arguments{
-  \item{x}{the length of the input sequence or the input
-  sequence.}
+  \item{n}{the length of the input sequence or a vector of
+  frequencies for a multiset.}
 
   \item{r}{the length of the output sequence. If missing,
-  equals to length of \code{x}.}
+  equals to \code{sum(n)}.}
+
+  \item{labels}{if \code{missing}, natural numbers are used
+  unless \code{n} is a table object.}
 
   \item{ordered}{\code{TRUE} corresponses to permutation
   and \code{FALSE} corresponses to combinations.}
 
   \item{replace}{with/without replacement. Default is
   \code{FALSE}.}
-
-  \item{is.multiset}{the source sequence is a multiset?
-  \code{TRUE} if \code{x} contains duplicates.}
 }
 \value{
 a permutation/combination iterator
@@ -40,18 +39,19 @@ getall(I)
 I = iterpc(5, 2)
 getnext(I) # return 1,2
 getnext(I) # return 1,3
-getnext(I,2) # return next 2 results
+getnext(I, 2) # return next 2 results
 
 #3) all permutations of {1, 2, 3}
 I = iterpc(3, ordered = TRUE)
 getall(I)
 
-#4) permutations of multiset
-I = iterpc(c("a","a","b","c"), ordered = TRUE)
+#4) permutations of multiset and usage of labels
+I = iterpc(c(2, 1, 1), labels=c("a", "b", "c"), ordered = TRUE)
 getall(I)
 
-#5) combinations with replacement
-I = iterpc(c("a","a","b","c"), 3, replace=TRUE)
+#5) combinations with replacement and usage of table as input
+x = c("a","b","c")
+I = iterpc(table(x), 3, replace=TRUE)
 getall(I)
 }
 
