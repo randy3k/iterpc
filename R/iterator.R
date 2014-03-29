@@ -37,7 +37,7 @@ NULL
 #' getall(I)
 #'
 #' #5) combinations with replacement and usage of table as input
-#' x = c("a","b","c")
+#' x = c("a","a","b","c")
 #' I = iterpc(table(x), 3, replace=TRUE)
 #' getall(I)
 iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){

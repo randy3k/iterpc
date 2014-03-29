@@ -98,6 +98,7 @@ Most packages available with give 4!=24 permutations for the below example. `ite
 #### 5) combinations with replacement and use of table as input
 
 ```
+> x = c("a", "a", "b", "c")
 > I = iterpc(table(x), 3, replace=TRUE)
 > getall(I)
       [,1] [,2] [,3]
