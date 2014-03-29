@@ -30,22 +30,23 @@ getnext.comb <- function(I, d=1L, drop=TRUE){
         return(NULL)
     }else if(I$status>0){
         C = C[1:I$status,,drop=FALSE]
+        d = I$status
     }
-    if (is.null(I$x)){
-        if (drop){
+    if (is.null(I$labels)){
+        if (drop || d>1){
             return(C)
         }else{
             return(matrix(C,nrow=1))
         }
     }else{
         if(I$r==1){
-            return(matrix(I$x[C],ncol=1))
+            return(matrix(I$labels[C],ncol=1))
         }else if(drop && d==1) {
-            return(I$x[C])
+            return(I$labels[C])
         }else if(d==1){
-            return(matrix(I$x[C],nrow=1))
+            return(matrix(I$labels[C],nrow=1))
         }else{
-            t(apply(C,1,function(z) I$x[z]))
+            return(t(apply(C,1,function(z) I$labels[z])))
         }
     }
 }

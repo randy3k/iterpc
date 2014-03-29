@@ -30,26 +30,26 @@ getnext.perm <- function(I, d=1L, drop=TRUE){
         return(NULL)
     }else if(I$status>0){
         P = P[1:I$status,,drop=FALSE]
+        d = I$status
     }
-    if (is.null(I$x)){
-        if (drop){
+    if (is.null(I$labels)){
+        if (drop || d>1){
             return(P)
         }else{
             return(matrix(P,nrow=1))
         }
     }else{
         if(I$r==1){
-            return(matrix(I$x[P],ncol=1))
+            return(matrix(I$labels[P],ncol=1))
         }else if(drop && d==1) {
-            return(I$x[P])
+            return(I$labels[P])
         }else if(d==1){
-            return(matrix(I$x[P],nrow=1))
+            return(matrix(I$labels[P],nrow=1))
         }else{
-            return(t(apply(P,1,function(z) I$x[z])))
+            return(t(apply(P,1,function(z) I$labels[z])))
         }
     }
 }
-
 
 #' @export
 #' @method getlength perm

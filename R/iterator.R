@@ -7,12 +7,12 @@ NULL
 
 
 #' Initialize a iterator for permutations or combinations
-#' @param x the length of the input sequence or the input sequence.
-#' @param r the length of the output sequence. If missing, equals to length of \code{x}.
+#' @param n the length of the input sequence or a vector of frequencies for a multiset.
+#' @param r the length of the output sequence. If missing, equals to \code{sum(n)}.
+#' @param labels if \code{missing}, natural numbers are used unless \code{n} is a table object. 
+#"              In that case, the names of \code{n} are used.
 #' @param ordered \code{TRUE} corresponses to permutation and \code{FALSE} corresponses to combinations.
 #' @param replace with/without replacement. Default is \code{FALSE}.
-#' @param is.multiset the source sequence is a multiset? 
-#'        \code{TRUE} if \code{x} contains duplicates.
 #' @return a permutation/combination iterator
 #' @name iterpc
 #' @aliases iterpc
@@ -26,21 +26,21 @@ NULL
 #' I = iterpc(5, 2)
 #' getnext(I) # return 1,2
 #' getnext(I) # return 1,3
-#' getnext(I,2) # return next 2 results
+#' getnext(I, 2) # return next 2 results
 #'
 #' #3) all permutations of {1, 2, 3}
 #' I = iterpc(3, ordered = TRUE)
 #' getall(I)
 #'
-#' #4) permutations of multiset
-#' I = iterpc(c("a","a","b","c"), ordered = TRUE)
+#' #4) permutations of multiset and usage of labels
+#' I = iterpc(c(2, 1, 1), labels=c("a", "b", "c"), ordered = TRUE)
 #' getall(I)
 #'
-#' #5) combinations with replacement
-#' I = iterpc(c("a","a","b","c"), 3, replace=TRUE)
+#' #5) combinations with replacement and usage of table as input
+#' x = c("a","b","c")
+#' I = iterpc(table(x), 3, replace=TRUE)
 #' getall(I)
-iterpc <- function(x, r=NULL, ordered=FALSE, replace=FALSE, 
-                        is.multiset = length(x)>1 && anyDuplicated(x)>0){
+iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     # to immitate object behaviour
     I = new.env(parent=globalenv())
     if (ordered){
@@ -49,28 +49,28 @@ iterpc <- function(x, r=NULL, ordered=FALSE, replace=FALSE,
         class(I) = "comb"
     }
     I$replace = replace
-    I$is.multiset = is.multiset
+    I$is.multiset = class(n)=="table" || length(n)>1
     # status: -1, not yet initialize
     #         0, running
     #         i, number of rows of the last return incomplete result
     I$status = -1L
-    if (length(x)>1){
-        I$n = length(x)
-        if (is.multiset){
-            f = table(x)
-            I$x = type.convert(names(f), as.is=TRUE)
-            I$f = as.integer(f)
-            I$multiset = sort(as.integer(as.factor(x)))-1L
-        }else{
-            I$x = x
-        }
+
+    if (I$is.multiset){
+        I$f = as.integer(n)
+        I$multiset = rep(0:(length(I$f)-1L),n)
+        I$n = sum(n)
         I$r = ifelse(is.null(r), I$n, as.integer(r))
     }else{
-        I$n = x
-        I$r = ifelse(is.null(r), I$n, as.integer(r))
+        I$n = n
+        I$r = ifelse(is.null(r), n, as.integer(r))
+    }
+    if (!is.null(labels)) {
+        I$labels = labels
+    }else if (class(n)=="table") {
+        I$labels = type.convert(names(n))
     }
     if (replace){
-        I$unique_n = ifelse(is.null(I$x), I$n, length(I$x))
+        I$unique_n = ifelse(is.null(I$f), I$n, length(I$f))
     }else{
         if (I$n<I$r) stop("n should be larger than or equal to r.")
     }
@@ -87,7 +87,7 @@ getall <- function(I){
         stop("The length of the iterator is too large, try using getnext(I, d).")
     }
     I$status = -1L
-    out = getnext(I,I$length)
+    out = getnext(I,I$length,drop=FALSE)
     I$status = -1L
     out
 }
