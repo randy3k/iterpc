@@ -12,3 +12,4 @@ Depends: R (>= 3.0.0)
 Imports: Rcpp (>= 0.11.0), polynom
 Suggests: testthat
 LinkingTo: Rcpp
+SystemRequirements: GNU make

@@ -9,10 +9,10 @@ ALL = libmbcomb.a $(EXAMPLES)
 all : $(ALL)
 
 .c.o :
-	$(CC) $(CFLAGS) -I Include -c $< -o $@
+	$(CC) $(CFLAGS) $(CPICFLAGS) -I Include -c $< -o $@
 
 %: %.c libmbcomb.a
-	$(CC) $(CFLAGS) -I Include -L ./ -o $@ $< -lmbcomb
+	$(CC) $(CFLAGS) $(CPICFLAGS) -I Include -L ./ -o $@ $< -lmbcomb
 
 
 libmbcomb.a : $(OBJECTS)
