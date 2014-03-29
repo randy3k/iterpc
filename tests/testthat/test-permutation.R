@@ -1,25 +1,25 @@
 I = iterpc(5, ordered=TRUE)
 expect_that(getnext(I)[3], equals(3))
-expect_that(nrow(getall(I)), equals(factorial(5)))
+expect_that(nrow(getall(I)), equals(I$length))
 
 I = iterpc(3, labels=c("a","b","c"), ordered=TRUE)
 getnext(I)
 expect_that(getnext(I), equals(c("a","c","b")))
 
 I = iterpc(c(2,1), labels=c("a","c"), ordered=TRUE)
-expect_that(nrow(getall(I)), equals(3))
+expect_that(nrow(getall(I)), equals(I$length))
 
 I = iterpc(c(2,2), 2, labels=c("a","c"), ordered=TRUE)
-expect_that(nrow(getall(I)), equals(4))
+expect_that(nrow(getall(I)), equals(I$length))
 getnext(I)
 expect_that(getnext(I)[2], equals("c"))
 
 I = iterpc(c(2,2), 2, labels=c("a","c"), replace=TRUE, ordered=TRUE)
-expect_that(nrow(getall(I)), equals(4))
+expect_that(nrow(getall(I)), equals(I$length))
 expect_that(getnext(I,2)[2,2], equals("c"))
 
 I = iterpc(5, 1, ordered=TRUE)
-expect_that(nrow(getall(I)), equals(5))
+expect_that(nrow(getall(I)), equals(I$length))
 
 I = iterpc(5, 1, labels=1:5, ordered=TRUE)
-expect_that(nrow(getall(I)), equals(5))
+expect_that(nrow(getall(I)), equals(I$length))
