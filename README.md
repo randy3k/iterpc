@@ -60,21 +60,21 @@ Examples
 [2,]    1    5
 ```
 
-#### 3) all permutations of {1, 2, 3}
+#### 3) all permutations of {1, 2, 3} and use of labels 
 ```
-> I = iterpc(3, ordered = TRUE)
+> I = iterpc(3, labels=c("a", "b", "c"), ordered = TRUE)
 > getall(I)
      [,1] [,2] [,3]
-[1,]    1    2    3
-[2,]    1    3    2
-[3,]    2    1    3
-[4,]    2    3    1
-[5,]    3    1    2
-[6,]    3    2    1
+[1,] "a"  "b"  "c" 
+[2,] "a"  "c"  "b" 
+[3,] "b"  "a"  "c" 
+[4,] "b"  "c"  "a" 
+[5,] "c"  "a"  "b" 
+[6,] "c"  "b"  "a" 
 ```
 
 
-#### 4) permutations of multiset and use of labels
+#### 4) permutations of multiset 
 Most packages available with give 4!=24 permutations for the below example. `iterpc` also works well with labels.
 
 ```
