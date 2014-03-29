@@ -74,11 +74,11 @@ Examples
 ```
 
 
-#### 4) permutations of multiset
+#### 4) permutations of multiset and use of labels
 Most packages available with give 4!=24 permutations for the below example. `iterpc` also works well with labels.
 
 ```
-> I = iterpc(c("a","a","b","c"), ordered = TRUE)
+> I = iterpc(c(2, 1, 1), labels=c("a", "b", "c"), ordered = TRUE)
 > getall(I)
       [,1] [,2] [,3] [,4]
  [1,] "a"  "a"  "b"  "c" 
@@ -95,10 +95,10 @@ Most packages available with give 4!=24 permutations for the below example. `ite
 [12,] "c"  "b"  "a"  "a"
 ```
 
-#### 5) combinations with replacement
+#### 5) combinations with replacement and use of table as input
 
 ```
-> I = iterpc(c("a","a","b","c"), 3, replace=TRUE)
+> I = iterpc(table(x), 3, replace=TRUE)
 > getall(I)
       [,1] [,2] [,3]
  [1,] "a"  "a"  "a" 
@@ -110,6 +110,6 @@ Most packages available with give 4!=24 permutations for the below example. `ite
  [7,] "b"  "b"  "b" 
  [8,] "b"  "b"  "c" 
  [9,] "b"  "c"  "c" 
-[10,] "c"  "c"  "c"
+[10,] "c"  "c"  "c" 
 ```
 
