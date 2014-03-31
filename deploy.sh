@@ -4,7 +4,7 @@
 ./travis-tool.sh install_github hadley/staticdocs
 R -e "staticdocs::build_site()"
 cd ..
-if [ -z `git ls-remote --heads https://github.com/randy3k/iterpc | grep gh-pages` ]
+if [ -z "$(git ls-remote --heads https://github.com/randy3k/iterpc | grep gh-pages)" ]
 then
     mkdir gh-pages
     cd gh-pages
@@ -20,6 +20,7 @@ cp -Rf ../iterpc/inst/web/ .
 git config --global user.email "randy.cs.lai@gmail.com"
 git config --global user.name "Randy Lai"
 git add -A :/
-git commit -m "Deploy site at $(date)"
+echo "commiting"
+git diff --quiet --exit-code --cached || git commit -m "Deploy site at $(date)"
 echo "deploy sites"
 git push -u origin gh-pages:gh-pages
