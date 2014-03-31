@@ -13,7 +13,9 @@ install:
 
 script: 
     - ./travis-tool.sh run_tests
-    - sh -e deploy.sh
+    - ./travis-tool.sh install_github hadley/staticdocs
+    - make static
+    - sh inst/deploy.sh
 
 on_failure:
     - ./travis-tool.sh dump_logs
