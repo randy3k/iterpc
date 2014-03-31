@@ -14,6 +14,7 @@ else
     cd gh-pages
 fi
 echo "copy webpages from to here"
+rm -Rf *
 cp -Rf ../iterpc/inst/web/. ./
 git config --global user.email "randy.cs.lai@gmail.com"
 git config --global user.name "Randy Lai"
