@@ -11,13 +11,11 @@ multichoose(n)
 multinomial coefficient
 }
 \description{
-Calculate mulinomial coefficient
-}
-\details{
 This function calculate the multinomial coefficient
 \deqn{\frac{(\sum n_j)!}{\prod n_j!}.}{(\sum n_j)! / \prod
 n_j!.}
-
+}
+\details{
 The result is not reliable if the retunred value is too
 large (around 2^53) due to limition of integers.
 }

@@ -14,7 +14,8 @@ iterpc(n, r = NULL, labels = NULL, ordered = FALSE, replace = FALSE)
   equals to \code{sum(n)}.}
 
   \item{labels}{if \code{missing}, natural numbers are used
-  unless \code{n} is a table object.}
+  unless \code{n} is a table object.  In that case, the
+  names of \code{n} are used.}
 
   \item{ordered}{\code{TRUE} corresponses to permutation
   and \code{FALSE} corresponses to combinations.}
