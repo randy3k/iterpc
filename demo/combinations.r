@@ -19,8 +19,8 @@ getall(I)
     
 # 4) combinations: with replacement: non distinct items
 
-x = c("a", "a", "b", "c", replace=TRUE)
-I = iterpc(table(x), 2)
+x = c("a", "a", "b", "c")
+I = iterpc(table(x), 2, replace=TRUE)
 # or I = iterpc(c(2,1,1), 2, label=c("a", "b", "c"), replace=TRUE)
 getall(I)
         
