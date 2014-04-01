@@ -13,7 +13,7 @@ install:
 
 script: 
     - ./travis-tool.sh run_tests
-    - ./travis-tool.sh install_github hadley/staticdocs
+    - ./travis-tool.sh install_github randy3k/staticdocs
     - make static
     - sh inst/deploy.sh
 
