@@ -34,7 +34,3 @@ or you can install it via CRAN
 ```
 install.packages("iterpc")
 ```
-
-## Examples
-
-See Examples [here](http://rtalks.net/iterpc/iterpc.html).
