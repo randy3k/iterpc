@@ -10,7 +10,7 @@ NULL
 #' @param n the length of the input sequence or a vector of frequencies for a multiset.
 #' @param r the length of the output sequence. If missing, equals to \code{sum(n)}.
 #' @param labels if \code{missing}, natural numbers are used unless \code{n} is a table object. 
-#"              In that case, the names of \code{n} are used.
+#'              In that case, the names of \code{n} are used.
 #' @param ordered \code{TRUE} corresponses to permutation and \code{FALSE} corresponses to combinations.
 #' @param replace with/without replacement. Default is \code{FALSE}.
 #' @return a permutation/combination iterator
