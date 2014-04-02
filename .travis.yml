@@ -12,11 +12,10 @@ install:
     - ./travis-tool.sh install_deps
 
 script: 
-    - ./travis-tool.sh run_tests
+    - ./travis-tool.sh run_tests || exit 1
     - ./travis-tool.sh install_github randy3k/staticdocs
-    - ./travis-tool.sh r_binary_install roxygen2
-    - make static
-    - sh inst/deploy.sh
+    - R --slave -e "library(staticdocs);build_site()"
+    - sh inst/deploy.sh || exit 1
 
 on_failure:
     - ./travis-tool.sh dump_logs
