@@ -1,0 +1,149 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+<title>Index. iterpc 0.2.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Randy Lai [aut, cre], Martin Broadhurst [aut]">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<!-- from staticdocs -->
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+ 
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+        <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">         
+                <div><a href="index.html" class="navbar-brand"><span class="glyphicon glyphicon-th"></span> iterpc 0.2.2</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            
+        </header>
+        <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-9">
+    <h1>Efficient Iterator for Permutations and Combinations</h1>
+
+<p><a href="https://travis-ci.org/randy3k/iterpc"><img src="https://travis-ci.org/randy3k/iterpc.svg?branch=master" alt="Build Status"/></a></p>
+
+<p>Package Documentation: <a href="http://rtalks.net/iterpc">http://rtalks.net/iterpc</a></p>
+
+<p>Github address: <a href="https://github.com/randy3k/iterpc">https://github.com/randy3k/iterpc</a></p>
+
+<p>Description: This package helps in </p>
+
+<ol>
+<li>generating (iteratively) permutations and combinations with or without replacement; </li>
+<li>with distinct items or non-distinct items (multiset); </li>
+<li>calculating number of combinations or permutations in various situations. </li>
+</ol>
+
+<p>All generated sequences are in lexicographical order (AKA, dictionary order). The algorithms to generate permutations and combinations are memory efficient, only previous sequence is required to generate next sequence. These iteratively algorithms enable users to process all sequences without putting all results in the memory at the same time.  The algorithms are written in C/C++ and hence very computational efficient. </p>
+
+<h2>Credit</h2>
+
+<p>I have to thanks <a href="http://www.martinbroadhurst.com">Martin Broadhurst</a> and <a href="http://alistairisrael.wordpress.com">Alistair Israel</a> for their algorithms. Alistair Israel has a very nice article on an algorithm to generate <a href="http://alistairisrael.wordpress.com/2009/09/22/simple-efficient-pnk-algorithm/">k-permutation</a>.</p>
+
+<h2>Installation</h2>
+
+<p>If you want to install the latest development version you can use <code>devtools</code>:</p>
+
+<pre><code>library(devtools)
+install_github(&quot;randy3k/iterpc&quot;)
+</code></pre>
+
+<p>or you can install it via CRAN</p>
+
+<pre><code>install.packages(&quot;iterpc&quot;)
+</code></pre>
+
+
+    <h2>Help topics</h2>
+
+    <h3></h3>
+    
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="getAll.html">getall</a></code><br />Get all permutation/combination for a iterator</li>
+            
+      <li>
+        <code><a href="getCurrent.html">getcurrent</a></code><br />Get the current element of a iterator</li>
+            
+      <li>
+        <code><a href="getlength.html">getlength</a></code><br />Get the length for a iterator</li>
+            
+      <li>
+        <code><a href="getNext.html">getnext</a></code><br />Get the next permutation(s)/combination(s) for a iterator</li>
+            
+      <li>
+        <code><a href="iterpc.html">iterpc</a></code>(iterpc-package)<br />Iterator for Permutations and Combinations</li>
+            
+      <li>
+        <code><a href="multichoose.html">multichoose</a></code><br />Calculate mulinomial coefficient</li>
+            
+      <li>
+        <code><a href="nc_multiset.html">nc_multiset</a></code><br />Calcuate the number of combinations of a multiset</li>
+            
+      <li>
+        <code><a href="np_multiset.html">np_multiset</a></code><br />Calcuate the number of r-permutations of a multiset</li>
+    
+    </ul>
+  </div>
+  
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    
+    <h2>Demos</h2>
+    <ul>
+      <li><a href="demo-combinations.html">combinations</a></li>
+      <li><a href="demo-permutations.html">permutations</a></li>
+    </ul>
+    
+    <h2>Dependencies</h2>
+    <ul>
+      <li><strong>Depends</strong>: </li>
+      <li><strong>Imports</strong>: Rcpp, polynom</li>
+      <li><strong>Suggests</strong>: testthat</li>
+      <li><strong>Extends</strong>: </li>
+    </ul>
+     
+    
+  </div>
+</div>     
+        <footer>
+            <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a> and themed by <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+        </footer>                  
+   </div>  
+
+  </body>
+</html>
