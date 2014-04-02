@@ -14,6 +14,7 @@ install:
 script: 
     - ./travis-tool.sh run_tests
     - ./travis-tool.sh install_github randy3k/staticdocs
+    - ./travis-tool.sh r_binary_install roxygen2
     - make static
     - sh inst/deploy.sh
 
