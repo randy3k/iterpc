@@ -46,7 +46,7 @@ getnext.comb <- function(I, d=1L, drop=TRUE){
         }else if(d==1){
             return(matrix(I$labels[C],nrow=1))
         }else{
-            return(t(apply(C,1,function(z) I$labels[z])))
+            return(matrix(I$labels[C],ncol=I$r))
         }
     }
 }

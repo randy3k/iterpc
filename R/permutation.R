@@ -46,7 +46,7 @@ getnext.perm <- function(I, d=1L, drop=TRUE){
         }else if(d==1){
             return(matrix(I$labels[P],nrow=1))
         }else{
-            return(t(apply(P,1,function(z) I$labels[z])))
+            return(matrix(I$labels[P],ncol=I$r))
         }
     }
 }
