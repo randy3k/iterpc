@@ -4,4 +4,4 @@
 ^.*\.sublime-project$
 .travis.yml
 TODO
-deploy.sh
+Makefile
