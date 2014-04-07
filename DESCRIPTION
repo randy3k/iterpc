@@ -1,7 +1,7 @@
 Package: iterpc
 Type: Package
 Title: Efficient iterator for permutations and combinations
-Version: 0.2.4
+Version: 0.2.3
 Date: 2014-04-06
 Author: Randy Lai [aut, cre], Martin Broadhurst [aut]
 Maintainer: Randy Lai <randy.cs.lai@gmail.com>
