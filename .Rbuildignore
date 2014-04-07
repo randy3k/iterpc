@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 .Rhistory
 ^.*\.sublime-project$
-.travis.yml
-TODO
-Makefile
+^.travis.yml
+^TODO
+^Makefile
+^inst
