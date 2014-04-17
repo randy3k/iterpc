@@ -9,7 +9,7 @@ NULL
 #' Initialize a iterator for permutations or combinations
 #' @param n the length of the input sequence or a vector of frequencies for a multiset.
 #' @param r the length of the output sequence. If missing, equals to \code{sum(n)}.
-#' @param labels if \code{missing}, natural numbers are used unless \code{n} is a table object. 
+#' @param labels if \code{missing}, natural numbers are used unless \code{n} is a table object.
 #'              In that case, the names of \code{n} are used.
 #' @param ordered \code{TRUE} corresponses to permutation and \code{FALSE} corresponses to combinations.
 #' @param replace with/without replacement. Default is \code{FALSE}.
@@ -28,11 +28,11 @@ NULL
 #' getnext(I) # return 1,3
 #' getnext(I, 2) # return next 2 results
 #'
-#' #3) 3) all permutations of {1, 2, 3} and use of labels 
+#' #3) 3) all permutations of {1, 2, 3} and use of labels
 #' I = I = iterpc(3, labels=c("a", "b", "c"), ordered = TRUE)
 #' getall(I)
 #'
-#' #4) permutations of multiset and 
+#' #4) permutations of multiset and
 #' I = iterpc(c(2, 1, 1), labels=c("a", "b", "c"), ordered = TRUE)
 #' getall(I)
 #'
@@ -74,7 +74,6 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     }else{
         if (I$n<I$r) stop("n should be larger than or equal to r.")
     }
-    I$length = getlength(I)
     I
 }
 
@@ -83,8 +82,11 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
 getall <- function(I){
-    if (I$length*I$r>.Machine$integer.max) {
-        stop("The length of the iterator is too large, try using getnext(I, d).")
+    msg = "The length of the iterator is too large, try using getnext(I, d)."
+    len = tryCatch(getlength(I),
+        warning= function(cond) stop(msg))
+    if (len*I$r>.Machine$integer.max) {
+        stop(msg)
     }
     I$status = -1L
     out = getnext(I,I$length,drop=FALSE)
@@ -93,7 +95,7 @@ getall <- function(I){
 }
 
 
-#' Get the current element of a iterator 
+#' Get the current element of a iterator
 #' @param I iterator object
 #' @return current element of a iterator
 #' @export
@@ -112,10 +114,10 @@ getcurrent <- function(I){
 #' @param drop if \code{d} is 1, drop simplify to vector if possible, default to \code{TRUE}.
 #' @return next \code{d} permutation(s)/combination(s) sequence for the iterator \code{I}
 #' @export
-getnext <- function(I, d=1, drop=TRUE) UseMethod("getnext") 
+getnext <- function(I, d=1, drop=TRUE) UseMethod("getnext")
 
 #' Get the length for a iterator
 #' @param I a permutation(s)/combination(s) iterator
 #' an integer
 #' @export
-getlength <- function(I) UseMethod("getlength") 
+getlength <- function(I) UseMethod("getlength")
