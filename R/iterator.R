@@ -89,7 +89,7 @@ getall <- function(I){
         stop(msg)
     }
     I$status = -1L
-    out = getnext(I,I$length,drop=FALSE)
+    out = getnext(I,len,drop=FALSE)
     I$status = -1L
     out
 }
