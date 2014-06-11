@@ -1,6 +1,7 @@
 I = iterpc(5, 3, ordered=FALSE)
 getnext(I)
 expect_that(getnext(I)[3], equals(4))
+expect_that(getcurrent(I)[3], equals(4))
 expect_that(nrow(getall(I)), equals(getlength(I)))
 
 I = iterpc(3, 3, labels=c("a","b","c"), ordered=FALSE)

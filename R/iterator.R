@@ -106,6 +106,11 @@ getcurrent <- function(I){
     }else{
         out = I$x[I$currInd[1:I$r]+1L]
     }
+    if (is.null(I$labels)){
+        return(out)
+    }else{
+        return(I$labels[out])
+    }
 }
 
 #' Get the next permutation(s)/combination(s) for a iterator
