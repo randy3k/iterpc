@@ -45,7 +45,7 @@ np_multiset <- function(f, r){
 #' @examples
 #' x = c("a","a","b")
 #' # possible combinations of size 2 are "aa" and "ab".
-#' np_multiset(table(x), 2) # = 2
+#' nc_multiset(table(x), 2) # = 2
 #' @export
 #' @import polynom
 nc_multiset <- function(f, r){
