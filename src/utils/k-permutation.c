@@ -41,7 +41,7 @@ unsigned int AInext_k_permutation(unsigned int *ar, size_t n, int k)
 
         // find rightmost ascent to left of edge
         i = edge -1;
-        while(i>0 && ar[i]>=ar[i+1]) i--;
+        while(i>=0 && ar[i]>=ar[i+1]) i--;
 
         if (i<0) return 0;
 
