@@ -21,12 +21,12 @@ static void reverse(unsigned int *ar, size_t len)
     }
 }
 
-unsigned int AInext_k_permutation(unsigned int *ar, size_t n, int k)
+unsigned int AInext_k_permutation(unsigned int *ar, size_t n, size_t k)
 {
     long i;
-    unsigned int j;
-    unsigned int edge = k-1;
-    
+    long j;
+    long edge = k-1;
+
     if(k<n){
         j = k;
         // search for largest j such that a_j > a_edge (a is increasing for j>=k)
@@ -53,7 +53,6 @@ unsigned int AInext_k_permutation(unsigned int *ar, size_t n, int k)
 
         reverse(ar+i+1, n-i-1);
     }
-    
+
     return 1;
 }
-
