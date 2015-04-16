@@ -3,7 +3,7 @@ Efficient Iterator for Permutations and Combinations
 
 [![Build Status](https://travis-ci.org/randy3k/iterpc.svg?branch=master)](https://travis-ci.org/randy3k/iterpc)
 
-Package Documentation: [http://randylai.me/iterpc](http://randylai.me/iterpc)
+Package Documentation: [http://randy.city/iterpc](http://randy.city/iterpc)
 
 Github address: [https://github.com/randy3k/iterpc](https://github.com/randy3k/iterpc)
 

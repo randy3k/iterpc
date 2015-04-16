@@ -6,7 +6,7 @@ Date: 2014-11-14
 Author: Randy Lai [aut, cre], Martin Broadhurst [aut]
 Maintainer: Randy Lai <randy.cs.lai@gmail.com>
 Description: It helps in 1) generating permutations and combinations with or without replacement; 2) with distinct items or non-distinct items (multiset); 3) calculating number of combinations or permutations in various situations. All generated sequences are in lexicographical order (AKA, dictionary order). The algorithms to generate permutations and combinations are memory efficient. These iterative algorithms enable users to process all sequences without putting all results in the memory at the same time.  The algorithms are written in C/C++ for faster performances.
-URL: http://randylai.me/iterpc
+URL: http://randy.city/iterpc
 License: GPL-2
 Depends: R (>= 3.0.0)
 Imports: Rcpp (>= 0.11.0), polynom
