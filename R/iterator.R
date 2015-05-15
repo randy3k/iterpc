@@ -77,7 +77,7 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     I
 }
 
-#' Get all permutation/combination for a iterator
+#' Get all permutations/combinations for a iterator
 #' @param I a permutation/combination iterator
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
@@ -96,7 +96,7 @@ getall <- function(I){
 
 
 #' Get the current element of a iterator
-#' @param I iterator object
+#' @param I a permutation/combination iterator
 #' @return current element of a iterator
 #' @export
 getcurrent <- function(I){
@@ -114,7 +114,7 @@ getcurrent <- function(I){
 }
 
 #' Get the next permutation(s)/combination(s) for a iterator
-#' @param I a permutation(s)/combination(s) iterator
+#' @param I a permutation/combination iterator
 #' @param d number of permutation(s)/combination(s) wanted, default to 1
 #' @param drop if \code{d} is 1, drop simplify to vector if possible, default to \code{TRUE}.
 #' @return next \code{d} permutation(s)/combination(s) sequence for the iterator \code{I}
@@ -122,7 +122,7 @@ getcurrent <- function(I){
 getnext <- function(I, d=1, drop=TRUE) UseMethod("getnext")
 
 #' Get the length for a iterator
-#' @param I a permutation(s)/combination(s) iterator
+#' @param I a permutations/combinations iterator
 #' an integer
 #' @export
 getlength <- function(I) UseMethod("getlength")

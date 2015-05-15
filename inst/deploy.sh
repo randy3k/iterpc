@@ -19,7 +19,7 @@ cp -Rf ../iterpc/inst/web/. ./
 git config --global user.email "randy.cs.lai@gmail.com"
 git config --global user.name "Randy Lai"
 git add -A :/
-echo "commiting"
+echo "committing"
 git diff --quiet --exit-code --cached || git commit -m "Deploy site at $(date)"
 echo "deploy sites"
 git push -u origin gh-pages:gh-pages

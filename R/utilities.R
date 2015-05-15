@@ -38,7 +38,7 @@ np_multiset <- function(f, r){
 }
 
 
-#' Calculate the number of combinations of a multiset
+#' Calculate the number of r-combinations of a multiset
 #' @param f the frequencies of the mutliset
 #' @param r the number of object drawn from the multiset
 #' @return the number of combinations
