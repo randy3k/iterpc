@@ -2,7 +2,7 @@
 % Please edit documentation in R/iterator.R
 \name{getall}
 \alias{getall}
-\title{Get all permutation/combination for a iterator}
+\title{Get all permutations/combinations for a iterator}
 \usage{
 getall(I)
 }
@@ -13,6 +13,6 @@ getall(I)
 next permutation/combination sequence for the iterator \code{I}
 }
 \description{
-Get all permutation/combination for a iterator
+Get all permutations/combinations for a iterator
 }
 

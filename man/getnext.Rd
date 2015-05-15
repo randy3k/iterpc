@@ -7,7 +7,7 @@
 getnext(I, d = 1, drop = TRUE)
 }
 \arguments{
-\item{I}{a permutation(s)/combination(s) iterator}
+\item{I}{a permutation/combination iterator}
 
 \item{d}{number of permutation(s)/combination(s) wanted, default to 1}
 

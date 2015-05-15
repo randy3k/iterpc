@@ -7,7 +7,7 @@
 getcurrent(I)
 }
 \arguments{
-\item{I}{iterator object}
+\item{I}{a permutation/combination iterator}
 }
 \value{
 current element of a iterator

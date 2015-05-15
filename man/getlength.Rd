@@ -7,7 +7,7 @@
 getlength(I)
 }
 \arguments{
-\item{I}{a permutation(s)/combination(s) iterator
+\item{I}{a permutations/combinations iterator
 an integer}
 }
 \description{
