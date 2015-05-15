@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{nc_multiset}
 \alias{nc_multiset}
-\title{Calcuate the number of combinations of a multiset}
+\title{Calculate the number of combinations of a multiset}
 \usage{
 nc_multiset(f, r)
 }
@@ -15,7 +15,7 @@ nc_multiset(f, r)
 the number of combinations
 }
 \description{
-Calcuate the number of combinations of a multiset
+Calculate the number of combinations of a multiset
 }
 \examples{
 x = c("a","a","b")

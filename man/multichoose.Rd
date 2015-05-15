@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{multichoose}
 \alias{multichoose}
-\title{Calculate mulinomial coefficient}
+\title{Calculate multinomial coefficient}
 \usage{
 multichoose(n)
 }
@@ -13,7 +13,7 @@ multichoose(n)
 multinomial coefficient
 }
 \description{
-This function calculate the multinomial coefficient
+This function calculates the multinomial coefficient
 \deqn{\frac{(\sum n_j)!}{\prod n_j!}.}{(\sum n_j)! / \prod n_j!.}
 where \eqn{n_j}{n_j}'s are the number of multiplicities in the multiset.
 }

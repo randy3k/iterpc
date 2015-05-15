@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{np_multiset}
 \alias{np_multiset}
-\title{Calcuate the number of r-permutations of a multiset}
+\title{Calculate the number of r-permutations of a multiset}
 \usage{
 np_multiset(f, r)
 }
@@ -15,7 +15,7 @@ np_multiset(f, r)
 the number of r-permutations
 }
 \description{
-Calcuate the number of r-permutations of a multiset
+Calculate the number of r-permutations of a multiset
 }
 \examples{
 x = c("a","a","b")

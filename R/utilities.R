@@ -1,6 +1,6 @@
-#' Calculate mulinomial coefficient
+#' Calculate multinomial coefficient
 #'
-#' This function calculate the multinomial coefficient
+#' This function calculates the multinomial coefficient
 #' \deqn{\frac{(\sum n_j)!}{\prod n_j!}.}{(\sum n_j)! / \prod n_j!.}
 #' where \eqn{n_j}{n_j}'s are the number of multiplicities in the multiset.
 #'
@@ -16,7 +16,7 @@ multichoose <- function(n){
 }
 
 
-#' Calcuate the number of r-permutations of a multiset
+#' Calculate the number of r-permutations of a multiset
 #' @param f the frequencies of the mutliset
 #' @param r the number of object drawn from the multiset
 #' @return the number of r-permutations
@@ -38,7 +38,7 @@ np_multiset <- function(f, r){
 }
 
 
-#' Calcuate the number of combinations of a multiset
+#' Calculate the number of combinations of a multiset
 #' @param f the frequencies of the mutliset
 #' @param r the number of object drawn from the multiset
 #' @return the number of combinations
