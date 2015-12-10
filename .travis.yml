@@ -9,6 +9,7 @@ r_binary_packages:
     - staticdocs
 
 after_success:
+    - [ "$TRAVIS_BRANCH" == "master" ] || exit 1
     - ./travis-tool.sh install_github hadley/staticdocs || exit 1
     - R --slave -e "library(staticdocs);build_site()" || exit 1
     - sh inst/deploy.sh || exit 1
