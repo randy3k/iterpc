@@ -8,8 +8,11 @@ env:
 r_github_packages:
     - hadley/staticdocs
 
-after_success:
-    - sh inst/deploy.sh || exit 1
+deploy:
+  provider: script
+  script: inst/deploy.sh
+  on:
+    branch: master
 
 notifications:
     email: false
