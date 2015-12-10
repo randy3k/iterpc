@@ -3,8 +3,7 @@ sudo: required
 
 env:
     global:
-    - secure: "EF9P0qhKbGVsnxGe/XTqCA4Pa/v9w1wCe4yQikDCHG8kUT22/BxEVJj8b5hRPE0UL/Iww/MPI5rIDEhlZHmVIQgosrx4kd9Y40oSHyJkL2iutEOnEXHjOMq71W0gjhJHdryWK3KvthJdtHvrgiM77I/7nYT71m3c3/pc4SX2dS4="
-
+        - secure: "vYXcIOfwYYV7GQDhCkUngtYIJwBs/onWv/V1313ixKb0Em5APV5Jeu/JdkLXBJUvH6KUBw8oAywAehBzvjKP4NXWe32o7tUcgUI0RYFlJTYz94/+KC0x70pEOsmTcudsArWBcVXvx5TdOvRGLRSu17itFvezP3gwWNAAwLXMDzE="
 r_github_packages:
     - hadley/staticdocs
 
