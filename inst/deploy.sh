@@ -1,14 +1,15 @@
 #!/bin/sh
+
 # deploy to the gh-pages branch of the same repo
 set -e
 
-# only depoly on master branch
-[[ "$TRAVIS_BRANCH" == "master" ]] || exit 1
-
 R --slave -e "library(staticdocs);build_site()"
+
 cd ..
+
 if [ -z "$(git ls-remote --heads https://github.com/randy3k/iterpc | grep gh-pages)" ]
 then
+    echo "make gh-pages"
     mkdir gh-pages
     cd gh-pages
     git init
@@ -21,8 +22,8 @@ fi
 echo "copy webpages from to here"
 rm -Rf *
 cp -Rf ../iterpc/inst/web/. ./
-git config --global user.email "randy.cs.lai@gmail.com"
-git config --global user.name "Randy Lai"
+git config user.email "randy.cs.lai@gmail.com"
+git config user.name "Randy Lai"
 git add -A :/
 echo "committing"
 git diff --quiet --exit-code --cached || git commit -m "Deploy site at $(date)"

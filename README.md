@@ -25,11 +25,10 @@ I have to thanks [Martin Broadhurst](http://www.martinbroadhurst.com) and [Alist
 
 ## Installation
 
-If you want to install the latest development version you can use `devtools`:
+If you want to install the latest development version, you can use `devtools`:
 
 ```
-library(devtools)
-install_github("randy3k/iterpc")
+devtools::install_github("randy3k/iterpc")
 ```
 
 or you can install it via CRAN
