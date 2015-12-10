@@ -3,7 +3,7 @@
 set -e
 
 # only depoly on master branch
-[ "$TRAVIS_BRANCH" == "master" ] || exit 1
+[[ "$TRAVIS_BRANCH" == "master" ]] || exit 1
 
 R --slave -e "library(staticdocs);build_site()"
 cd ..
