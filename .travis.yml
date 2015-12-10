@@ -5,13 +5,10 @@ env:
     global:
     - secure: "EF9P0qhKbGVsnxGe/XTqCA4Pa/v9w1wCe4yQikDCHG8kUT22/BxEVJj8b5hRPE0UL/Iww/MPI5rIDEhlZHmVIQgosrx4kd9Y40oSHyJkL2iutEOnEXHjOMq71W0gjhJHdryWK3KvthJdtHvrgiM77I/7nYT71m3c3/pc4SX2dS4="
 
-r_binary_packages:
-    - staticdocs
+r_github_packages:
+    - hadley/staticdocs
 
 after_success:
-    - [ "$TRAVIS_BRANCH" == "master" ] || exit 1
-    - ./travis-tool.sh install_github hadley/staticdocs || exit 1
-    - R --slave -e "library(staticdocs);build_site()" || exit 1
     - sh inst/deploy.sh || exit 1
 
 notifications:

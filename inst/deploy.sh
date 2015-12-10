@@ -1,6 +1,11 @@
 #!/bin/sh
 # deploy to the gh-pages branch of the same repo
 set -e
+
+# only depoly on master branch
+[ "$TRAVIS_BRANCH" == "master" ] || exit 1
+
+R --slave -e "library(staticdocs);build_site()"
 cd ..
 if [ -z "$(git ls-remote --heads https://github.com/randy3k/iterpc | grep gh-pages)" ]
 then
