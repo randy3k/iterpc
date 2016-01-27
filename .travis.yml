@@ -12,7 +12,9 @@ r_github_packages:
     - hadley/staticdocs
 
 after_success:
-    - sh ./inst/deploy.sh
+    - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+        sh ./inst/deploy.sh;
+      fi
 
 notifications:
     email: false
