@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-<title>iterpc. iterpc 0.2.7</title>
+<title>iterpc. iterpc 0.2.8</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -42,7 +42,7 @@
         <div class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">         
-                <div><a href="index.html" class="navbar-brand"><span class="glyphicon glyphicon-th"></span> iterpc 0.2.7</a></div>
+                <div><a href="index.html" class="navbar-brand"><span class="glyphicon glyphicon-th"></span> iterpc 0.2.8</a></div>
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@ a permutation/combination iterator
     
     <h2 id="examples">Examples</h2>
     <pre class="examples"><div class='input'>#1) all combinations of drawing 2 items from {1, 2, 3}
-I = iterpc(5, 2)
+I &lt;- iterpc(5, 2)
 getall(I)
 </div>
 <div class='output'>      [,1] [,2]
@@ -108,7 +108,7 @@ getall(I)
 </div>
 <div class='input'>
 #2) continuing 1), get combination by combination
-I = iterpc(5, 2)
+I &lt;- iterpc(5, 2)
 getnext(I) # return 1,2
 </div>
 <div class='output'>[1] 1 2
@@ -125,7 +125,7 @@ getnext(I) # return 1,2
 </div>
 <div class='input'>
 #3) 3) all permutations of {1, 2, 3} and use of labels
-I = I = iterpc(3, labels=c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), ordered = TRUE)
+I &lt;- iterpc(3, labels=c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), ordered=TRUE)
 getall(I)
 </div>
 <div class='output'>     [,1] [,2] [,3]
@@ -138,7 +138,7 @@ getall(I)
 </div>
 <div class='input'>
 #4) permutations of multiset and
-I = iterpc(c(2, 1, 1), labels=c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), ordered = TRUE)
+I &lt;- iterpc(c(2, 1, 1), labels=c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), ordered=TRUE)
 getall(I)
 </div>
 <div class='output'>      [,1] [,2] [,3] [,4]
@@ -157,8 +157,8 @@ getall(I)
 </div>
 <div class='input'>
 #5) combinations with replacement and the use of table as input
-x = c(&quot;a&quot;,&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)
-I = iterpc(table(x), 3, replace=TRUE)
+x &lt;- c(&quot;a&quot;,&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)
+I &lt;- iterpc(table(x), 3, replace=TRUE)
 getall(I)
 </div>
 <div class='output'>      [,1] [,2] [,3]
