@@ -56,3 +56,28 @@ nc_multiset <- function(f, r){
     }
     return(p[r+1])
 }
+
+#' Wrap iterpc objects by iterators::iter
+#' @param I the iterpc object
+#' @param d number of permutation(s)/combination(s) wanted in each iteration, default to 1
+#' @return a iter object compartible with iterators package
+#' @import iterators
+#' @examples
+#' library(iterators)
+#' I <- iterpc(5, 2)
+#' it <- iter_wrapper(I)
+#' nextElem(it)
+#' nextElem(it)
+#'
+#' library(foreach)
+#' I <- iterpc(5, 2)
+#' it <- iter_wrapper(I)
+#' foreach(x=it, .combine=c) %do% { sum(x) }
+#' @export
+iter_wrapper <- function(I, d=1){
+    iter(function() {
+        out <- getnext(I, d)
+        !is.null(out) || stop("StopIteration", call. = FALSE)
+        out
+    })
+}
