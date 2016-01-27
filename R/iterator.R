@@ -19,58 +19,58 @@ NULL
 #' @export
 #' @examples
 #' #1) all combinations of drawing 2 items from {1, 2, 3}
-#' I = iterpc(5, 2)
+#' I <- iterpc(5, 2)
 #' getall(I)
 #'
 #' #2) continuing 1), get combination by combination
-#' I = iterpc(5, 2)
+#' I <- iterpc(5, 2)
 #' getnext(I) # return 1,2
 #' getnext(I) # return 1,3
 #' getnext(I, 2) # return next 2 results
 #'
 #' #3) 3) all permutations of {1, 2, 3} and use of labels
-#' I = I = iterpc(3, labels=c("a", "b", "c"), ordered = TRUE)
+#' I <- iterpc(3, labels=c("a", "b", "c"), ordered=TRUE)
 #' getall(I)
 #'
 #' #4) permutations of multiset and
-#' I = iterpc(c(2, 1, 1), labels=c("a", "b", "c"), ordered = TRUE)
+#' I <- iterpc(c(2, 1, 1), labels=c("a", "b", "c"), ordered=TRUE)
 #' getall(I)
 #'
 #' #5) combinations with replacement and the use of table as input
-#' x = c("a","a","b","c")
-#' I = iterpc(table(x), 3, replace=TRUE)
+#' x <- c("a","a","b","c")
+#' I <- iterpc(table(x), 3, replace=TRUE)
 #' getall(I)
 iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     # to immitate object behaviour
-    I = new.env(parent=globalenv())
+    I <- new.env(parent=globalenv())
     if (ordered){
-        class(I) = "perm"
+        class(I) <- "perm"
     }else{
-        class(I) = "comb"
+        class(I) <- "comb"
     }
-    I$replace = replace
-    I$is.multiset = class(n)=="table" || length(n)>1
+    I$replace <- replace
+    I$is.multiset <- class(n)=="table" || length(n)>1
     # status: -1, not yet initialize
     #         0, running
     #         i, number of rows of the last return incomplete result
-    I$status = -1L
+    I$status <- -1L
 
     if (I$is.multiset){
-        I$f = as.integer(n)
-        I$multiset = rep(0:(length(I$f)-1L),n)
-        I$n = sum(n)
-        I$r = ifelse(is.null(r), I$n, as.integer(r))
+        I$f <- as.integer(n)
+        I$multiset <- rep(0:(length(I$f)-1L),n)
+        I$n <- sum(n)
+        I$r <- ifelse(is.null(r), I$n, as.integer(r))
     }else{
-        I$n = n
-        I$r = ifelse(is.null(r), n, as.integer(r))
+        I$n <- n
+        I$r <- ifelse(is.null(r), n, as.integer(r))
     }
     if (!is.null(labels)) {
-        I$labels = labels
+        I$labels <- labels
     }else if (class(n)=="table") {
-        I$labels = type.convert(names(n))
+        I$labels <- type.convert(names(n))
     }
     if (replace){
-        I$unique_n = ifelse(is.null(I$f), I$n, length(I$f))
+        I$unique_n <- ifelse(is.null(I$f), I$n, length(I$f))
     }else{
         if (I$n<I$r) stop("n should be larger than or equal to r.")
     }
@@ -82,15 +82,15 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
 getall <- function(I){
-    msg = "The length of the iterator is too large, try using getnext(I, d)."
-    len = tryCatch(getlength(I),
+    msg <- "The length of the iterator is too large, try using getnext(I, d)."
+    len <- tryCatch(getlength(I),
         warning= function(cond) stop(msg))
     if (len*I$r>.Machine$integer.max) {
         stop(msg)
     }
-    I$status = -1L
-    out = getnext(I,len,drop=FALSE)
-    I$status = -1L
+    I$status <- -1L
+    out <- getnext(I,len,drop=FALSE)
+    I$status <- -1L
     out
 }
 
@@ -102,9 +102,9 @@ getall <- function(I){
 getcurrent <- function(I){
     if (is.null(I$currInd)) return(NULL)
     if(is.null(I$x)){
-        out = I$currInd[1:I$r]+1L
+        out <- I$currInd[1:I$r]+1L
     }else{
-        out = I$x[I$currInd[1:I$r]+1L]
+        out <- I$x[I$currInd[1:I$r]+1L]
     }
     if (is.null(I$labels)){
         return(out)

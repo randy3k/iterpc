@@ -28,10 +28,10 @@ multichoose <- function(n){
 #' @import polynom
 np_multiset <- function(f, r){
     p <- polynomial(1)
-    alpha = lgamma(r+1)/length(f)
-    for(i in f){
-        j = pmin(i, r)
-        p <- p * polynomial(exp(c(alpha,alpha-lgamma((1:j)+1))))
+    alpha <- lgamma(r+1)/length(f)
+    for (i in f){
+        j <- pmin(i, r)
+        p <- p * polynomial(exp(c(alpha,alpha-lgamma( (1:j)+1) )))
         p <- polynomial(p[1:min(length(p),r+1)])
     }
     return(round(p[r+1]))
@@ -43,14 +43,14 @@ np_multiset <- function(f, r){
 #' @param r the number of object drawn from the multiset
 #' @return the number of combinations
 #' @examples
-#' x = c("a","a","b")
+#' x <- c("a","a","b")
 #' # possible combinations of size 2 are "aa" and "ab".
-#' nc_multiset(table(x), 2) # = 2
+#' nc_multiset(table(x), 2) # <- 2
 #' @export
 #' @import polynom
 nc_multiset <- function(f, r){
     p <- polynomial(1)
-    for(i in f){
+    for (i in f){
         p <- p * polynomial(rep.int(1, i + 1))
         p <- polynomial(p[1:min(length(p),r+1)])
     }

@@ -18,8 +18,8 @@ the number of combinations
 Calculate the number of r-combinations of a multiset
 }
 \examples{
-x = c("a","a","b")
+x <- c("a","a","b")
 # possible combinations of size 2 are "aa" and "ab".
-nc_multiset(table(x), 2) # = 2
+nc_multiset(table(x), 2) # <- 2
 }
 

@@ -2,35 +2,35 @@
 getnext.perm <- function(I, d=1L, drop=TRUE){
     if (d*I$r>.Machine$integer.max) stop("d is too large.")
     if(I$status>0){
-        I$status = -1L
+        I$status <- -1L
         return(NULL)
     }
     if (I$replace){
         if (I$status==-1L) {
-            I$currInd = rep(0L,I$r)
+            I$currInd <- rep(0L,I$r)
         }
-        P = next_permutations_replace(I$currInd, I$unique_n, d, I$status)
+        P <- next_permutations_replace(I$currInd, I$unique_n, d, I$status)
     }else{
         if (I$status==-1L) {
-            if(I$is.multiset){
+            if (I$is.multiset){
                 # add 0L to blame lazy evaluation
-                I$currInd = I$multiset + 0L
+                I$currInd <- I$multiset + 0L
             }else{
-                I$currInd = (1:I$n)-1L
+                I$currInd <- (1:I$n)-1L
             }
         }
         if (I$n == I$r){
-            P = next_permutations(I$currInd, d, I$status)
+            P <- next_permutations(I$currInd, d, I$status)
         }else{
-            P = next_k_permutations(I$currInd, I$r, d, I$status)
+            P <- next_k_permutations(I$currInd, I$r, d, I$status)
         }
     }
     if(is.null(P)){
-        I$status = -1L
+        I$status <- -1L
         return(NULL)
-    }else if(I$status>0){
-        P = P[1:I$status,,drop=FALSE]
-        d = I$status
+    }else if (I$status>0){
+        P <- P[1:I$status,,drop=FALSE]
+        d <- I$status
     }
     if (is.null(I$labels)){
         if (drop || d>1){
