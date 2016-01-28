@@ -16,6 +16,7 @@ NULL
 #' @return a permutation/combination iterator
 #' @name iterpc
 #' @aliases iterpc
+#' @importFrom utils type.convert
 #' @export
 #' @examples
 #' #1) all combinations of drawing 2 items from {1, 2, 3}
