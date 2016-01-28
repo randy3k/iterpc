@@ -53,7 +53,7 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     I$is.multiset <- class(n)=="table" || length(n)>1
     # status: -1, not yet initialize
     #         0, running
-    #         i, number of rows of the last return incomplete result
+    #         i, number of rows of the last returned incomplete result when d > 1
     I$status <- -1L
 
     if (I$is.multiset){
@@ -83,7 +83,7 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
 getall <- function(I){
-    msg <- "The length of the iterator is too large, try using getnext(I, d)."
+    msg <- "The size of the output is too large, try using getnext(I, d)."
     len <- tryCatch(getlength(I),
         warning= function(cond) stop(msg))
     if (len*I$r>.Machine$integer.max) {
