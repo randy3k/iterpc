@@ -60,7 +60,7 @@ nc_multiset <- function(f, r){
 #' Wrap iterpc objects by iterators::iter
 #' @param I the iterpc object
 #' @param d number of permutation(s)/combination(s) wanted in each iteration, default to 1
-#' @return a iter object compartible with iterators package
+#' @return a iter object compatible with iterators package
 #' @import iterators
 #' @examples
 #' library(iterators)
