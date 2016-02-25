@@ -12,7 +12,7 @@ iter_wrapper(I, d = 1)
 \item{d}{number of permutation(s)/combination(s) wanted in each iteration, default to 1}
 }
 \value{
-a iter object compartible with iterators package
+a iter object compatible with iterators package
 }
 \description{
 Wrap iterpc objects by iterators::iter
