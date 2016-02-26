@@ -9,7 +9,7 @@ using namespace Rcpp;
 
 
 // [[Rcpp::export]]
-SEXP next_combinations(IntegerVector x, unsigned int n, 
+SEXP next_combinations(IntegerVector x, unsigned int n,
                         unsigned long d, IntegerVector status){
     unsigned int r = x.size();
     unsigned int i,j;
@@ -38,12 +38,12 @@ SEXP next_combinations(IntegerVector x, unsigned int n,
         IntegerVector y(r);
         for(j=0;j<r;j++) y[j] = xptr[j]+1;
         return y;
-    }    
+    }
 }
 
 
 // [[Rcpp::export]]
-SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x, 
+SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x,
                                 unsigned long d, IntegerVector status){
     unsigned int n = multiset.size();
     unsigned int r = x.size();
@@ -75,11 +75,11 @@ SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x,
         IntegerVector y(r);
         for(j=0;j<r;j++) y[j] = xptr[j]+1;
         return y;
-    } 
+    }
 }
 
 // [[Rcpp::export]]
-SEXP next_combinations_replace(IntegerVector x, unsigned int n, 
+SEXP next_combinations_replace(IntegerVector x, unsigned int n,
                         unsigned long d, IntegerVector status){
     unsigned int r = x.size();
     unsigned int i,j;
@@ -108,5 +108,5 @@ SEXP next_combinations_replace(IntegerVector x, unsigned int n,
         IntegerVector y(r);
         for(j=0;j<r;j++) y[j] = xptr[j]+1;
         return y;
-    }    
+    }
 }

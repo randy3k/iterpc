@@ -108,4 +108,3 @@ SEXP next_permutations_replace(IntegerVector x, unsigned int n, unsigned long d,
         return y;
     }
 }
-
