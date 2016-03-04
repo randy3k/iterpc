@@ -83,7 +83,7 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
 getall <- function(I){
-    msg <- "The size of the output is too large, try using getnext(I, d)."
+    msg <- "The size of the output is too long, try using getnext(I, d)."
     len <- tryCatch(getlength(I),
         warning= function(cond) stop(msg))
     if (len*I$r>.Machine$integer.max) {
