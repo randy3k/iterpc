@@ -73,7 +73,7 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     if (replace){
         I$unique_n <- ifelse(is.null(I$f), I$n, length(I$f))
     }else{
-        if (I$n<I$r) stop("n should be larger than or equal to r.")
+        if (sum(I$n)<I$r) stop("n should be larger than or equal to r.")
     }
     I
 }
