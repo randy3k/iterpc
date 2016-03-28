@@ -1,9 +1,6 @@
 language: r
 sudo: required
 
-env:
-    global:
-        - secure: "vYXcIOfwYYV7GQDhCkUngtYIJwBs/onWv/V1313ixKb0Em5APV5Jeu/JdkLXBJUvH6KUBw8oAywAehBzvjKP4NXWe32o7tUcgUI0RYFlJTYz94/+KC0x70pEOsmTcudsArWBcVXvx5TdOvRGLRSu17itFvezP3gwWNAAwLXMDzE="
 r_packages:
     - foreach
     - roxygen2
