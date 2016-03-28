@@ -28,4 +28,4 @@ git add -A :/
 echo "committing"
 git diff --quiet --exit-code --cached || git commit -m "Deploy site at $(date)"
 echo "deploy sites"
-git push -u origin gh-pages:gh-pages
+git push -u origin gh-pages:gh-pages > /dev/null 2>&1
