@@ -8,8 +8,10 @@ extern "C" {
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-SEXP next_permutations(IntegerVector x, unsigned long d, IntegerVector status){
+SEXP next_permutations(Environment I, unsigned long d){
+    IntegerVector x = I["currInd"];
     unsigned int n = x.size();
+    IntegerVector status = I["status"];
     unsigned int i,j;
     unsigned int* xptr = (unsigned int *) x.begin();
 
@@ -40,8 +42,11 @@ SEXP next_permutations(IntegerVector x, unsigned long d, IntegerVector status){
 }
 
 // [[Rcpp::export]]
-SEXP next_k_permutations(IntegerVector x, unsigned int r, unsigned long d, IntegerVector status){
+SEXP next_k_permutations(Environment I, unsigned long d){
+    IntegerVector x = I["currInd"];
     unsigned int n = x.size();
+    unsigned int r = I["r"];
+    IntegerVector status = I["status"];
     unsigned int i,j;
     unsigned int* xptr = (unsigned int *) x.begin();
 
@@ -72,8 +77,11 @@ SEXP next_k_permutations(IntegerVector x, unsigned int r, unsigned long d, Integ
 }
 
 // [[Rcpp::export]]
-SEXP next_permutations_replace(IntegerVector x, unsigned int n, unsigned long d, IntegerVector status){
+SEXP next_permutations_replace(Environment I, unsigned long d){
+    IntegerVector x = I["currInd"];
+    unsigned int n = I["unique_n"];
     unsigned int r = x.size();
+    IntegerVector status = I["status"];
     unsigned int i,j;
     unsigned int* xptr = (unsigned int *) x.begin();
 

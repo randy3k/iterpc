@@ -9,9 +9,11 @@ using namespace Rcpp;
 
 
 // [[Rcpp::export]]
-SEXP next_combinations(IntegerVector x, unsigned int n,
-                        unsigned long d, IntegerVector status){
+SEXP next_combinations(Environment I, unsigned long d){
+    IntegerVector x = I["currInd"];
+    unsigned int n = I["n"];
     unsigned int r = x.size();
+    IntegerVector status = I["status"];
     unsigned int i,j;
     unsigned int* xptr = (unsigned int *) x.begin();
 
@@ -43,10 +45,12 @@ SEXP next_combinations(IntegerVector x, unsigned int n,
 
 
 // [[Rcpp::export]]
-SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x,
-                                unsigned long d, IntegerVector status){
+SEXP next_multiset_combinations(Environment I, unsigned long d){
+    IntegerVector multiset = I["multiset"];
+    IntegerVector x = I["currInd"];
     unsigned int n = multiset.size();
     unsigned int r = x.size();
+    IntegerVector status = I["status"];
     unsigned int i,j;
     unsigned int* xptr = (unsigned int *) x.begin();
     unsigned int* mptr = (unsigned int *) multiset.begin();
@@ -79,9 +83,11 @@ SEXP next_multiset_combinations(IntegerVector multiset, IntegerVector x,
 }
 
 // [[Rcpp::export]]
-SEXP next_combinations_replace(IntegerVector x, unsigned int n,
-                        unsigned long d, IntegerVector status){
+SEXP next_combinations_replace(Environment I, unsigned long d){
+    IntegerVector x = I["currInd"];
+    unsigned int n = I["unique_n"];
     unsigned int r = x.size();
+    IntegerVector status = I["status"];
     unsigned int i,j;
     unsigned int* xptr = (unsigned int *) x.begin();
 

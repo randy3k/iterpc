@@ -2,14 +2,14 @@
 getnext.comb <- function(I, d=1L, drop=TRUE){
     if (d*I$r>.Machine$integer.max) stop("d is too large.")
     if(I$status>0){
-        I$status <- -1L
+        I$status <- integer(1)-1L
         return(NULL)
     }
     if (I$replace){
         if (I$status==-1L) {
             I$currInd <- rep(0L,I$r)
         }
-        C <- next_combinations_replace(I$currInd, I$unique_n, d, I$status)
+        C <- next_combinations_replace(I, d)
     }else{
         if (I$status==-1L) {
             if (I$is.multiset){
@@ -20,13 +20,13 @@ getnext.comb <- function(I, d=1L, drop=TRUE){
             }
         }
         if (I$is.multiset){
-            C <- next_multiset_combinations(I$multiset, I$currInd, d, I$status)
+            C <- next_multiset_combinations(I, d)
         }else{
-            C <- next_combinations(I$currInd, I$n, d, I$status)
+            C <- next_combinations(I, d)
         }
     }
     if(is.null(C)){
-        I$status <- -1L
+        I$status <- integer(1)-1L
         return(NULL)
     }else if (I$status>0){
         C <- C[1:I$status,,drop=FALSE]

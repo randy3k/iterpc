@@ -2,14 +2,14 @@
 getnext.perm <- function(I, d=1L, drop=TRUE){
     if (d*I$r>.Machine$integer.max) stop("d is too large.")
     if(I$status>0){
-        I$status <- -1L
+        I$status <- integer(1)-1L
         return(NULL)
     }
     if (I$replace){
         if (I$status==-1L) {
             I$currInd <- rep(0L,I$r)
         }
-        P <- next_permutations_replace(I$currInd, I$unique_n, d, I$status)
+        P <- next_permutations_replace(I, d)
     }else{
         if (I$status==-1L) {
             if (I$is.multiset){
@@ -20,13 +20,13 @@ getnext.perm <- function(I, d=1L, drop=TRUE){
             }
         }
         if (I$n == I$r){
-            P <- next_permutations(I$currInd, d, I$status)
+            P <- next_permutations(I, d)
         }else{
-            P <- next_k_permutations(I$currInd, I$r, d, I$status)
+            P <- next_k_permutations(I, d)
         }
     }
     if(is.null(P)){
-        I$status <- -1L
+        I$status <- integer(1)-1L
         return(NULL)
     }else if (I$status>0){
         P <- P[1:I$status,,drop=FALSE]
