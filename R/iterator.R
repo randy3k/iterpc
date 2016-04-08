@@ -43,14 +43,14 @@ NULL
 #' getall(I)
 iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     # to immitate object behaviour
-    I <- new.env(parent=globalenv())
+    I <- new.env(parent = globalenv())
     if (ordered){
         class(I) <- "perm"
     }else{
         class(I) <- "comb"
     }
     I$replace <- replace
-    I$is.multiset <- class(n)=="table" || length(n)>1
+    I$is.multiset <- class(n) == "table" || length(n) > 1
     # status: -1, not yet initialize
     #         0, running
     #         i, number of rows of the last returned incomplete result when d > 1
@@ -59,7 +59,7 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
 
     if (I$is.multiset){
         I$f <- as.integer(n)
-        I$multiset <- rep(0:(length(I$f)-1L),n)
+        I$multiset <- rep(0:(length(I$f) - 1L), n)
         I$n <- sum(n)
         I$r <- ifelse(is.null(r), I$n, as.integer(r))
     }else{
@@ -68,13 +68,13 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     }
     if (!is.null(labels)) {
         I$labels <- labels
-    }else if (class(n)=="table") {
+    }else if (class(n) == "table") {
         I$labels <- type.convert(names(n))
     }
     if (replace){
         I$unique_n <- ifelse(is.null(I$f), I$n, length(I$f))
     }else{
-        if (sum(I$n)<I$r) stop("n should be larger than or equal to r.")
+        if (sum(I$n) < I$r) stop("n should be larger than or equal to r.")
     }
     I
 }
@@ -86,12 +86,12 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
 getall <- function(I){
     msg <- "The size of the output is too long, try using getnext(I, d)."
     len <- tryCatch(getlength(I),
-        warning= function(cond) stop(msg))
-    if (len*I$r>.Machine$integer.max) {
+        warning = function(cond) stop(msg))
+    if (len * I$r > .Machine$integer.max) {
         stop(msg)
     }
     I$status <- -1L
-    out <- getnext(I,len,drop=FALSE)
+    out <- getnext(I, len, drop = FALSE)
     I$status <- -1L
     out
 }
@@ -103,10 +103,10 @@ getall <- function(I){
 #' @export
 getcurrent <- function(I){
     if (is.null(I$currInd)) return(NULL)
-    if(is.null(I$x)){
-        out <- I$currInd[1:I$r]+1L
+    if (is.null(I$x)){
+        out <- I$currInd[1:I$r] + 1L
     }else{
-        out <- I$x[I$currInd[1:I$r]+1L]
+        out <- I$x[I$currInd[1:I$r] + 1L]
     }
     if (is.null(I$labels)){
         return(out)
