@@ -1,14 +1,7 @@
 language: r
 sudo: required
 
-r_packages:
-    - foreach
-    - roxygen2
-
-r_github_packages:
-    - hadley/staticdocs
-
-before_script: sudo apt-get install libgmp-dev
+before_install: sudo apt-get install libgmp3-dev
 
 after_success:
     - if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_PULL_REQUEST" == false ]]; then
