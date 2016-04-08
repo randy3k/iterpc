@@ -17,12 +17,12 @@ SEXP next_combinations(Environment I, unsigned long d){
     unsigned int i,j;
     unsigned int* xptr = (unsigned int *) x.begin();
 
-    if (status[0] == 0) {
+    if (as<int>(I["status"]) == 0) {
         if (!MBnext_combination(xptr, n, r)){
             return R_NilValue;
         }
     }else{
-        status[0] = 0;
+        I["status"] = 0;
     }
 
     if (d>1){
@@ -30,7 +30,7 @@ SEXP next_combinations(Environment I, unsigned long d){
         P(0,_) = x+1;
         for(i=1;i<d;i++){
             if(!MBnext_combination(xptr, n, r)) {
-                status[0] = i;
+                I["status"] = i;
                 break;
             }
             P(i,_) = x+1;
@@ -55,12 +55,12 @@ SEXP next_multiset_combinations(Environment I, unsigned long d){
     unsigned int* xptr = (unsigned int *) x.begin();
     unsigned int* mptr = (unsigned int *) multiset.begin();
 
-    if (status[0] == 0) {
+    if (as<int>(I["status"]) == 0) {
         if (!MBnext_multiset_combination(mptr, xptr, n, r)){
             return R_NilValue;
         }
     }else{
-        status[0] = 0;
+        I["status"] = 0;
     }
 
     if (d>1){
@@ -68,7 +68,7 @@ SEXP next_multiset_combinations(Environment I, unsigned long d){
         P(0,_) = x+1;
         for(i=1;i<d;i++){
             if(!MBnext_multiset_combination(mptr, xptr, n, r)) {
-                status[0] = i;
+                I["status"] = i;
                 break;
             }
 
@@ -91,12 +91,12 @@ SEXP next_combinations_replace(Environment I, unsigned long d){
     unsigned int i,j;
     unsigned int* xptr = (unsigned int *) x.begin();
 
-    if (status[0] == 0) {
+    if (as<int>(I["status"]) == 0) {
         if (!MBnext_multicombination(xptr, n, r)){
             return R_NilValue;
         }
     }else{
-        status[0] = 0;
+        I["status"] = 0;
     }
 
     if (d>1){
@@ -104,7 +104,7 @@ SEXP next_combinations_replace(Environment I, unsigned long d){
         P(0,_) = x+1;
         for(i=1;i<d;i++){
             if(!MBnext_multicombination(xptr, n, r)) {
-                status[0] = i;
+                I["status"] = i;
                 break;
             }
             P(i,_) = x+1;

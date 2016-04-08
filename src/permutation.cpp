@@ -15,12 +15,12 @@ SEXP next_permutations(Environment I, unsigned long d){
     unsigned int i,j;
     unsigned int* xptr = (unsigned int *) x.begin();
 
-    if (status[0] == 0) {
+    if (as<int>(I["status"]) == 0) {
         if (!MBnext_permutation(xptr, n)){
             return R_NilValue;
         }
     }else{
-        status[0] = 0;
+        I["status"] = 0;
     }
 
     if (d>1){
@@ -28,7 +28,7 @@ SEXP next_permutations(Environment I, unsigned long d){
         P(0,_) = x+1;
         for(i=1;i<d;i++){
             if(!MBnext_permutation(xptr, n)) {
-                status[0] = i;
+                I["status"] = i;
                 break;
             }
             P(i,_) = x+1;
@@ -50,12 +50,12 @@ SEXP next_k_permutations(Environment I, unsigned long d){
     unsigned int i,j;
     unsigned int* xptr = (unsigned int *) x.begin();
 
-    if (status[0] == 0) {
+    if (as<int>(I["status"]) == 0) {
         if (!AInext_k_permutation(xptr, n, r)){
             return R_NilValue;
         }
     }else{
-        status[0] = 0;
+        I["status"] = 0;
     }
 
     if (d>1){
@@ -63,7 +63,7 @@ SEXP next_k_permutations(Environment I, unsigned long d){
         for(j=0;j<r;j++) P(0,j) = xptr[j]+1;
         for(i=1;i<d;i++){
             if(!AInext_k_permutation(xptr, n, r)) {
-                status[0] = i;
+                I["status"] = i;
                 break;
             }
             for(j=0;j<r;j++) P(i,j) = xptr[j]+1;
@@ -89,12 +89,12 @@ SEXP next_permutations_replace(Environment I, unsigned long d){
     sizes = (size_t*) malloc(r*sizeof(*sizes));
     for(i=0;i<r;i++) sizes[i] = n;
 
-    if (status[0] == 0) {
+    if (as<int>(I["status"]) == 0) {
         if (!MBnext_n_tuple(xptr, r,  sizes)){
             return R_NilValue;
         }
     }else{
-        status[0] = 0;
+        I["status"] = 0;
     }
 
     if (d>1){
@@ -102,7 +102,7 @@ SEXP next_permutations_replace(Environment I, unsigned long d){
         P(0,_) = x+1;
         for(i=1;i<d;i++){
             if(!MBnext_n_tuple(xptr, r,  sizes)) {
-                status[0] = i;
+                I["status"] = i;
                 break;
             }
             P(i,_) = x+1;

@@ -2,7 +2,7 @@
 getnext.comb <- function(I, d=1L, drop=TRUE){
     if (d*I$r>.Machine$integer.max) stop("d is too large.")
     if(I$status>0){
-        I$status <- integer(1)-1L
+        I$status <- -1L
         return(NULL)
     }
     if (I$replace){
@@ -26,7 +26,7 @@ getnext.comb <- function(I, d=1L, drop=TRUE){
         }
     }
     if(is.null(C)){
-        I$status <- integer(1)-1L
+        I$status <- -1L
         return(NULL)
     }else if (I$status>0){
         C <- C[1:I$status,,drop=FALSE]

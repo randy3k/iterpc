@@ -55,7 +55,7 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     #         0, running
     #         i, number of rows of the last returned incomplete result when d > 1
     # make sure I$status get a new memmory address in bytecode complier
-    I$status <- integer(1)-1L
+    I$status <- -1L
 
     if (I$is.multiset){
         I$f <- as.integer(n)
@@ -90,9 +90,9 @@ getall <- function(I){
     if (len*I$r>.Machine$integer.max) {
         stop(msg)
     }
-    I$status <- integer(1)-1L
+    I$status <- -1L
     out <- getnext(I,len,drop=FALSE)
-    I$status <- integer(1)-1L
+    I$status <- -1L
     out
 }
 
