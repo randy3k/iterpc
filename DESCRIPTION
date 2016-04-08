@@ -18,8 +18,8 @@ Depends:
     R (>= 3.0.0)
 Imports:
     iterators,
-    Rcpp (>= 0.11.0),
-    polynom
+    gmp (>= 0.5-12),
+    Rcpp (>= 0.11.0)
 Suggests:
     foreach,
     testthat

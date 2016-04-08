@@ -11,8 +11,13 @@
 #' # (3+1+1)!/ (3! 1! 1!) = 20
 #' multichoose(c(3,1,1))
 #' @export
+#' @import gmp
 multichoose <- function(n){
-    round(exp(lgamma(sum(n) + 1) - sum(lgamma(n + 1))))
+    out <- factorialZ(sum(n)) / prod(factorialZ(n))
+    if (out > .Machine$integer.max){
+        stop("Overflow error!")
+    }
+    as.integer(out)
 }
 
 
@@ -25,17 +30,35 @@ multichoose <- function(n){
 #' # possible permutations of size 2 are "aa", "ab" and "ba".
 #' np_multiset(table(x), 2) # = 3
 #' @export
-#' @import polynom
+#' @import gmp
 np_multiset <- function(f, r){
-    p <- polynomial(1)
-    alpha <- lgamma(r + 1) / length(f)
-    for (i in f){
-        j <- pmin(i, r)
-        p <- p * polynomial(exp(c(alpha, alpha - lgamma( (1:j) + 1 ))))
-        p <- polynomial(p[1:min(length(p), r + 1)])
+    n <- sum(f)
+    if (r > n){
+        return(0)
+    } else if (r == 0){
+        return(1)
+    } else {
+        g <- factorialZ(0:min(r, max(f)))
+        p <- as.bigz(rep(0L, r + 1))
+        for (i in seq_along(f)){
+            if (i == 1){
+                p[1:pmin(r + 1, f[i] + 1)] <- factorialZ(r) / g[1:pmin(r + 1, f[i] + 1)]
+            }else{
+                for (j in r:1){
+                    p[j + 1] <- sum(
+                        p[(j + 1):pmax(1, j + 1 - f[i])] / g[1:pmin(j + 1, f[i] + 1)]
+                        )
+                }
+            }
+        }
     }
-    return(round(p[r + 1]))
+    out <- p[r + 1]
+    if (out > .Machine$integer.max){
+        stop("Overflow error!")
+    }
+    as.integer(out)
 }
+
 
 
 #' Calculate the number of r-combinations of a multiset
@@ -47,14 +70,30 @@ np_multiset <- function(f, r){
 #' # possible combinations of size 2 are "aa" and "ab".
 #' nc_multiset(table(x), 2) # <- 2
 #' @export
-#' @import polynom
+#' @import gmp
 nc_multiset <- function(f, r){
-    p <- polynomial(1)
-    for (i in f){
-        p <- p * polynomial(rep.int(1, i + 1))
-        p <- polynomial(p[1:min(length(p), r + 1)])
+    n <- sum(f)
+    if (r > n){
+        return(0)
+    } else if (r == 0){
+        return(1)
+    } else {
+        p <- as.bigz(rep(0L, r + 1))
+        for (i in seq_along(f)){
+            if (i == 1){
+                p[1:pmin(r + 1, f[i] + 1)] <- 1
+            }else{
+                for (j in r:1){
+                    p[j + 1] <- sum(p[(j + 1):pmax(1, j + 1 - f[i])])
+                }
+            }
+        }
     }
-    return(p[r + 1])
+    out <- p[r + 1]
+    if (out > .Machine$integer.max){
+        stop("Overflow error!")
+    }
+    as.integer(out)
 }
 
 #' Wrap iterpc objects by iterators::iter
