@@ -3,6 +3,7 @@
 # deploy to the gh-pages branch of the same repo
 set -e
 
+R --slave -e "install.packages('roxygen2')"
 R --slave -e "devtools::install_github('hadley/staticdocs')"
 
 R --slave -e "library(staticdocs);build_site()"
