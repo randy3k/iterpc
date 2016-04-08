@@ -8,6 +8,8 @@ r_packages:
 r_github_packages:
     - hadley/staticdocs
 
+before_script: sudo apt-get install libgmp-dev
+
 after_success:
     - if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_PULL_REQUEST" == false ]]; then
         sh ./inst/deploy.sh;
