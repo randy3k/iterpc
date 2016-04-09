@@ -7,16 +7,16 @@ getnext.perm <- function(I, d=1L, drop=TRUE){
     }
     if (I$replace){
         if (I$status == -1L) {
-            I$currInd <- rep(0L, I$r)
+            I$index <- rep(0L, I$r)
         }
         P <- next_permutations_replace(I, d)
     }else{
         if (I$status == -1L) {
             if (I$is.multiset){
                 # add 0L to blame lazy evaluation
-                I$currInd <- I$multiset + 0L
+                I$index <- I$multiset + 0L
             }else{
-                I$currInd <- (1:I$n) - 1L
+                I$index <- (1:I$n) - 1L
             }
         }
         if (I$n == I$r){

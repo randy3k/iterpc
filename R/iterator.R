@@ -102,11 +102,11 @@ getall <- function(I){
 #' @return current element of a iterator
 #' @export
 getcurrent <- function(I){
-    if (is.null(I$currInd)) return(NULL)
+    if (is.null(I$index)) return(NULL)
     if (is.null(I$x)){
-        out <- I$currInd[1:I$r] + 1L
+        out <- I$index[1:I$r] + 1L
     }else{
-        out <- I$x[I$currInd[1:I$r] + 1L]
+        out <- I$x[I$index[1:I$r] + 1L]
     }
     if (is.null(I$labels)){
         return(out)

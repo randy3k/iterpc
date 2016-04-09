@@ -9,7 +9,7 @@ using namespace Rcpp;
 
 // [[Rcpp::export]]
 SEXP next_permutations(Environment I, unsigned long d){
-    IntegerVector x = I["currInd"];
+    IntegerVector x = I["index"];
     unsigned int n = x.size();
     IntegerVector status = I["status"];
     unsigned int i,j;
@@ -43,7 +43,7 @@ SEXP next_permutations(Environment I, unsigned long d){
 
 // [[Rcpp::export]]
 SEXP next_k_permutations(Environment I, unsigned long d){
-    IntegerVector x = I["currInd"];
+    IntegerVector x = I["index"];
     unsigned int n = x.size();
     unsigned int r = I["r"];
     IntegerVector status = I["status"];
@@ -78,7 +78,7 @@ SEXP next_k_permutations(Environment I, unsigned long d){
 
 // [[Rcpp::export]]
 SEXP next_permutations_replace(Environment I, unsigned long d){
-    IntegerVector x = I["currInd"];
+    IntegerVector x = I["index"];
     unsigned int n = I["unique_n"];
     unsigned int r = x.size();
     IntegerVector status = I["status"];

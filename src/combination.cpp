@@ -10,7 +10,7 @@ using namespace Rcpp;
 
 // [[Rcpp::export]]
 SEXP next_combinations(Environment I, unsigned long d){
-    IntegerVector x = I["currInd"];
+    IntegerVector x = I["index"];
     unsigned int n = I["n"];
     unsigned int r = x.size();
     IntegerVector status = I["status"];
@@ -47,7 +47,7 @@ SEXP next_combinations(Environment I, unsigned long d){
 // [[Rcpp::export]]
 SEXP next_multiset_combinations(Environment I, unsigned long d){
     IntegerVector multiset = I["multiset"];
-    IntegerVector x = I["currInd"];
+    IntegerVector x = I["index"];
     unsigned int n = multiset.size();
     unsigned int r = x.size();
     IntegerVector status = I["status"];
@@ -84,7 +84,7 @@ SEXP next_multiset_combinations(Environment I, unsigned long d){
 
 // [[Rcpp::export]]
 SEXP next_combinations_replace(Environment I, unsigned long d){
-    IntegerVector x = I["currInd"];
+    IntegerVector x = I["index"];
     unsigned int n = I["unique_n"];
     unsigned int r = x.size();
     IntegerVector status = I["status"];
