@@ -5,7 +5,7 @@ Efficient Iterator for Permutations and Combinations
 
 [![](http://cranlogs.r-pkg.org/badges/grand-total/iterpc)](http://cran.r-project.org/package=iterpc)
 
-Package Documentation: [http://randy.city/iterpc](http://randy.city/iterpc)
+Latest Documentation: [http://randy.city/iterpc](http://randy.city/iterpc)
 
 Github: [https://github.com/randy3k/iterpc](https://github.com/randy3k/iterpc)
 
