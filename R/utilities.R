@@ -42,11 +42,11 @@ np_multiset <- function(f, r){
         p <- as.bigz(rep(0L, r + 1))
         for (i in seq_along(f)){
             if (i == 1){
-                p[1:pmin(r + 1, f[i] + 1)] <- factorialZ(r) / g[1:pmin(r + 1, f[i] + 1)]
+                p[1:min(r + 1, f[i] + 1)] <- factorialZ(r) / g[1:min(r + 1, f[i] + 1)]
             }else{
                 for (j in r:1){
                     p[j + 1] <- sum(
-                        p[(j + 1):pmax(1, j + 1 - f[i])] / g[1:pmin(j + 1, f[i] + 1)]
+                        p[(j + 1):max(1, j + 1 - f[i])] / g[1:min(j + 1, f[i] + 1)]
                         )
                 }
             }
@@ -81,10 +81,10 @@ nc_multiset <- function(f, r){
         p <- as.bigz(rep(0L, r + 1))
         for (i in seq_along(f)){
             if (i == 1){
-                p[1:pmin(r + 1, f[i] + 1)] <- 1
+                p[1:min(r + 1, f[i] + 1)] <- 1
             }else{
                 for (j in r:1){
-                    p[j + 1] <- sum(p[(j + 1):pmax(1, j + 1 - f[i])])
+                    p[j + 1] <- sum(p[(j + 1):max(1, j + 1 - f[i])])
                 }
             }
         }
