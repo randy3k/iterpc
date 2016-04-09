@@ -125,6 +125,7 @@ getnext <- function(I, d=1, drop=TRUE) UseMethod("getnext")
 
 #' Get the length for a iterator
 #' @param I a permutations/combinations iterator
+#' @param bigz use gmp's Big Interger
 #' an integer
 #' @export
-getlength <- function(I) UseMethod("getlength")
+getlength <- function(I, bigz=FALSE) UseMethod("getlength")

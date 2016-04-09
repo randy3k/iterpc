@@ -4,15 +4,17 @@
 \alias{np_multiset}
 \title{Calculate the number of r-permutations of a multiset}
 \usage{
-np_multiset(f, r)
+np_multiset(f, r, bigz = FALSE)
 }
 \arguments{
 \item{f}{the frequencies of the mutliset}
 
 \item{r}{the number of object drawn from the multiset}
+
+\item{bigz}{use gmp's Big Interger}
 }
 \value{
-the number of r-permutations
+the number of r-permutations (Big Integer from gmp)
 }
 \description{
 Calculate the number of r-permutations of a multiset

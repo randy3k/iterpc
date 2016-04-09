@@ -4,10 +4,12 @@
 \alias{multichoose}
 \title{Calculate multinomial coefficient}
 \usage{
-multichoose(n)
+multichoose(n, bigz = FALSE)
 }
 \arguments{
 \item{n}{a vector of group sizes}
+
+\item{bigz}{use gmp's Big Interger}
 }
 \value{
 multinomial coefficient

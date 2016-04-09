@@ -4,15 +4,17 @@
 \alias{nc_multiset}
 \title{Calculate the number of r-combinations of a multiset}
 \usage{
-nc_multiset(f, r)
+nc_multiset(f, r, bigz = FALSE)
 }
 \arguments{
 \item{f}{the frequencies of the mutliset}
 
 \item{r}{the number of object drawn from the multiset}
+
+\item{bigz}{use gmp's Big Interger}
 }
 \value{
-the number of combinations
+the number of combinations (Big Integer from gmp)
 }
 \description{
 Calculate the number of r-combinations of a multiset

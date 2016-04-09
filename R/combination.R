@@ -53,14 +53,20 @@ getnext.comb <- function(I, d=1L, drop=TRUE){
 
 #' @export
 #' @method getlength comb
-getlength.comb <- function(I){
+#' @import gmp
+getlength.comb <- function(I, bigz=FALSE){
     if (I$replace){
-        return(choose(I$unique_n + I$r - 1, I$r))
+        out <- choose(I$unique_n + I$r - 1, I$r)
     }else{
         if (I$is.multiset){
-            return(nc_multiset(I$f, I$r))
+            out <- nc_multiset(I$f, I$r, TRUE)
         }else{
-            return(choose(I$n, I$r))
+            out <- choose(I$n, I$r)
         }
+    }
+    if (bigz){
+        return(as.bigz(out))
+    } else {
+        return(as.integer(out))
     }
 }

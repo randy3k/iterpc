@@ -4,10 +4,12 @@
 \alias{getlength}
 \title{Get the length for a iterator}
 \usage{
-getlength(I)
+getlength(I, bigz = FALSE)
 }
 \arguments{
-\item{I}{a permutations/combinations iterator
+\item{I}{a permutations/combinations iterator}
+
+\item{bigz}{use gmp's Big Interger
 an integer}
 }
 \description{

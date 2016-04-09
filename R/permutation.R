@@ -53,22 +53,28 @@ getnext.perm <- function(I, d=1L, drop=TRUE){
 
 #' @export
 #' @method getlength perm
-getlength.perm <- function(I){
+#' @import gmp
+getlength.perm <- function(I, bigz=FALSE){
     if (I$replace){
-        return(I$unique_n^I$r)
+        out <- I$unique_n^I$r
     }else{
         if (I$n == I$r){
             if (I$is.multiset){
-                return(multichoose(I$f))
+                out <- multichoose(I$f, TRUE)
             }else{
-                return(factorial(I$n))
+                out <- factorial(I$n)
             }
         }else{
             if (I$is.multiset){
-                return(np_multiset(I$f, I$r))
+                out <- np_multiset(I$f, I$r, TRUE)
             }else{
-                return(prod(I$n:(I$n - I$r + 1)))
+                out <- prod(I$n:(I$n - I$r + 1))
             }
         }
+    }
+    if (bigz){
+        return(as.bigz(out))
+    } else {
+        return(as.integer(out))
     }
 }
