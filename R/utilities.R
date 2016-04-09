@@ -14,7 +14,6 @@ convert_z <- function(z, bigz){
 #' \deqn{\frac{(\sum n_j)!}{\prod n_j!}.}{(\sum n_j)! / \prod n_j!.}
 #' where \eqn{n_j}{n_j}'s are the number of multiplicities in the multiset.
 #'
-#' The result is not reliable if the retunred value is too large (around 2^53) due to limition of integers.
 #' @param n a vector of group sizes
 #' @param bigz use gmp's Big Interger
 #' @return multinomial coefficient
