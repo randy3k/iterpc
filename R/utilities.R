@@ -1,3 +1,13 @@
+convert_z <- function(z, bigz){
+    if (bigz){
+        return(as.bigz(z))
+    } else if (abs(z) < .Machine$integer.max) {
+        return(as.integer(z))
+    } else {
+        stop("Integer overflow. Consider the `bigz` argument.", call. = FALSE)
+    }
+}
+
 #' Calculate multinomial coefficient
 #'
 #' This function calculates the multinomial coefficient
@@ -14,12 +24,11 @@
 #' @export
 #' @import gmp
 multichoose <- function(n, bigz=FALSE){
-    out <- factorialZ(sum(n)) / prod(factorialZ(n))
-    if (bigz){
-        return(as.bigz(out))
-    } else {
-        return(as.integer(out))
+    out <- factorialZ(sum(n))
+    for (m in n) {
+        out <- as.bigz(out / factorialZ(m))
     }
+    convert_z(out, bigz)
 }
 
 
@@ -56,11 +65,7 @@ np_multiset <- function(f, r, bigz=FALSE){
         }
         out <- p[[r + 1]]
     }
-    if (bigz){
-        return(as.bigz(out))
-    } else {
-        return(as.integer(out))
-    }
+    convert_z(out, bigz)
 }
 
 
@@ -95,11 +100,7 @@ nc_multiset <- function(f, r, bigz=FALSE){
         }
         out <- p[[r + 1]]
     }
-    if (bigz){
-        return(as.bigz(out))
-    } else {
-        return(as.integer(out))
-    }
+    convert_z(out, bigz)
 }
 
 #' Wrap iterpc objects by iterators::iter

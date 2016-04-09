@@ -64,9 +64,5 @@ getlength.comb <- function(I, bigz=FALSE){
             out <- choose(I$n, I$r)
         }
     }
-    if (bigz){
-        return(as.bigz(out))
-    } else {
-        return(as.integer(out))
-    }
+    convert_z(out, bigz)
 }

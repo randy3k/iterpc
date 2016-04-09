@@ -61,10 +61,15 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
         I$f <- as.integer(n)
         I$multiset <- rep(0:(length(I$f) - 1L), n)
         I$n <- sum(n)
-        I$r <- ifelse(is.null(r), I$n, as.integer(r))
     }else{
         I$n <- n
-        I$r <- ifelse(is.null(r), n, as.integer(r))
+    }
+
+    if (is.null(r)) {
+        I$r <- I$n
+    } else {
+        I$r <- as.integer(r)
+        if (I$r < 1) stop("r should be positive.")
     }
     if (!is.null(labels)) {
         I$labels <- labels
@@ -72,11 +77,16 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
         I$labels <- type.convert(names(n))
     }
     if (replace){
-        I$unique_n <- ifelse(is.null(I$f), I$n, length(I$f))
+        if (is.null(I$f)) {
+            I$unique_n <- I$n
+        } else {
+            I$unique_n <- length(I$f)
+        }
     }else{
         if (sum(I$n) < I$r) stop("n should be larger than or equal to r.")
     }
-    I
+
+    return(I)
 }
 
 #' Get all permutations/combinations for a iterator
@@ -84,12 +94,11 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
 getall <- function(I){
-    msg <- "The output is too long, try using getnext(I, d)."
-    len <- tryCatch(getlength(I),
-        warning = function(cond) stop(msg))
+    len <- getlength(I, bigz = TRUE)
     if (len * I$r > .Machine$integer.max) {
-        stop(msg)
+        stop("The output is too long, consider `getnext(I, d)`.")
     }
+    len <- as.integer(len)
     I$status <- -1L
     out <- getnext(I, len, drop = FALSE)
     I$status <- -1L
@@ -126,6 +135,6 @@ getnext <- function(I, d=1, drop=TRUE) UseMethod("getnext")
 #' Get the length for a iterator
 #' @param I a permutations/combinations iterator
 #' @param bigz use gmp's Big Interger
-#' an integer
+#' @return an integer
 #' @export
 getlength <- function(I, bigz=FALSE) UseMethod("getlength")

@@ -72,9 +72,5 @@ getlength.perm <- function(I, bigz=FALSE){
             }
         }
     }
-    if (bigz){
-        return(as.bigz(out))
-    } else {
-        return(as.integer(out))
-    }
+    convert_z(out, bigz)
 }
