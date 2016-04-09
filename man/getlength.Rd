@@ -9,8 +9,10 @@ getlength(I, bigz = FALSE)
 \arguments{
 \item{I}{a permutations/combinations iterator}
 
-\item{bigz}{use gmp's Big Interger
-an integer}
+\item{bigz}{use gmp's Big Interger}
+}
+\value{
+an integer
 }
 \description{
 Get the length for a iterator
