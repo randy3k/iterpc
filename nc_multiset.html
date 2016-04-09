@@ -56,7 +56,7 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-9">
     <h2>Usage</h2>
-    <pre><div>nc_multiset(f, r)</div></pre>
+    <pre><div>nc_multiset(f, r, bigz&nbsp;=&nbsp;FALSE)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -64,13 +64,15 @@
       <dd>the frequencies of the mutliset</dd>
       <dt>r</dt>
       <dd>the number of object drawn from the multiset</dd>
+      <dt>bigz</dt>
+      <dd>use gmp's Big Interger</dd>
     </dl>
     
     <div class="Value">
       <h2>Value</h2>
       
       <p><dl>
-the number of combinations
+the number of combinations (Big Integer from gmp)
 </dl></p>
   
     </div>
