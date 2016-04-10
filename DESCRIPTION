@@ -25,4 +25,6 @@ Suggests:
     testthat
 LinkingTo: Rcpp
 SystemRequirements: GNU make
+NeedsCompilation: yes
+ByteCompile: yes
 RoxygenNote: 5.0.1
