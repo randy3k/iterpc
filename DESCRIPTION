@@ -12,7 +12,7 @@ Description: A collection of iterators for generating permutations and combinati
     iterative algorithms enable users to process all sequences without putting all
     results in the memory at the same time. The algorithms are written in C/C++ for
     faster performances.
-URL: http://randy.city/iterpc
+URL: http://randy3k.github.io/iterpc
 License: GPL-2
 Depends:
     R (>= 3.0.0)
