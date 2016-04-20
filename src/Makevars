@@ -9,7 +9,7 @@ all: subclean $(SHLIB)
 $(SHLIB): $(OBJECTS) sublibs
 
 sublibs: subclean
-	@(cd mbcomb && CFLAGS="$(CFLAGS)" CC="$(CC)" CPICFLAGS="$(CPICFLAGS)" $(MAKE) libmbcomb.a)
+	@(cd mbcomb && CFLAGS="$(CFLAGS)" AR="$(AR)" CC="$(CC)" CPICFLAGS="$(CPICFLAGS)" $(MAKE) libmbcomb.a)
 
 clean: subclean
 	rm -f $(SHLIB) $(OBJECTS)

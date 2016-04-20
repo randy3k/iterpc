@@ -1,4 +1,4 @@
-# modified by Randy Lai (2014) rtalks.net
+# modified by Randy Lai (2016)
 
 SRCS = $(wildcard Src/*.c)
 OBJECTS = $(patsubst %.c,%.o,$(SRCS))
@@ -24,6 +24,3 @@ clean:
 	rm -f $(ALL)
 	rm -f $(OBJECTS)
 	rm -f $(DEPS)
-
-
-
