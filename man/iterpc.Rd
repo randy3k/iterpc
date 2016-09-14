@@ -16,7 +16,7 @@ iterpc(n, r = NULL, labels = NULL, ordered = FALSE, replace = FALSE)
 \item{labels}{if \code{missing}, natural numbers are used unless \code{n} is a table object.
 In that case, the names of \code{n} are used.}
 
-\item{ordered}{\code{TRUE} corresponses to permutation and \code{FALSE} corresponses to combinations.}
+\item{ordered}{\code{TRUE} corresponds to permutation and \code{FALSE} corresponds to combinations.}
 
 \item{replace}{with/without replacement. Default is \code{FALSE}.}
 }
