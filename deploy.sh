@@ -3,7 +3,6 @@
 # deploy to the gh-pages branch of the same repo
 set -e
 
-R --slave -e "install.packages('roxygen2')"
 R --slave -e "devtools::install_github('hadley/staticdocs')"
 R --slave -e "library(staticdocs);build_site()"
 
@@ -21,7 +20,7 @@ else
     git clone --branch gh-pages https://${GH_TOKEN}@github.com/randy3k/iterpc.git gh-pages > /dev/null 2>&1
     cd gh-pages
 fi
-echo "copy webpages from to here"
+echo "copy webpages to here"
 rm -Rf *
 cp -Rf ../iterpc/docs/. ./
 git config user.email "randy.cs.lai@gmail.com"
