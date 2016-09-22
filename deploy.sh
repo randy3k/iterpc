@@ -5,7 +5,6 @@ set -e
 
 R --slave -e "install.packages('roxygen2')"
 R --slave -e "devtools::install_github('hadley/staticdocs')"
-
 R --slave -e "library(staticdocs);build_site()"
 
 cd ..
@@ -24,7 +23,7 @@ else
 fi
 echo "copy webpages from to here"
 rm -Rf *
-cp -Rf ../iterpc/inst/web/. ./
+cp -Rf ../iterpc/docs/. ./
 git config user.email "randy.cs.lai@gmail.com"
 git config user.name "Randy Lai"
 git add -A :/

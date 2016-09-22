@@ -6,4 +6,5 @@
 ^.travis.yml
 ^TODO
 ^Makefile
-^inst
+deploy.sh
+docs

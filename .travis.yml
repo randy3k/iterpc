@@ -5,7 +5,7 @@ before_install: sudo apt-get install libgmp3-dev
 
 after_success:
     - if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_PULL_REQUEST" == false ]]; then
-        sh ./inst/deploy.sh;
+        sh deploy.sh;
       fi
 
 notifications:

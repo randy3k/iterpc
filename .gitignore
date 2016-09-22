@@ -5,4 +5,4 @@
 *.a
 *.d
 iterpc.sublime-workspace
-inst/web
+docs
