@@ -56,7 +56,7 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-9">
     <h2>Usage</h2>
-    <pre><div>nc_multiset(f, r, bigz&nbsp;=&nbsp;FALSE)</div></pre>
+    <pre><span class="functioncall"><a href='nc_multiset.html'>nc_multiset</a></span><span class="keyword">(</span><span class="symbol">f</span><span class="keyword">,</span> <span class="symbol">r</span><span class="keyword">,</span> <span class="argument">bigz</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -65,7 +65,7 @@
       <dt>r</dt>
       <dd>the number of object drawn from the multiset</dd>
       <dt>bigz</dt>
-      <dd>use gmp's Big Interger</dd>
+      <dd>use gmp&#39;s Big Interger</dd>
     </dl>
     
     <div class="Value">
@@ -85,10 +85,9 @@ the number of combinations (Big Integer from gmp)
     </div>
     
     <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'>x &lt;- c(&quot;a&quot;,&quot;a&quot;,&quot;b&quot;)
-# possible combinations of size 2 are &quot;aa&quot; and &quot;ab&quot;.
-nc_multiset(table(x), 2) # &lt;- 2
-</div>
+    <pre class="examples"><div class='input'><span class="symbol">x</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"a"</span><span class="keyword">,</span><span class="string">"a"</span><span class="keyword">,</span><span class="string">"b"</span><span class="keyword">)</span>
+<span class="comment"># possible combinations of size 2 are "aa" and "ab".</span>
+<span class="functioncall"><a href='nc_multiset.html'>nc_multiset</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">)</span> <span class="comment"># &lt;- 2</span></div>
 <div class='output'>[1] 2
 </div></pre>
   </div>

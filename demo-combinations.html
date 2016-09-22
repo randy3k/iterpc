@@ -55,11 +55,10 @@
 
 <div class="row"><div class="col-xs-12 col-sm-12 col-md-9">
   <pre>
-  <div class='input'># 1) combinations: without replacement: distinct items
+  <div class='input'><span class="comment"># 1) combinations: without replacement: distinct items</span>
 
-I = iterpc(5, 2)
-getall(I)
-</div>
+<span class="symbol">I</span> <span class="assignement">=</span> <span class="functioncall"><a href='iterpc.html'>iterpc</a></span><span class="keyword">(</span><span class="number">5</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">)</span>
+<span class="functioncall"><a href='getall.html'>getall</a></span><span class="keyword">(</span><span class="symbol">I</span><span class="keyword">)</span></div>
 <div class='output'>      [,1] [,2]
  [1,]    1    2
  [2,]    1    3
@@ -73,11 +72,10 @@ getall(I)
 [10,]    4    5
 </div>
 <div class='input'>
-# 2) combinations: with replacement: distinct items
+<span class="comment"># 2) combinations: with replacement: distinct items</span>
 
-I = iterpc(5, 2, replace=TRUE)
-getall(I)
-</div>
+<span class="symbol">I</span> <span class="assignement">=</span> <span class="functioncall"><a href='iterpc.html'>iterpc</a></span><span class="keyword">(</span><span class="number">5</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">,</span> <span class="argument">replace</span><span class="argument">=</span><span class="number">TRUE</span><span class="keyword">)</span>
+<span class="functioncall"><a href='getall.html'>getall</a></span><span class="keyword">(</span><span class="symbol">I</span><span class="keyword">)</span></div>
 <div class='output'>      [,1] [,2]
  [1,]    1    1
  [2,]    1    2
@@ -95,15 +93,14 @@ getall(I)
 [14,]    4    5
 [15,]    5    5
 </div>
-<div class='input'> 
-    
-# 3) combinations: without replacement: non distinct items
+<div class='input'>
 
-x = c(&quot;a&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
-I = iterpc(table(x), 2)
-# or I = iterpc(c(2,1,1), 2, label=c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;))
-getall(I)
-</div>
+<span class="comment"># 3) combinations: without replacement: non distinct items</span>
+
+<span class="symbol">x</span> <span class="assignement">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"a"</span><span class="keyword">,</span> <span class="string">"a"</span><span class="keyword">,</span> <span class="string">"b"</span><span class="keyword">,</span> <span class="string">"c"</span><span class="keyword">)</span>
+<span class="symbol">I</span> <span class="assignement">=</span> <span class="functioncall"><a href='iterpc.html'>iterpc</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">)</span>
+<span class="comment"># or I = iterpc(c(2,1,1), 2, label=c("a", "b", "c"))</span>
+<span class="functioncall"><a href='getall.html'>getall</a></span><span class="keyword">(</span><span class="symbol">I</span><span class="keyword">)</span></div>
 <div class='output'>     [,1] [,2]
 [1,] &quot;a&quot;  &quot;a&quot; 
 [2,] &quot;a&quot;  &quot;b&quot; 
@@ -111,14 +108,13 @@ getall(I)
 [4,] &quot;b&quot;  &quot;c&quot; 
 </div>
 <div class='input'>
-    
-# 4) combinations: with replacement: non distinct items
 
-x = c(&quot;a&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
-I = iterpc(table(x), 2, replace=TRUE)
-# or I = iterpc(c(2,1,1), 2, label=c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), replace=TRUE)
-getall(I)
-</div>
+<span class="comment"># 4) combinations: with replacement: non distinct items</span>
+
+<span class="symbol">x</span> <span class="assignement">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"a"</span><span class="keyword">,</span> <span class="string">"a"</span><span class="keyword">,</span> <span class="string">"b"</span><span class="keyword">,</span> <span class="string">"c"</span><span class="keyword">)</span>
+<span class="symbol">I</span> <span class="assignement">=</span> <span class="functioncall"><a href='iterpc.html'>iterpc</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">,</span> <span class="argument">replace</span><span class="argument">=</span><span class="number">TRUE</span><span class="keyword">)</span>
+<span class="comment"># or I = iterpc(c(2,1,1), 2, label=c("a", "b", "c"), replace=TRUE)</span>
+<span class="functioncall"><a href='getall.html'>getall</a></span><span class="keyword">(</span><span class="symbol">I</span><span class="keyword">)</span></div>
 <div class='output'>     [,1] [,2]
 [1,] &quot;a&quot;  &quot;a&quot; 
 [2,] &quot;a&quot;  &quot;b&quot; 

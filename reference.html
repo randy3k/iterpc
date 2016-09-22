@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-<title>Home. iterpc 0.3.0</title>
+<title>Function reference. iterpc 0.3.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Randy Lai [aut, cre], Martin Broadhurst [aut]">
 
@@ -53,42 +53,45 @@
         </header>
         <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-9">
-    <h1>Efficient Iterator for Permutations and Combinations</h1>
+    
 
-<p><a href="https://travis-ci.org/randy3k/iterpc"><img src="https://travis-ci.org/randy3k/iterpc.svg?branch=master" alt="Build Status"/></a></p>
+    <h2>Help topics</h2>
 
-<p><a href="http://cran.r-project.org/package=iterpc"><img src="http://cranlogs.r-pkg.org/badges/grand-total/iterpc" alt=""/></a></p>
-
-<p>Latest Documentation: <a href="http://randy3k.github.io/iterpc">http://randy3k.github.io/iterpc</a></p>
-
-<p>Github: <a href="https://github.com/randy3k/iterpc">https://github.com/randy3k/iterpc</a></p>
-
-<p>A collection of iterators for generating permutations and combinations with or
-without replacement; with distinct items or non-distinct items (multiset).
-The generated sequences are in lexicographical order (dictionary order). The
-algorithms to generate permutations and combinations are memory efficient. These
-iterative algorithms enable users to process all sequences without putting all
-results in the memory at the same time. The algorithms are written in C/C++ for
-faster performances.</p>
-
-<h2>Credit</h2>
-
-<p>Thank <a href="http://www.martinbroadhurst.com">Martin Broadhurst</a> and <a href="http://alistairisrael.wordpress.com">Alistair Israel</a> for their algorithms. Alistair Israel has a very nice article on an algorithm to generate <a href="http://alistairisrael.wordpress.com/2009/09/22/simple-efficient-pnk-algorithm/">k-permutation</a>.</p>
-
-<h2>Installation</h2>
-
-<p>If you want to install the latest development version, you can use <code>devtools</code>:</p>
-
-<pre><code>devtools::install_github(&quot;randy3k/iterpc&quot;)
-</code></pre>
-
-<p>or you can install the stable version via CRAN</p>
-
-<pre><code>install.packages(&quot;iterpc&quot;)
-</code></pre>
-
+    <h3></h3>
+    
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="getall.html">getall</a></code><br />Get all permutations/combinations for a iterator</li>
+            
+      <li>
+        <code><a href="getcurrent.html">getcurrent</a></code><br />Get the current element of a iterator</li>
+            
+      <li>
+        <code><a href="getlength.html">getlength</a></code><br />Get the length for a iterator</li>
+            
+      <li>
+        <code><a href="getnext.html">getnext</a></code><br />Get the next permutation(s)/combination(s) for a iterator</li>
+            
+      <li>
+        <code><a href="iter_wrapper.html">iter_wrapper</a></code><br />Wrap iterpc objects by iterators::iter</li>
+            
+      <li>
+        <code><a href="iterpc.html">iterpc</a></code>(iterpc-package)<br />Iterator for Permutations and Combinations</li>
+            
+      <li>
+        <code><a href="multichoose.html">multichoose</a></code><br />Calculate multinomial coefficient</li>
+            
+      <li>
+        <code><a href="nc_multiset.html">nc_multiset</a></code><br />Calculate the number of r-combinations of a multiset</li>
+            
+      <li>
+        <code><a href="np_multiset.html">np_multiset</a></code><br />Calculate the number of r-permutations of a multiset</li>
+    
+    </ul>
   </div>
-
+  
   <div class="col-xs-12 col-sm-6 col-md-3">
     
     <h2>Demos</h2>
@@ -96,9 +99,16 @@ faster performances.</p>
       <li><a href="demo-combinations.html">combinations</a></li>
       <li><a href="demo-permutations.html">permutations</a></li>
     </ul>
-    <h2>Authors</h2>
+    
+    <h2>Dependencies</h2>
     <ul>
+      <li><strong>Depends</strong>: </li>
+      <li><strong>Imports</strong>: iterators, gmp, Rcpp</li>
+      <li><strong>Suggests</strong>: foreach, testthat</li>
+      <li><strong>Extends</strong>: </li>
     </ul>
+     
+    
   </div>
 </div>     
         <footer>
