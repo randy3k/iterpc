@@ -26,9 +26,12 @@ Imports:
     Rcpp (>= 0.11.0)
 Suggests:
     foreach,
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 LinkingTo: Rcpp
 SystemRequirements: GNU make
 NeedsCompilation: yes
 ByteCompile: yes
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr

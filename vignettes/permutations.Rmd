@@ -1,0 +1,38 @@
+---
+title: "Examples of generating permutations"
+author: "Randy Lai"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Examples of generating permutations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+1. permutations: without replacement: distinct items
+```{r}
+I <- iterpc(5, 2, ordered = TRUE)
+getall(I)
+```
+
+2. ermutations: with replacement: distinct items
+```{r}
+I <- iterpc(5, 2, replace = TRUE, ordered = TRUE)
+getall(I)
+```
+
+3. permutations: without replacement: non distinct items
+```{r}
+x <- c("a", "a", "b", "c")
+I <- iterpc(table(x), 2, ordered = TRUE)
+# or I <- iterpc(c(2,1,1), 2, label=c("a", "b", "c"), ordered = TRUE)
+getall(I)
+```
+
+4. permutations: with replacement: non distinct items
+```{r}
+x <- c("a", "a", "b", "c")
+I <- iterpc(table(x), 2, replace = TRUE, ordered = TRUE)
+# or I = iterpc(c(2,1,1), 2, label=c("a", "b", "c"), replace= T RUE, ordered = TRUE)
+getall(I)
+```
