@@ -1,7 +1,11 @@
 language: r
 sudo: required
 
-before_install: sudo apt-get install libgmp3-dev
+addons:
+  apt:
+    packages:
+      - libgmp3-dev
+      - libmagick++-dev
 
 after_success:
     - if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_PULL_REQUEST" == false ]]; then

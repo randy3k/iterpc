@@ -5,6 +5,10 @@ Version: 0.3.0
 Date: 2016-4-20
 Author: Randy Lai [aut, cre], Martin Broadhurst [aut]
 Maintainer: Randy Lai <randy.cs.lai@gmail.com>
+Authors@R: c(
+    person("Randy", "Lai", , "randy.cs.lai@gmail.com", role = c("aut", "cre")),
+    person("Martin", "Broadhurst", role = "aut")
+    )
 Description: A collection of iterators for generating permutations and combinations with or
     without replacement; with distinct items or non-distinct items (multiset).
     The generated sequences are in lexicographical order (dictionary order). The
@@ -12,7 +16,7 @@ Description: A collection of iterators for generating permutations and combinati
     iterative algorithms enable users to process all sequences without putting all
     results in the memory at the same time. The algorithms are written in C/C++ for
     faster performances.
-URL: http://randy3k.github.io/iterpc
+URL: https://randy3k.github.io/iterpc
 License: GPL-2
 Depends:
     R (>= 3.0.0)

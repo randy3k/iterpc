@@ -3,8 +3,8 @@
 # deploy to the gh-pages branch of the same repo
 set -e
 
-R --slave -e "devtools::install_github('hadley/staticdocs')"
-R --slave -e "library(staticdocs);build_site()"
+R --slave -e "devtools::install_github('hadley/pkgdown')"
+R --slave -e "library(pkgdown);build_site()"
 
 cd ..
 
