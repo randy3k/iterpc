@@ -53,7 +53,6 @@ getnext.comb <- function(I, d=1L, drop=TRUE){
 
 #' @export
 #' @method getlength comb
-#' @import gmp
 getlength.comb <- function(I, bigz=FALSE){
     if (I$replace){
         out <- choose(I$unique_n + I$r - 1, I$r)

@@ -53,7 +53,6 @@ getnext.perm <- function(I, d=1L, drop=TRUE){
 
 #' @export
 #' @method getlength perm
-#' @import gmp
 getlength.perm <- function(I, bigz=FALSE){
     if (I$replace){
         out <- I$unique_n^I$r
