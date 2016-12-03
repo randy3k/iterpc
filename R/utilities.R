@@ -1,6 +1,6 @@
 convert_z <- function(z, bigz){
     if (bigz){
-        return(as.bigz(z))
+        return(gmp::as.bigz(z))
     } else if (abs(z) < .Machine$integer.max) {
         return(as.integer(z))
     } else {
@@ -21,11 +21,10 @@ convert_z <- function(z, bigz){
 #' # (3+1+1)!/ (3! 1! 1!) = 20
 #' multichoose(c(3,1,1))
 #' @export
-#' @import gmp
 multichoose <- function(n, bigz=FALSE){
-    out <- factorialZ(sum(n))
+    out <- gmp::factorialZ(sum(n))
     for (m in n) {
-        out <- as.bigz(out / factorialZ(m))
+        out <- gmp::as.bigz(out / gmp::factorialZ(m))
     }
     convert_z(out, bigz)
 }
@@ -41,7 +40,6 @@ multichoose <- function(n, bigz=FALSE){
 #' # possible permutations of size 2 are "aa", "ab" and "ba".
 #' np_multiset(table(x), 2) # = 3
 #' @export
-#' @import gmp
 np_multiset <- function(f, r, bigz=FALSE){
     n <- sum(f)
     if (r > n){
@@ -49,11 +47,11 @@ np_multiset <- function(f, r, bigz=FALSE){
     } else if (r == 0){
         out <- 1
     } else {
-        g <- factorialZ(0:min(r, max(f)))
-        p <- as.bigz(rep(0L, r + 1))
+        g <- gmp::factorialZ(0:min(r, max(f)))
+        p <- gmp::as.bigz(rep(0L, r + 1))
         for (i in seq_along(f)){
             if (i == 1){
-                p[[1:min(r + 1, f[i] + 1)]] <- factorialZ(r) / g[[1:min(r + 1, f[i] + 1)]]
+                p[[1:min(r + 1, f[i] + 1)]] <- gmp::factorialZ(r) / g[[1:min(r + 1, f[i] + 1)]]
             }else{
                 for (j in r:1){
                     p[[j + 1]] <- sum(
@@ -79,7 +77,6 @@ np_multiset <- function(f, r, bigz=FALSE){
 #' # possible combinations of size 2 are "aa" and "ab".
 #' nc_multiset(table(x), 2) # <- 2
 #' @export
-#' @import gmp
 nc_multiset <- function(f, r, bigz=FALSE){
     n <- sum(f)
     if (r > n){
@@ -87,7 +84,7 @@ nc_multiset <- function(f, r, bigz=FALSE){
     } else if (r == 0){
         out <- 1
     } else {
-        p <- as.bigz(rep(0L, r + 1))
+        p <- gmp::as.bigz(rep(0L, r + 1))
         for (i in seq_along(f)){
             if (i == 1){
                 p[[1:min(r + 1, f[i] + 1)]] <- 1
@@ -106,7 +103,6 @@ nc_multiset <- function(f, r, bigz=FALSE){
 #' @param I the iterpc object
 #' @param d number of permutation(s)/combination(s) wanted in each iteration, default to 1
 #' @return a iter object compatible with iterators package
-#' @import iterators
 #' @examples
 #' library(iterators)
 #' I <- iterpc(5, 2)
@@ -120,7 +116,7 @@ nc_multiset <- function(f, r, bigz=FALSE){
 #' foreach(x=it, .combine=c) %do% { sum(x) }
 #' @export
 iter_wrapper <- function(I, d=1){
-    iter(function() {
+    iterators::iter(function() {
         out <- getnext(I, d)
         !is.null(out) || stop("StopIteration", call. = FALSE)
         out
