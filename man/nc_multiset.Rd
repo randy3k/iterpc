@@ -24,4 +24,3 @@ x <- c("a","a","b")
 # possible combinations of size 2 are "aa" and "ab".
 nc_multiset(table(x), 2) # <- 2
 }
-

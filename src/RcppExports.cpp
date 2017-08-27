@@ -78,13 +78,6 @@ BEGIN_RCPP
 END_RCPP
 }
 
-RcppExport SEXP iterpc_next_combinations(SEXP, SEXP);
-RcppExport SEXP iterpc_next_combinations_replace(SEXP, SEXP);
-RcppExport SEXP iterpc_next_k_permutations(SEXP, SEXP);
-RcppExport SEXP iterpc_next_multiset_combinations(SEXP, SEXP);
-RcppExport SEXP iterpc_next_permutations(SEXP, SEXP);
-RcppExport SEXP iterpc_next_permutations_replace(SEXP, SEXP);
-
 static const R_CallMethodDef CallEntries[] = {
     {"_iterpc_next_combinations", (DL_FUNC) &_iterpc_next_combinations, 2},
     {"_iterpc_next_multiset_combinations", (DL_FUNC) &_iterpc_next_multiset_combinations, 2},
@@ -92,12 +85,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_iterpc_next_permutations", (DL_FUNC) &_iterpc_next_permutations, 2},
     {"_iterpc_next_k_permutations", (DL_FUNC) &_iterpc_next_k_permutations, 2},
     {"_iterpc_next_permutations_replace", (DL_FUNC) &_iterpc_next_permutations_replace, 2},
-    {"iterpc_next_combinations",          (DL_FUNC) &iterpc_next_combinations,          2},
-    {"iterpc_next_combinations_replace",  (DL_FUNC) &iterpc_next_combinations_replace,  2},
-    {"iterpc_next_k_permutations",        (DL_FUNC) &iterpc_next_k_permutations,        2},
-    {"iterpc_next_multiset_combinations", (DL_FUNC) &iterpc_next_multiset_combinations, 2},
-    {"iterpc_next_permutations",          (DL_FUNC) &iterpc_next_permutations,          2},
-    {"iterpc_next_permutations_replace",  (DL_FUNC) &iterpc_next_permutations_replace,  2},
     {NULL, NULL, 0}
 };
 

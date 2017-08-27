@@ -29,4 +29,3 @@ I <- iterpc(5, 2)
 it <- iter_wrapper(I)
 foreach(x=it, .combine=c) \%do\% { sum(x) }
 }
-

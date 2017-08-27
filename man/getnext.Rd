@@ -19,4 +19,3 @@ next \code{d} permutation(s)/combination(s) sequence for the iterator \code{I}
 \description{
 Get the next permutation(s)/combination(s) for a iterator
 }
-

@@ -15,4 +15,3 @@ current element of a iterator
 \description{
 Get the current element of a iterator
 }
-

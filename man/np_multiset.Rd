@@ -24,4 +24,3 @@ x = c("a","a","b")
 # possible permutations of size 2 are "aa", "ab" and "ba".
 np_multiset(table(x), 2) # = 3
 }
-

@@ -17,4 +17,3 @@ an integer
 \description{
 Get the length for a iterator
 }
-

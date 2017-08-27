@@ -4,6 +4,7 @@
 \name{iterpc}
 \alias{iterpc}
 \alias{iterpc-package}
+\alias{iterpc}
 \title{Iterator for Permutations and Combinations}
 \usage{
 iterpc(n, r = NULL, labels = NULL, ordered = FALSE, replace = FALSE)
@@ -50,4 +51,3 @@ x <- c("a","a","b","c")
 I <- iterpc(table(x), 3, replace=TRUE)
 getall(I)
 }
-

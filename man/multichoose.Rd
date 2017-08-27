@@ -23,4 +23,3 @@ where \eqn{n_j}{n_j}'s are the number of multiplicities in the multiset.
 # (3+1+1)!/ (3! 1! 1!) = 20
 multichoose(c(3,1,1))
 }
-

@@ -33,5 +33,5 @@ LinkingTo: Rcpp
 SystemRequirements: GNU make
 NeedsCompilation: yes
 ByteCompile: yes
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 VignetteBuilder: knitr

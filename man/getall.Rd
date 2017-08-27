@@ -15,4 +15,3 @@ next permutation/combination sequence for the iterator \code{I}
 \description{
 Get all permutations/combinations for a iterator
 }
-
