@@ -15,9 +15,9 @@ then
     cd gh-pages
     git init
     git checkout -b gh-pages
-    git remote add origin https://${GH_TOKEN}@github.com/randy3k/iterpc.git > /dev/null 2>&1
+    git remote add origin https://${GITHUB_PAT}@github.com/randy3k/iterpc.git > /dev/null 2>&1
 else
-    git clone --branch gh-pages https://${GH_TOKEN}@github.com/randy3k/iterpc.git gh-pages > /dev/null 2>&1
+    git clone --branch gh-pages https://${GITHUB_PAT}@github.com/randy3k/iterpc.git gh-pages > /dev/null 2>&1
     cd gh-pages
 fi
 echo "copy webpages to here"
