@@ -4,6 +4,7 @@
 set -e
 
 R --slave -e "devtools::install_github('hadley/pkgdown')"
+R --slave -e "devtools::install_github('r-lib/pkgload')"
 R --slave -e "library(pkgdown);build_site()"
 
 cd ..
