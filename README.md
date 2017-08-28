@@ -1,4 +1,4 @@
-Efficient Iterator for Permutations and Combinations
+Efficient Iterators for Permutations and Combinations
 ===
 
 [![Build Status](https://travis-ci.org/randy3k/iterpc.svg?branch=master)](https://travis-ci.org/randy3k/iterpc)
