@@ -5,5 +5,3 @@
 *.a
 *.d
 iterpc.sublime-workspace
-docs
-inst/doc
