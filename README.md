@@ -3,9 +3,9 @@ Efficient Iterator for Permutations and Combinations
 
 [![Build Status](https://travis-ci.org/randy3k/iterpc.svg?branch=master)](https://travis-ci.org/randy3k/iterpc)
 
-[![](http://cranlogs.r-pkg.org/badges/grand-total/iterpc)](http://cran.r-project.org/package=iterpc)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/iterpc)](https://cran.r-project.org/package=iterpc)
 
-Latest Documentation: [http://randy3k.github.io/iterpc](http://randy3k.github.io/iterpc)
+Latest Documentation: [http://randy3k.github.io/iterpc](https://randy3k.github.io/iterpc)
 
 Github: [https://github.com/randy3k/iterpc](https://github.com/randy3k/iterpc)
 
