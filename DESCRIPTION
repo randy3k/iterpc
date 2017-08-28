@@ -1,6 +1,6 @@
 Package: iterpc
 Type: Package
-Title: Efficient Iterator for Permutations and Combinations
+Title: Efficient Iterators for Permutations and Combinations
 Version: 0.3.1
 Date: 2017-08-28
 Author: Randy Lai [aut, cre], Martin Broadhurst [aut]
