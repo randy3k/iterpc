@@ -1,8 +1,8 @@
 #include <Rcpp.h>
 extern "C" {
-    #include "mbcomb/Include/combination.h"
-    #include "mbcomb/Include/multiset-combination.h"
-    #include "mbcomb/Include/multicombination.h"
+    #include "utils/combination.h"
+    #include "utils/multiset_combination.h"
+    #include "utils/multicombination.h"
 }
 
 using namespace Rcpp;
@@ -18,7 +18,7 @@ SEXP next_combinations(Environment I, unsigned long d){
     unsigned int* xptr = (unsigned int *) x.begin();
 
     if (as<int>(I["status"]) == 0) {
-        if (!MBnext_combination(xptr, n, r)){
+        if (!next_combination(xptr, n, r)){
             return R_NilValue;
         }
     }else{
@@ -29,7 +29,7 @@ SEXP next_combinations(Environment I, unsigned long d){
         IntegerMatrix P(d,r);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            if(!MBnext_combination(xptr, n, r)) {
+            if(!next_combination(xptr, n, r)) {
                 I["status"] = i;
                 break;
             }
@@ -56,7 +56,7 @@ SEXP next_multiset_combinations(Environment I, unsigned long d){
     unsigned int* mptr = (unsigned int *) multiset.begin();
 
     if (as<int>(I["status"]) == 0) {
-        if (!MBnext_multiset_combination(mptr, xptr, n, r)){
+        if (!next_multiset_combination(mptr, xptr, n, r)){
             return R_NilValue;
         }
     }else{
@@ -67,7 +67,7 @@ SEXP next_multiset_combinations(Environment I, unsigned long d){
         IntegerMatrix P(d,r);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            if(!MBnext_multiset_combination(mptr, xptr, n, r)) {
+            if(!next_multiset_combination(mptr, xptr, n, r)) {
                 I["status"] = i;
                 break;
             }
@@ -92,7 +92,7 @@ SEXP next_combinations_replace(Environment I, unsigned long d){
     unsigned int* xptr = (unsigned int *) x.begin();
 
     if (as<int>(I["status"]) == 0) {
-        if (!MBnext_multicombination(xptr, n, r)){
+        if (!next_multicombination(xptr, n, r)){
             return R_NilValue;
         }
     }else{
@@ -103,7 +103,7 @@ SEXP next_combinations_replace(Environment I, unsigned long d){
         IntegerMatrix P(d,r);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            if(!MBnext_multicombination(xptr, n, r)) {
+            if(!next_multicombination(xptr, n, r)) {
                 I["status"] = i;
                 break;
             }

@@ -1,9 +1,9 @@
-#include "k-permutation.h"
+#include "k_permutation.h"
 
 // A Simple, Efficient P(n,k) Algorithm by Alistair Israel
 // http://alistairisrael.wordpress.com/2009/09/22/simple-efficient-pnk-algorithm/
-// c implementation by 2014 Randy Lai
-// http://rtalks.net
+// c implementation by 2017 Randy Lai
+// http://randycity.github.io
 
 static void swap(unsigned int *ar, unsigned int first, unsigned int second)
 {
@@ -21,7 +21,7 @@ static void reverse(unsigned int *ar, size_t len)
     }
 }
 
-unsigned int AInext_k_permutation(unsigned int *ar, size_t n, size_t k)
+unsigned int next_k_permutation(unsigned int *ar, size_t n, size_t k)
 {
     long i;
     long j;

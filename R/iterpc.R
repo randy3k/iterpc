@@ -64,6 +64,7 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     }else{
         I$n <- n
     }
+    if (I$n < 1) stop("n should be positive.")
 
     if (is.null(r)) {
         I$r <- I$n

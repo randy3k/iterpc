@@ -35,4 +35,12 @@ test_that("Combination", {
 
     I <- iterpc(5, 1, labels = 1:5, ordered = FALSE)
     expect_that(nrow(getall(I)), equals(5))
+
+    I <- iterpc(5, 1, labels = 1:5, ordered = FALSE)
+    expect_that(nrow(getall(I)), equals(5))
+
+    I <- iterpc(1, 1, ordered = FALSE)
+    expect_that(nrow(getall(I)), equals(1))
+    getnext(I)
+    expect_that(getnext(I), equals(NULL))
 })

@@ -1,18 +1,10 @@
-PKG_LIBS = -Lmbcomb -lmbcomb
-
-SOURCES = $(wildcard *.cpp) 
-UTILS = $(wildcard utils/*.c)
+SOURCES = combination.cpp permutation.cpp RcppExports.cpp
+UTILS = utils/combination.c utils/multiset_combination.c utils/k_permutation.c utils/n_tuple.c utils/multicombination.c utils/permutation.c
 OBJECTS = $(UTILS:.c=.o) $(SOURCES:.cpp=.o)
 
-all: subclean $(SHLIB)
+all: $(SHLIB)
 
-$(SHLIB): $(OBJECTS) sublibs
+$(SHLIB): $(OBJECTS)
 
-sublibs: subclean
-	@(cd mbcomb && CFLAGS="$(CFLAGS)" AR="$(AR)" CC="$(CC)" CPICFLAGS="$(CPICFLAGS)" $(MAKE) libmbcomb.a)
-
-clean: subclean
+clean:
 	rm -f $(SHLIB) $(OBJECTS)
-
-subclean:
-	@(cd mbcomb && $(MAKE) clean)

@@ -31,4 +31,12 @@ test_that("Permutation", {
 
     I <- iterpc(5, 2, labels = 1:5, ordered = TRUE)
     expect_that(nrow(getall(I)), equals(20))
+
+    I <- iterpc(5, 1, labels = 1:5)
+    expect_that(nrow(getall(I)), equals(5))
+
+    I <- iterpc(1, 1)
+    expect_that(nrow(getall(I)), equals(1))
+    getnext(I)
+    expect_that(getnext(I), equals(NULL))
 })

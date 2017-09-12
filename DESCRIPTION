@@ -3,11 +3,10 @@ Type: Package
 Title: Efficient Iterators for Permutations and Combinations
 Version: 0.3.1
 Date: 2017-08-28
-Author: Randy Lai [aut, cre], Martin Broadhurst [aut]
+Author: Randy Lai [aut, cre]
 Maintainer: Randy Lai <randy.cs.lai@gmail.com>
 Authors@R: c(
-    person("Randy", "Lai", , "randy.cs.lai@gmail.com", role = c("aut", "cre")),
-    person("Martin", "Broadhurst", role = "aut")
+    person("Randy", "Lai", , "randy.cs.lai@gmail.com", role = c("aut", "cre"))
     )
 Description: A collection of iterators for generating permutations and combinations with or
     without replacement; with distinct items or non-distinct items (multiset).
@@ -30,7 +29,6 @@ Suggests:
     knitr,
     rmarkdown
 LinkingTo: Rcpp
-SystemRequirements: GNU make
 NeedsCompilation: yes
 ByteCompile: yes
 RoxygenNote: 6.0.1

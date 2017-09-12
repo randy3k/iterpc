@@ -1,8 +1,8 @@
 #include <Rcpp.h>
 extern "C" {
-    #include "mbcomb/Include/permutation.h"
-    #include "mbcomb/Include//n-tuple.h"
-    #include "utils/k-permutation.h"
+    #include "utils/permutation.h"
+    #include "utils/n_tuple.h"
+    #include "utils/k_permutation.h"
 }
 
 using namespace Rcpp;
@@ -16,7 +16,7 @@ SEXP next_permutations(Environment I, unsigned long d){
     unsigned int* xptr = (unsigned int *) x.begin();
 
     if (as<int>(I["status"]) == 0) {
-        if (!MBnext_permutation(xptr, n)){
+        if (!next_permutation(xptr, n)){
             return R_NilValue;
         }
     }else{
@@ -27,7 +27,7 @@ SEXP next_permutations(Environment I, unsigned long d){
         IntegerMatrix P(d,n);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            if(!MBnext_permutation(xptr, n)) {
+            if(!next_permutation(xptr, n)) {
                 I["status"] = i;
                 break;
             }
@@ -51,7 +51,7 @@ SEXP next_k_permutations(Environment I, unsigned long d){
     unsigned int* xptr = (unsigned int *) x.begin();
 
     if (as<int>(I["status"]) == 0) {
-        if (!AInext_k_permutation(xptr, n, r)){
+        if (!next_k_permutation(xptr, n, r)){
             return R_NilValue;
         }
     }else{
@@ -62,7 +62,7 @@ SEXP next_k_permutations(Environment I, unsigned long d){
         IntegerMatrix P(d,r);
         for(j=0;j<r;j++) P(0,j) = xptr[j]+1;
         for(i=1;i<d;i++){
-            if(!AInext_k_permutation(xptr, n, r)) {
+            if(!next_k_permutation(xptr, n, r)) {
                 I["status"] = i;
                 break;
             }
@@ -90,7 +90,7 @@ SEXP next_permutations_replace(Environment I, unsigned long d){
     for(i=0;i<r;i++) sizes[i] = n;
 
     if (as<int>(I["status"]) == 0) {
-        if (!MBnext_n_tuple(xptr, r,  sizes)){
+        if (!next_n_tuple(xptr, r,  sizes)){
             return R_NilValue;
         }
     }else{
@@ -101,7 +101,7 @@ SEXP next_permutations_replace(Environment I, unsigned long d){
         IntegerMatrix P(d,r);
         P(0,_) = x+1;
         for(i=1;i<d;i++){
-            if(!MBnext_n_tuple(xptr, r,  sizes)) {
+            if(!next_n_tuple(xptr, r,  sizes)) {
                 I["status"] = i;
                 break;
             }
