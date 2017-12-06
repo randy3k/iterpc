@@ -59,12 +59,10 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     I$status <- -1L
 
     if (I$is.multiset){
-        if (length(n) > 1) {
-            n <- n[n > 0]
-        }
-        I$f <- as.integer(n)
-        I$multiset <- rep(0:(length(I$f) - 1L), n)
-        I$n <- sum(n)
+        I$n <- n[n > 0]
+        I$f <- as.integer(I$n)
+        I$multiset <- rep(0:(length(I$f) - 1L), I$n)
+        I$n <- sum(I$n)
     }else{
         I$n <- n
     }
@@ -77,9 +75,9 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
         if (I$r < 1) stop("r should be positive.")
     }
     if (!is.null(labels)) {
-        I$labels <- labels
+        I$labels <- labels[n > 0]
     }else if (class(n) == "table") {
-        I$labels <- type.convert(names(n))
+        I$labels <- type.convert(names(n[n > 0]))
     }
     if (replace){
         if (is.null(I$f)) {
