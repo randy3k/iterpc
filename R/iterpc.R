@@ -50,6 +50,7 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
         class(I) <- "comb"
     }
     I$replace <- replace
+
     I$is.multiset <- class(n) == "table" || length(n) > 1
     # status: -1, not yet initialize
     #         0, running
@@ -58,6 +59,9 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     I$status <- -1L
 
     if (I$is.multiset){
+        if (length(n) > 1) {
+            n <- n[n > 0]
+        }
         I$f <- as.integer(n)
         I$multiset <- rep(0:(length(I$f) - 1L), n)
         I$n <- sum(n)

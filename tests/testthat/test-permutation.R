@@ -19,6 +19,9 @@ test_that("Permutation", {
     getnext(I)
     expect_that(getnext(I)[2], equals("c"))
 
+    I <- iterpc(c(2, 2, 0), 2, labels = c("a", "b", "c"), ordered = TRUE)
+    expect_that(nrow(getall(I)), equals(4))
+
     I <- iterpc(c(2, 2), 2, labels = c("a", "c"), replace = TRUE, ordered = TRUE)
     expect_that(nrow(getall(I)), equals(4))
     expect_that(getnext(I, 2)[2, 2], equals("c"))

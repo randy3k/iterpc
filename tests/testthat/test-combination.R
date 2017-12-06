@@ -19,6 +19,9 @@ test_that("Combination", {
     expect_that(getnext(I)[2], equals("c"))
     expect_that(nrow(getall(I)), equals(3))
 
+    I <- iterpc(c(2, 2, 0), 2, labels = c("a", "b", "c"), ordered = FALSE)
+    expect_that(nrow(getall(I)), equals(3))
+
     I <- iterpc(5, 3, ordered = FALSE, replace = TRUE)
     getnext(I)
     expect_that(getnext(I), equals(c(1, 1, 2)))
