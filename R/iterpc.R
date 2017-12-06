@@ -1,5 +1,5 @@
 #' @name iterpc
-#' @title Iterator for Permutations and Combinations
+#' @title Efficient Iterator for Permutations and Combinations
 #' @docType package
 #' @useDynLib iterpc
 #' @import Rcpp

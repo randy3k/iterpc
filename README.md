@@ -26,12 +26,12 @@ Thank [Martin Broadhurst](http://www.martinbroadhurst.com) and [Alistair Israel]
 
 If you want to install the latest development version, you can use `devtools`:
 
-```
+```r
 devtools::install_github("randy3k/iterpc")
 ```
 
 or you can install the stable version via CRAN
 
-```
+```r
 install.packages("iterpc")
 ```

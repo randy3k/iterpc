@@ -1,15 +1,15 @@
 Package: iterpc
 Type: Package
 Title: Efficient Iterator for Permutations and Combinations
-Version: 0.3.3
-Date: 2017-09-12
+Version: 0.3.4
+Date: 2017-12-06
 Author: Randy Lai [aut, cre]
 Maintainer: Randy Lai <randy.cs.lai@gmail.com>
 Authors@R: c(
     person("Randy", "Lai", , "randy.cs.lai@gmail.com", role = c("aut", "cre"))
     )
-Description: Iterator for generating permutations and combinations. The arrangement
-    can be either with or without replacement; with distinct items or non-distinct 
+Description: Iterator for generating permutations and combinations. They
+    can be either drawn with or without replacement, or with distinct/ non-distinct 
     items (multiset). The generated sequences are in lexicographical order 
     (dictionary order). The algorithms to generate permutations and combinations are 
     memory efficient. These iterative algorithms enable users to process all sequences 
