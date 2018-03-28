@@ -1,6 +1,10 @@
 Efficient Iterators for Permutations and Combinations
 ===
 
+
+## Deprecation: `iterpc` is deprecated in favour of [arrangements](https://github.com/randy3k/arrangements).
+
+
 [![Build Status](https://travis-ci.org/randy3k/iterpc.svg?branch=master)](https://travis-ci.org/randy3k/iterpc)
 
 [![](http://cranlogs.r-pkg.org/badges/grand-total/iterpc)](https://cran.r-project.org/package=iterpc)
