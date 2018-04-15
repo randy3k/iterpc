@@ -14,7 +14,8 @@ Description: Iterator for generating permutations and combinations. They
     (dictionary order). The algorithms to generate permutations and combinations are 
     memory efficient. These iterative algorithms enable users to process all sequences 
     without putting all results in the memory at the same time. 
-    The algorithms are written in C/C++ for faster performance.
+    The algorithms are written in C/C++ for faster performance. Note: 'iterpc' is no longer
+    being maintained. Users are recommended to switch to 'arrangements'.
 URL: https://randy3k.github.io/iterpc
 License: GPL-2
 Depends:
