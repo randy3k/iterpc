@@ -57,7 +57,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">iterpc</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.4</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -192,16 +192,26 @@ In that case, the names of <code>n</code> are used.</p></td>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"a"</span>,<span class='st'>"a"</span>,<span class='st'>"b"</span>,<span class='st'>"c"</span>)
 <span class='no'>I</span> <span class='kw'>&lt;-</span> <span class='fu'>iterpc</span>(<span class='fu'>table</span>(<span class='no'>x</span>), <span class='fl'>3</span>, <span class='kw'>replace</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 <span class='fu'><a href='getall.html'>getall</a></span>(<span class='no'>I</span>)</div><div class='output co'>#&gt;       [,1] [,2] [,3]
-#&gt;  [1,] "a"  "a"  "a" 
-#&gt;  [2,] "a"  "a"  "b" 
-#&gt;  [3,] "a"  "a"  "c" 
-#&gt;  [4,] "a"  "b"  "b" 
-#&gt;  [5,] "a"  "b"  "c" 
-#&gt;  [6,] "a"  "c"  "c" 
-#&gt;  [7,] "b"  "b"  "b" 
-#&gt;  [8,] "b"  "b"  "c" 
-#&gt;  [9,] "b"  "c"  "c" 
-#&gt; [10,] "c"  "c"  "c" </div></pre>
+#&gt;  [1,]    1    1    1
+#&gt;  [2,]    1    1    2
+#&gt;  [3,]    1    1    3
+#&gt;  [4,]    1    1    4
+#&gt;  [5,]    1    2    2
+#&gt;  [6,]    1    2    3
+#&gt;  [7,]    1    2    4
+#&gt;  [8,]    1    3    3
+#&gt;  [9,]    1    3    4
+#&gt; [10,]    1    4    4
+#&gt; [11,]    2    2    2
+#&gt; [12,]    2    2    3
+#&gt; [13,]    2    2    4
+#&gt; [14,]    2    3    3
+#&gt; [15,]    2    3    4
+#&gt; [16,]    2    4    4
+#&gt; [17,]    3    3    3
+#&gt; [18,]    3    3    4
+#&gt; [19,]    3    4    4
+#&gt; [20,]    4    4    4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
