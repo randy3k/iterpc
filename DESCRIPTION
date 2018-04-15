@@ -1,8 +1,8 @@
 Package: iterpc
 Type: Package
 Title: Efficient Iterator for Permutations and Combinations
-Version: 0.3.4
-Date: 2017-12-06
+Version: 0.4.0
+Date: 2018-04-14
 Author: Randy Lai [aut, cre]
 Maintainer: Randy Lai <randy.cs.lai@gmail.com>
 Authors@R: c(
@@ -22,14 +22,12 @@ Depends:
 Imports:
     iterators,
     gmp (>= 0.5-12),
-    Rcpp (>= 0.11.0)
+    arrangements (>= 1.0.0)
 Suggests:
     foreach,
     testthat,
     knitr,
     rmarkdown
-LinkingTo: Rcpp
-NeedsCompilation: yes
 ByteCompile: yes
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

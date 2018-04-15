@@ -1,8 +1,6 @@
 #' @name iterpc
 #' @title Efficient Iterator for Permutations and Combinations
 #' @docType package
-#' @useDynLib iterpc
-#' @import Rcpp
 NULL
 
 
@@ -49,47 +47,43 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     }else{
         class(I) <- "comb"
     }
-    I$replace <- replace
+    is.multiset <- class(n) == "table" || length(n) > 1
 
-    I$is.multiset <- class(n) == "table" || length(n) > 1
-    # status: -1, not yet initialize
-    #         0, running
-    #         i, number of rows of the last returned incomplete result when d > 1
-    # make sure I$status get a new memmory address in bytecode complier
-    I$status <- -1L
-
-    if (I$is.multiset){
-        I$n <- n[n > 0]
-        I$f <- as.integer(I$n)
-        I$multiset <- rep(0:(length(I$f) - 1L), I$n)
-        I$n <- sum(I$n)
-    }else{
-        I$n <- n
+    if (is.multiset){
+        freq <- as.integer(n)
+        n <- sum(n)
+    } else {
+        freq <- NULL
     }
-    if (I$n < 1) stop("n should be positive.")
 
     if (is.null(r)) {
-        I$r <- I$n
-    } else {
-        I$r <- as.integer(r)
-        if (I$r < 1) stop("r should be positive.")
-    }
-    if (!is.null(labels)) {
-        I$labels <- labels[n > 0]
-    }else if (class(n) == "table") {
-        I$labels <- type.convert(names(n[n > 0]))
-    }
-    if (replace){
-        if (is.null(I$f)) {
-            I$unique_n <- I$n
-        } else {
-            I$unique_n <- length(I$f)
-        }
-    }else{
-        if (sum(I$n) < I$r) stop("n should be larger than or equal to r.")
+        r <- n
     }
 
-    return(I)
+    if (replace){
+        if (is.null(freq)) {
+            unique_n <- n
+        } else {
+            unique_n <- length(freq)
+        }
+    } else {
+        unique_n <- NULL
+    }
+
+    if (ordered){
+        I$object <- arrangements::ipermutations(n, r, labels, freq, replace)
+    } else {
+        I$object <- arrangements::icombinations(n, r, labels, freq, replace)
+    }
+
+    I$n <- n
+    I$r <- r
+    I$f <- freq[freq > 0]
+    I$replace <- replace
+    I$is.multiset <- is.multiset
+    I$unique_n <- unique_n
+
+    I
 }
 
 #' Get all permutations/combinations for a iterator
@@ -97,15 +91,8 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
 #' @return next permutation/combination sequence for the iterator \code{I}
 #' @export
 getall <- function(I){
-    len <- getlength(I, bigz = TRUE)
-    if (len * I$r > .Machine$integer.max) {
-        stop("The output is too long, consider `getnext(I, d)`.")
-    }
-    len <- as.integer(len)
-    I$status <- -1L
-    out <- getnext(I, len, drop = FALSE)
-    I$status <- -1L
-    out
+    I$object$reset()
+    I$object$collect()
 }
 
 
@@ -114,17 +101,7 @@ getall <- function(I){
 #' @return current element of a iterator
 #' @export
 getcurrent <- function(I){
-    if (is.null(I$index)) return(NULL)
-    if (is.null(I$x)){
-        out <- I$index[1:I$r] + 1L
-    }else{
-        out <- I$x[I$index[1:I$r] + 1L]
-    }
-    if (is.null(I$labels)){
-        return(out)
-    }else{
-        return(I$labels[out])
-    }
+    I$last
 }
 
 #' Get the next permutation(s)/combination(s) for a iterator
