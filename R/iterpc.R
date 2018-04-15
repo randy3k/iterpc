@@ -15,6 +15,7 @@ NULL
 #' @name iterpc
 #' @aliases iterpc
 #' @importFrom utils type.convert
+#' @importFrom arrangements icombinations ipermutations
 #' @export
 #' @examples
 #' #1) all combinations of drawing 2 items from {1, 2, 3}
