@@ -4,10 +4,10 @@
 \name{iterpc}
 \alias{iterpc}
 \alias{iterpc-package}
-\alias{iterpc}
 \title{Efficient Iterator for Permutations and Combinations}
 \usage{
-iterpc(n, r = NULL, labels = NULL, ordered = FALSE, replace = FALSE)
+iterpc(n, r = NULL, labels = NULL, ordered = FALSE,
+  replace = FALSE)
 }
 \arguments{
 \item{n}{the length of the input sequence or a vector of frequencies for a multiset.}
@@ -25,6 +25,8 @@ In that case, the names of \code{n} are used.}
 a permutation/combination iterator
 }
 \description{
+Efficient Iterator for Permutations and Combinations
+
 Initialize a iterator for permutations or combinations
 }
 \examples{
