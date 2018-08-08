@@ -71,12 +71,22 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
         unique_n <- NULL
     }
 
-    if (ordered){
-        I$object <- arrangements::Permutations$new(
-            n = n, k = r, v = labels, freq = freq, replace = replace)
+    if (replace){
+        if (ordered){
+            I$object <- arrangements::Permutations$new(
+                unique_n, r, labels, replace = replace)
+        } else {
+            I$object <- arrangements::Combinations$new(
+                unique_n, r, labels, replace = replace)
+        }
     } else {
-        I$object <- arrangements::Combinations$new(
-            n = n, k = r, v = labels, freq = freq, replace = replace)
+        if (ordered){
+            I$object <- arrangements::Permutations$new(
+                n, r, labels, freq = freq, replace = replace)
+        } else {
+            I$object <- arrangements::Combinations$new(
+                n, r, labels, freq = freq, replace = replace)
+        }
     }
 
     I$n <- n
