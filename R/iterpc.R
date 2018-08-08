@@ -72,9 +72,11 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
     }
 
     if (ordered){
-        I$object <- arrangements::ipermutations(n, r, labels, freq, replace)
+        I$object <- arrangements::Permutations$new(
+            n = n, k = r, v = labels, freq = freq, replace = replace)
     } else {
-        I$object <- arrangements::icombinations(n, r, labels, freq, replace)
+        I$object <- arrangements::Combinations$new(
+            n = n, k = r, v = labels, freq = freq, replace = replace)
     }
 
     I$n <- n
