@@ -80,12 +80,18 @@ iterpc <- function(n, r=NULL, labels=NULL, ordered=FALSE, replace=FALSE){
                 unique_n, r, labels, replace = replace)
         }
     } else {
-        if (ordered){
+        if (!is.null(freq)) {
+            n_ <- length(freq)
+        } else {
+            n_ <- n
+        }
+
+        if (ordered) {
             I$object <- arrangements::Permutations$new(
-                n, r, labels, freq = freq, replace = replace)
+                n_, r, labels, freq = freq, replace = replace)
         } else {
             I$object <- arrangements::Combinations$new(
-                n, r, labels, freq = freq, replace = replace)
+                n_, r, labels, freq = freq, replace = replace)
         }
     }
 
